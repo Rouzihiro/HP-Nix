@@ -4,6 +4,7 @@
     format = "<b>%s</b>\n%b"
     sort = yes
     indicate_hidden = yes
+    include = ~/.cache/wal/colors-dunst
     alignment = center
     bounce_freq = 0
     show_age_threshold = 60

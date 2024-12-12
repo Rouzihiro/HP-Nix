@@ -11,6 +11,7 @@
       ./Applications/default.nix
       ./Services/default.nix
       ./Hardware/default.nix
+      ./Desktop-Environment/default.nix
       #./qtile.nix
     ];
 

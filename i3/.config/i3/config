@@ -298,6 +298,9 @@ for_window [class="Nitrogen"] floating enable
 
 ## App shortcuts
 
+# Launch Yazi with the correct environment
+bindsym $mod+y exec --no-startup-id kitty --name yazi -e ~/scripts/run-yazi.sh
+
 # Browser
 bindsym $mod+b exec --no-startup-id "brave"
 
@@ -308,13 +311,16 @@ bindsym $mod+n exec --no-startup-id "nautilus"
 #bindsym $mod+Shift+o exec zathura
 
 # Network Manager Applet
-bindsym $mod+Shift+s exec --no-startup-id skype
+#bindsym $mod+Shift+s exec --no-startup-id skype
 
 # Whatsapp - whatsie
-bindsym $mod+Shift+w exec --no-startup-id whatsie
+#bindsym $mod+Shift+??? exec --no-startup-id whatsie
 
 # JDownloader
 bindsym $mod+Shift+j exec ~/scripts/jdownloader
+
+# Wallpaper Changer
+bindsym $mod+Shift+w exec --no-startup-id ~/scripts/wallpaper-change.sh
 
 # Screenshot tool using Flameshot
 bindsym Shift+Print exec flameshot full -p ~/Pictures/screenshots/$(date +'%Y-%m-%d_%H-%M-%S.png') && notify-send "Screenshot taken"
@@ -380,7 +386,7 @@ bindsym XF86AudioPrev exec playerctl previous
 #exec xset s off
 
 # compositor
-exec picom
+exec --no-startup-id picom --config ~/.config/picom.conf &
 
 # Notification Daemon
 exec dunst
@@ -389,13 +395,14 @@ exec dunst
 exec_always --no-startup-id polybar example
 
 # nm-applet
-exec nm-applet
+#exec nm-applet
 
 # background
-exec nitrogen --restore
+exec --no-startup-id wal -R
 
+#exec nitrogen --restore
 # get auth work with polkit
-exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
+#exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
 
 
 # disable capslock
