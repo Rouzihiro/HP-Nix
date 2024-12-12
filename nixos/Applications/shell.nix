@@ -7,7 +7,6 @@
   zsh
   zsh-syntax-highlighting
   zsh-autosuggestions
-  #powerlevel10k
   bat
   eza
   fzf

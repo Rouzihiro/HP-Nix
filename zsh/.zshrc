@@ -15,13 +15,13 @@ setopt hist_ignore_dups        # Ignore duplicate entries
 setopt hist_verify             # Prompt for confirmation before executing history commands
 
 
-#RUN THIS COMMAND !!! to fin the location
+#RUN THIS COMMAND !!! to find the location
 #find /nix/store -name zsh-autosuggestions.zsh
-source /nix/store/a968jwjkiyfqrl3vip547rd7r9xw8g5a-zsh-autosuggestions-0.7.0/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.config/zsh/zsh-autosuggestions.zsh
 
-#RUN THIS COMMAND !!! to fin the location
+#RUN THIS COMMAND !!! to find the location
 # find /nix/store -name zsh-syntax-highlighting.zsh
-source /nix/store/b5hrwv6dzypslhg27gpqwjg8s5gksakh-zsh-syntax-highlighting-0.8.0/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # The following lines were added by compinstall
 zstyle :compinstall filename '~/.zshrc'

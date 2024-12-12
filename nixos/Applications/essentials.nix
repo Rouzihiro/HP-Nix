@@ -14,6 +14,18 @@ nix.extraOptions = ''
 #vivaldi
 #falkon
 
+# yazi-tools
+
+poppler 			# (for PDF preview)
+jq      			# (for JSON preview)
+poppler 			# (for PDF preview)
+fd 				# (for file searching)
+#rg 				# (for file content searching)
+fzf 				# (for quick file subtree navigation)
+zoxide 				# (for historical directories navigation)
+imagemagick 			# (for SVG, Font, HEIC, and JPEG XL preview)
+# xclip / wl-clipboard / xsel (for system clipboard support)
+
 gcc
 udev
 #alacritty                   # Terminal emulator
@@ -67,7 +79,6 @@ git                          # Version control
 #gnumake                     # Build automation tool
 #grim                        # Screenshot utility
 imv                          # Image viewer
-imagemagick                  # Image manipulation
 openjdk17
 #korganizer                  # Calendar
 #libclang                    # C language library

@@ -1,0 +1,37 @@
+# Step by step Terminal MUST-USE lines
+
+# get rid of garbage
+nix-collect-garbage
+
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+flatpak update
+
+flatpak search <app_name>
+flatpak install <app_name>
+
+flatpak install flathub info.cemu.Cemu
+
+# things to be done in terminal to get NVIDIA dGPU working inside flatpak applications:
+
+# lists all avalable NVIDIA driver
+#flatpak remote-ls flathub | grep org.freedesktop.Platform.GL.nvidia
+
+# install my driver
+# flatpak install flathub org.freedesktop.Platform.GL.nvidia-525-89-02
+
+# install Lutris 
+flatpak install flathub net.lutris.Lutris 
+
+# permission to Lutris to use dGPU
+flatpak override --user --device=all net.lutris.Lutris
+
+# Lutris permission to write folder, otherwise u cant install games
+flatpak override --user --filesystem=host net.lutris.Lutris
+
+# gives network permission - usually not needed
+flatpak override --user --share=network net.lutris.Lutris
+
+# check permission status
+flatpak info --show-permissions net.lutris.Lutris
+
