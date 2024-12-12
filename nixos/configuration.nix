@@ -24,21 +24,21 @@
 
   environment.pathsToLink = ["/libexec"]; 
 
-services.xserver = {
-  enable = true;
-  desktopManager.xterm.enable = false;
-  windowManager.i3 = {
-    enable = true;
-    extraPackages = with pkgs; [
-      dmenu
-      i3status
-      i3blocks
-      i3lock
-    ];
-  };
-};
+#services.xserver = {
+#  enable = true;
+#  desktopManager.xterm.enable = false;
+#  windowManager.i3 = {
+#    enable = true;
+#    extraPackages = with pkgs; [
+#      dmenu
+#      i3status
+#      i3blocks
+#      i3lock
+#    ];
+#  };
+#};
 
-services.displayManager.defaultSession = "none+i3";
+# services.displayManager.defaultSession = "none+i3";
 
   programs.zsh.enable = true;
   users.users.rey.shell = pkgs.zsh;
@@ -134,7 +134,7 @@ services.displayManager.defaultSession = "none+i3";
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
   neofetch
-  polybar
+  #polybar
   waybar
   rofi
   neovim

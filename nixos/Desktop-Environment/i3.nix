@@ -13,6 +13,7 @@
     #blueberry
     #bluez
     nitrogen
+    flameshot
     picom
     #maim
     #slop

@@ -1,8 +1,8 @@
 { config, pkgs, ... }:
 {
 
-  # Install LightDM
-  #services.xserver.displayManager.lightdm.enable = true;
+  # Install GDM
+  services.xserver.displayManager.gdm.enable = true;
 
   # Install Hyprland
   programs.hyprland.enable = true;
@@ -19,10 +19,16 @@
   hyprlock
   hypridle
   hyprshot
+  hyprsunset
+  sway
   gtk3
   gtk4
   rofi-wayland
   waybar
+  grim
+  wl-clipboard
+  #hsetroot
+
       ];
 
   xdg.portal = {

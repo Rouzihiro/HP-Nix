@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 # Check if redshift is installed
 if ! command -v redshift &>/dev/null; then

@@ -63,7 +63,6 @@ ffmpeg-full                  # Multimedia framework
 #fetchFromGitHub             # Fetch GitHub repository
 #fetchpatch                  # Download patches
 #filezilla                   # FTP client
-flameshot
 #freefilesync                # File synchronization
 #fuse                        # Filesystem utility
 #galculator                  # Scientific calculator

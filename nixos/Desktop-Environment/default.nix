@@ -3,8 +3,9 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./i3.nix
-      #./hyprland.nix
+      #./i3.nix
+      ./hyprland.nix
+      ./waybar.nix
       #./gnome.nix
        ./pywal.nix   
       #./sway.nix
