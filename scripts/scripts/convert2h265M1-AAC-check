@@ -1,0 +1,29 @@
+#!/bin/zsh
+
+# Create folder "1" if it doesn't exist
+mkdir -p 1
+
+# Enable extended globbing (if not already enabled)
+setopt EXTENDED_GLOB
+
+# Loop through supported video files
+for file in *.(avi|mp4|mkv|flv|webm); do
+    # Check if the file exists (to avoid issues if no files match)
+    if [[ -e "$file" ]]; then
+        # Extract the filename without extension
+        output="1/$(basename "$file" .${file##*.}).mkv"
+
+        # Check if the audio codec is AAC using ffprobe
+        audio_codec=$(ffprobe -i "$file" -show_streams -select_streams a -loglevel error -print_format default=noprint_wrappers=1:nokey=1 -show_entries stream=codec_name)
+
+        # If the audio is not AAC, re-encode it to AAC
+        if [[ "$audio_codec" != "aac" ]]; then
+            echo "Audio is not AAC in '$file'. Re-encoding audio to AAC."
+            ffmpeg -i "$file" -vcodec hevc_videotoolbox -preset fast -c:a aac -b:a 192k "$output"
+        else
+            echo "Audio is already AAC in '$file'. Copying audio tracks."
+            ffmpeg -i "$file" -vcodec hevc_videotoolbox -preset fast -c:a copy "$output"
+        fi
+    fi
+done
+

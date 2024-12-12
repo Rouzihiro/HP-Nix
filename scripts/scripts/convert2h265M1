@@ -1,0 +1,19 @@
+#!/bin/zsh
+
+# Create folder "1" if it doesn't exist
+mkdir -p 1
+
+# Enable extended globbing (if not already enabled)
+setopt EXTENDED_GLOB
+
+# Loop through supported video files
+for file in *.(avi|mp4|mkv|flv|webm); do
+    # Check if the file exists (to avoid issues if no files match)
+    if [[ -e "$file" ]]; then
+        # Extract the filename without extension
+        output="1/$(basename "$file" .${file##*.}).mkv"
+        # Convert to H.265 using VideoToolbox hardware acceleration
+        ffmpeg -i "$file" -vcodec hevc_videotoolbox -preset fast "$output"
+    fi
+done
+

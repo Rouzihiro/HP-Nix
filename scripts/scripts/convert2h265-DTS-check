@@ -1,0 +1,29 @@
+#!/bin/zsh
+
+# Create folder "1" if it doesn't exist
+mkdir -p 1
+
+# Enable extended globbing (if not already enabled)
+setopt EXTENDED_GLOB
+
+# Loop through supported video files
+for file in *.(avi|mp4|mkv|flv|webm); do
+    # Check if the file exists (to avoid issues if no files match)
+    if [[ -e "$file" ]]; then
+        # Extract the filename without extension
+        output="1/$(basename "$file" .${file##*.}).mkv"
+
+        # Check if DTS audio is present using ffprobe
+        dts_present=$(ffprobe -i "$file" -show_streams -select_streams a -loglevel error | grep -q "codec_name=dts"; echo $?)
+
+        # If DTS audio is present, encode to AAC; otherwise, copy all audio tracks
+        if [[ $dts_present -eq 0 ]]; then
+            echo "DTS audio detected in '$file'. Re-encoding audio to AAC."
+            ffmpeg -i "$file" -c:v libx265 -preset fast -map 0 -c:v libx265 -c:a aac -b:a 192k "$output"
+        else
+            echo "No DTS audio in '$file'. Copying audio tracks."
+            ffmpeg -i "$file" -c:v libx265 -preset fast -map 0 -c:v libx265 -c:a copy "$output"
+        fi
+    fi
+done
+

@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+# Loop through all video files
+for file in *.(avi|mp4|mkv|flv|webm); do
+    if [[ -e "$file" ]]; then
+        echo "Encoding Parameters for: $file"
+        ffprobe -v error -select_streams v:0 -show_entries stream=codec_name,codec_type,profile,level,gop_size,pix_fmt "$file"
+        echo "-------------------------"
+    fi
+done
+

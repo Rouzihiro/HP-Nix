@@ -1,0 +1,24 @@
+#!/bin/zsh
+
+# Create folder "thumbnails" if it doesn't exist
+mkdir -p thumbnails
+
+# Loop through all video files
+for file in *.(avi|mp4|mkv|flv|webm); do
+    if [[ -e "$file" ]]; then
+        # Define the output file for the thumbnail grid
+        output="thumbnails/$(basename "$file" .${file##*.})_preview.jpg"
+
+        # Get the video duration in seconds
+        duration=$(ffprobe -i "$file" -show_entries format=duration -v quiet -of csv="p=0" | awk '{print int($1)}')
+
+        # Calculate the interval to capture frames (16 frames for a 4x4 grid)
+        interval=$((duration / 16))
+
+        # Generate the thumbnail grid with ffmpeg
+        ffmpeg -i "$file" -vf "select='not(mod(n\,${interval}))',scale=320:240,tile=4x4" -frames:v 1 "$output"
+
+        echo "Created Thumbnail Preview: $output"
+    fi
+done
+

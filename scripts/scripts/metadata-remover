@@ -1,0 +1,26 @@
+#!/bin/zsh
+
+# Check if a file was provided as an argument
+if [[ -z "$1" ]]; then
+  echo "No input file provided. Please enter the file name."
+  exit 1
+fi
+
+# Get the input file from the command-line argument
+input_file="$1"
+
+# Check if the file exists
+if [[ ! -f "$input_file" ]]; then
+  echo "Input file does not exist. Exiting."
+  exit 1
+fi
+
+# Ask for the output file name
+echo "Please enter the desired output file name (e.g., output.mp4):"
+read output_file
+
+# Remove metadata from the input file and save to the output file
+ffmpeg -i "$input_file" -map_metadata -1 -c:v copy -c:a copy "$output_file"
+
+echo "Metadata removed and saved to $output_file"
+

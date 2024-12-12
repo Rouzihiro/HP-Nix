@@ -1,0 +1,2 @@
+# Bind the display switch script to a key combination (e.g., Mod+Shift+d)
+bindsym $mod+Shift+d exec /path/to/switch-display.sh

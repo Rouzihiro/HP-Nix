@@ -1,0 +1,32 @@
+#!/bin/zsh
+
+# Prompt user for the list of video files to merge
+echo "Enter the names of the video files to merge, separated by spaces (e.g., video1.mp4 video2.mp4):"
+read -a input_files
+
+# Check if the files exist
+for file in "${input_files[@]}"; do
+    if [[ ! -e "$file" ]]; then
+        echo "File '$file' not found! Please check the file name and try again."
+        exit 1
+    fi
+done
+
+# Generate the output filename with the suffix "_merged" before the extension
+base_name=$(basename "${input_files[1]}" .${input_files[1]##*.})
+output="${base_name}_merged.${input_files[1]##*.}"
+
+# Create a temporary file with the list of input files for ffmpeg
+temp_file=$(mktemp)
+for file in "${input_files[@]}"; do
+    echo "file '$file'" >> "$temp_file"
+done
+
+# Merge the video files using ffmpeg
+ffmpeg -f concat -safe 0 -i "$temp_file" -c copy "$output"
+
+# Clean up the temporary file
+rm "$temp_file"
+
+echo "Created: $output"
+

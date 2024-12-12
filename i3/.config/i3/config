@@ -1,0 +1,426 @@
+##################################
+# ██╗██████╗ ██╗    ██╗███╗   ███╗
+# ██║╚════██╗██║    ██║████╗ ████║
+# ██║ █████╔╝██║ █╗ ██║██╔████╔██║
+# ██║ ╚═══██╗██║███╗██║██║╚██╔╝██║
+# ██║██████╔╝╚███╔███╔╝██║ ╚═╝ ██║
+# ╚═╝╚═════╝  ╚══╝╚══╝ ╚═╝     ╚═╝
+##################################
+
+####################################
+#     MY MODS
+####################################
+focus_follows_mouse yes
+focus_wrapping no
+for_window [class="^.*"] border pixel 1
+title_align center
+######################################
+
+####################################
+#     Fonts 
+####################################
+#font pango: JetBrainsMono Nerd Font Mono Bold 10
+font pango: monospace 12
+
+################################
+#         Mod Key
+################################
+# set the mod key to the winkey:
+set $mod Mod4
+
+#####################
+# workspace layout: #
+#####################
+# default i3 tiling mode:
+workspace_layout default
+
+##############################
+#border indicator on windows:
+##############################
+default_border pixel 1
+
+# thin borders
+hide_edge_borders both
+
+
+#Enable tap-to-click for touchpad
+exec --no-startup-id xinput set-prop "ALP001C:00 044E:120A Touchpad" "libinput Tapping Enabled" 1
+
+# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
+# screen before suspend. Use loginctl lock-session to lock your screen.
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+
+#Monitor resolution set to 1920x1200
+exec --no-startup-id xrandr --output eDP-1 --mode 1920x1080
+
+bindsym $mod+Shift+h exec --no-startup-id xrandr --output eDP-1 --off --output HDMI-1 --auto
+bindsym $mod+Shift+m exec --no-startup-id xrandr --output eDP-1 --same-as HDMI-1 --auto
+
+#extend Monitor
+#bindsym $mod+Shift+x exec --no-startup-id xrandr --output eDP-1 --auto --output HDMI-1 --right-of eDP-1 --auto
+
+# fireplace
+bindsym $mod+Shift+f exec --no-startup-id ~/scripts/fireplace
+
+#exec --no-startup-id xrandr --output eDP-1 --dpi 180
+
+###############################
+#         Gaps
+###############################
+# Set inner/outer gaps
+gaps inner 10
+gaps outer 0
+
+##############################
+#     Floating Modifier      # 
+##############################
+floating_modifier $mod
+
+##############################
+#  Switch Active Workspaces  #
+##############################
+bindsym $mod+Tab workspace next
+bindsym Mod1+Tab workspace prev
+
+##########################################
+# configuration for workspace behaviour: #
+##########################################
+
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+
+##############################
+# switch to workspace        #
+##############################
+bindsym $mod+1    workspace  $ws1
+bindsym $mod+2    workspace  $ws2
+bindsym $mod+3    workspace  $ws3
+bindsym $mod+4    workspace  $ws4
+bindsym $mod+5    workspace  $ws5
+bindsym $mod+6    workspace  $ws6
+bindsym $mod+7    workspace  $ws7
+bindsym $mod+8    workspace  $ws8
+
+
+# move focused container to workspace
+bindsym $mod+Shift+1    move container to workspace  $ws1
+bindsym $mod+Shift+2    move container to workspace  $ws2
+bindsym $mod+Shift+3    move container to workspace  $ws3
+bindsym $mod+Shift+4    move container to workspace  $ws4
+bindsym $mod+Shift+5    move container to workspace  $ws5
+bindsym $mod+Shift+6    move container to workspace  $ws6
+bindsym $mod+Shift+7    move container to workspace  $ws7
+bindsym $mod+Shift+8    move container to workspace  $ws8
+
+################################
+#     Assigned Workspace       #
+################################
+
+# (W-1)
+# ========== Primary Terminal ==========
+assign [class="kitty"] $ws1
+for_window [class=kitty] focus
+
+assign [class="Alacritty"] $ws1
+for_window [class=Alacritty] focus
+
+assign [class="wezterm"] $ws1
+for_window [class=wezterm] focus
+
+assign [class="Nitrogen"] $ws1
+for_window [class=Nitrogen] focus
+
+# (W-2)
+# ========== Browsers ==========
+assign [class="LibreWolf"] $ws2
+for_window [class=LibreWolf] focus
+
+assign [class="Brave-browser"] $ws2
+for_window [class=Brave-browser] focus
+
+# (W-3)
+# ========== Coding ===========
+assign [class="Brave"] $ws2
+for_window [class=Brave] focus
+
+# JDownloader
+assign [class="org-jdownloader-update-launcher-JDLauncher"] $ws4
+for_window [class="org-jdownloader-update-launcher-JDLauncher"] focus
+
+# (W-4)
+# ========== File Manager ===========
+assign [class="Pcmanfm"] $ws4
+for_window [class=Pcmanfm] focus
+
+assign [class="mpv"] $ws4
+for_window [class=mpv] focus
+
+assign [class="feh"] $ws4
+for_window [class=feh] focus
+
+# (W-5)
+# ========== Email and Messages ===========
+assign [class="TelegramDesktop"] $ws5
+for_window [class=TelegramDesktop] focus
+
+assign [class="discord"] $ws5
+for_window [class=discord] focus
+
+assign [class="Slack"] $ws5
+for_window [class=Slack] focus
+
+assign [class="whatsie"] $ws5
+for_window [class="whatsie"] focused
+
+assign [class="skype" instance="Skype"] $ws5
+for_window [class="skype" instance="Skype"] focus
+
+# (W-6)
+# ========== Graphics Editor ===========
+assign [class="Inkscape"] $ws6
+for_window [class=Inkscape] focus
+
+assign [class="Gimp"] $ws6
+for_window [class=Gimp] focus
+
+assign [class="Darktable"] $ws6
+for_window [class=Darktable] focus
+
+# (W-7)
+# ========== Office Suits and tools ===========
+assign [class="Soffice"] $ws7
+for_window [class=Soffice] focus
+
+assign [class="libreoffice-startcenter"] $ws7
+for_window [class=libreoffice-startcenter] focus
+
+assign [class="Zathura"] $ws7
+for_window [class=Zathura] focus
+
+# (W-8)
+# ========== Settings and Misc. ===========
+assign [class="Lxappearance"] $ws8
+for_window [class=Lxappearance] focus
+
+assign [class="stacer"] $ws8
+for_window [class=stacer] focus
+
+assign [class="qBittorrent"] $ws8
+for_window [class=qBittorrent] focus
+
+assign [class="Yad"] $ws8
+for_window [class=Yad] focus
+
+assign [class="Gnome-disks"] $ws8
+for_window [class=Gnome-disks] focus
+
+assign [class="Blueman-manager"] $ws8
+for_window [class=Blueman-manager] focus
+
+assign [class="obs"] $ws8
+for_window [class=obs] focus
+
+assign [class="pavucontrol"] $ws8
+for_window [class=pavucontrol] focus
+##############################
+# Focus Changing
+##############################
+
+# change focus
+#bindsym $mod+h focus left
+#bindsym $mod+j focus down
+#bindsym $mod+k focus up
+#bindsym $mod+l focus right
+
+# move focused window
+#bindsym $mod+Shift+h move left
+#bindsym $mod+Shift+j move down
+#bindsym $mod+Shift+k move up
+#bindsym $mod+Shift+l move right
+
+##############################
+# Window Modifying Rules
+##############################
+
+# split in horizontal orientation
+bindsym $mod+Shift+z split h
+
+# split in vertical orientation
+bindsym $mod+Shift+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+# bindsym $mod+s layout stacking
+bindsym $mod+e layout tabbed
+bindsym $mod+t layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+Shift+q focus mode_toggle
+
+# focus the parent container
+bindsym $mod+p focus parent
+
+##############################
+#  Window Resizing           #
+##############################
+# resize window (you can also use the mouse for that):
+bindsym $mod+Ctrl+h resize grow width 5 px or 5 ppt
+bindsym $mod+Ctrl+j resize shrink height 5 px or 5 ppt
+bindsym $mod+Ctrl+k resize grow height 5 px or 5 ppt
+bindsym $mod+Ctrl+l resize shrink width 5 px or 5 ppt
+
+##################
+# floating rules #
+##################
+
+# Default floting window size
+for_window [floating] resize set 800 500, move position center
+
+# set floating (nontiling) for apps needing it
+for_window [class="Yad" instance="yad"] floating disable
+for_window [class="Nitrogen"] floating enable
+
+####################################################
+# keybindings for different shortcuts and actions: #
+###################################################
+
+## App shortcuts
+
+# Browser
+bindsym $mod+b exec --no-startup-id "brave"
+
+# File Manager
+bindsym $mod+c exec --no-startup-id caja
+
+# PDF Reader Zathura 
+#bindsym $mod+Shift+o exec zathura
+
+# Network Manager Applet
+bindsym $mod+Shift+s exec --no-startup-id skype
+
+# Whatsapp - whatsie
+bindsym $mod+Shift+w exec --no-startup-id whatsie
+
+# JDownloader
+bindsym $mod+Shift+j exec ~/scripts/jdownloader
+
+# Screenshot : FlameShot
+#bindsym Print exec flameshot full --path ~/Pictures/screenshots
+#bindsym $mod+Print exec flameshot gui
+
+# Screenshot tool using Flameshot
+bindsym Print exec flameshot full -p ~/Pictures/screenshots/$(date +'%Y-%m-%d_%H-%M-%S.png') && notify-send "Screenshot taken"
+bindsym $mod+Print exec flameshot gui -s -p ~/Pictures/screenshots/$(date +'%Y-%m-%d_%H-%M-%S.png') && notify-send "Screenshot taken"
+bindsym Shift+Print exec flameshot full -c && notify-send "Screenshot copied to clipboard"
+bindsym $mod+Shift+Print exec flameshot gui -s -c && notify-send "Screenshot copied to clipboard"
+
+# start a terminal
+bindsym $mod+Return exec --no-startup-id kitty
+
+# ibus
+bindsym $mod+Shift+b exec blueman-manager
+
+# Network Manager Applet
+bindsym $mod+Shift+n exec --no-startup-id nm-applet
+
+# Rofi
+bindsym $mod+d exec --no-startup-id rofi -show drun -disable-history -show-icons
+bindsym Mod1+d exec --no-startup-id rofi -show run -disable-history
+bindsym Mod1+w exec rofi -show window -show-icons
+bindsym $mod+w exec rofi -show window -show-icons
+bindsym $mod+i exec rofi -modi emoji -show emoji
+
+# kill focused window
+bindsym $mod+q kill
+
+# exit-menu
+bindsym $mod+Shift+e exec ~/scripts/power.sh
+
+# Lock the system
+bindsym $mod+Shift+x exec "i3lock -i ~/Pictures/lock.png && systemctl suspend"
+bindsym $mod+Shift+l exec "i3lock -i ~/.config/walls/VIM.png"
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to update i3)
+bindsym $mod+Shift+r restart
+
+# Funtions Keys
+# Brightness
+bindsym XF86MonBrightnessUp exec brightnessctl set +10%
+bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
+
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5% 
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5% 
+bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
+
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPause exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+#############################################
+# autostart applications/services on login: #
+#############################################
+# xorg commands
+#exec xrandr -s 1920x1080 -r 60
+#exec xset s -dpms
+#exec xset s off
+
+# compositor
+exec picom
+
+# Notification Daemon
+exec dunst
+
+# Polybar
+#exec_always --no-startup-id ~/.config/polybar/i3_bar.sh
+exec_always --no-startup-id polybar example
+
+# nm-applet
+exec nm-applet
+
+# background
+exec nitrogen --restore
+
+# get auth work with polkit
+exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
+
+# redshift - not working yet
+#bindsym $mod+r exec ~/scripts/redlight-i3
+
+# disable capslock
+# exec setxkbmap -option ctrl:nocaps
+#exec setxkbmap -option caps:escape
+
+######################################
+# color settings fo windows         #
+######################################
+
+# Define colors variables:
+# bg tab mode
+set $color1     #1d2021
+set $color2     #d8a657
+set $color3     #fabd3f
+set $color4     #928374
+
+# define colors for windows:
+#class                          border          bground         text            indicator       child_border
+client.focused               $color2           $color1         $color3           $color2         $color2
+client.unfocused             $color4           $color1         $color4           $color4         $color4
+client.focused_inactive      $color4           $color1         $color4           $color4         $color4
+client.urgent                $color3           $color3         $color2           $color2         $color4

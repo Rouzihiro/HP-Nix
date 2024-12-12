@@ -1,0 +1,25 @@
+List installed packages using apt: If you want a more detailed list (including versions), you can run:
+
+
+apt list --installed > apt-installed-packages.txt
+
+This command will generate a file with a list of installed packages, including version numbers.
+
+List only manually installed packages: If you want to exclude dependencies and only list packages that you installed manually, use this:
+
+
+comm -23 <(apt-mark showmanual | sort) <(apt-mark showauto | sort) > manual-packages.txt
+
+This will give you a list of manually installed packages, which you can use to create a clean setup guide.
+
+Once you have the list, you can share it with others, and they can install the same packages using:
+
+
+sudo apt install $(cat manual-packages.txt)
+
+You can also use a tool like apt-clone to make a backup of your installed packages and settings for easy restoration on another system:
+
+sudo apt install apt-clone
+apt-clone clone mysetup
+
+This will create a backup of your setup, which can be restored on a different machine.

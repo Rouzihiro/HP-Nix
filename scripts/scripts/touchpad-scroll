@@ -1,0 +1,23 @@
+#!/bin/zsh
+
+# Check if the configuration directory exists
+if [ ! -d "/etc/X11/xorg.conf.d" ]; then
+    echo "Directory /etc/X11/xorg.conf.d does not exist. Creating it..."
+    sudo mkdir -p /etc/X11/xorg.conf.d
+fi
+
+# Create the libinput configuration file
+echo "Creating libinput configuration for natural scrolling and tapping..."
+sudo tee /etc/X11/xorg.conf.d/90-libinput.conf > /dev/null <<EOL
+Section "InputClass"
+    Identifier "libinput touchpad catchall"
+    MatchIsTouchpad "on"
+    Driver "libinput"
+    Option "NaturalScrolling" "true"
+    Option "Tapping" "on"
+EndSection
+EOL
+
+# Notify the user that the script completed successfully
+echo "libinput configuration created successfully."
+

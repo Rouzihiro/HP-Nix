@@ -1,0 +1,56 @@
+#!/bin/zsh
+
+# Create folder "1" if it doesn't exist
+mkdir -p 1
+
+# Enable extended globbing (if not already enabled)
+setopt EXTENDED_GLOB
+
+# Prompt the user for how to handle multiple audio streams
+echo "How should audio streams be handled for all videos?"
+echo "1. Only the first audio stream"
+echo "2. Only the second audio stream"
+echo "3. Encode all audio streams"
+read "audio_choice?Enter your choice (1/2/3): "
+
+if [[ ! "$audio_choice" =~ ^[1-3]$ ]]; then
+    echo "Invalid choice. Exiting."
+    exit 1
+fi
+
+# Loop through supported video files
+for file in *.(avi|mp4|mkv|flv|webm); do
+    # Check if the file exists (to avoid issues if no files match)
+    if [[ -e "$file" ]]; then
+        # Extract the filename without extension
+        output="1/$(basename "$file" .${file##*.}).mkv"
+
+        # Analyze the input file with ffprobe to count audio streams
+        audio_count=$(ffprobe -v error -select_streams a -show_entries stream=index -of csv=p=0 "$file" | wc -l)
+
+        # Construct the audio stream selection based on user choice
+        map_audio=()
+        case $audio_choice in
+            1)
+                map_audio=("-map" "0:v" "-map" "0:a:0")
+                ;;
+            2)
+                if (( audio_count >= 2 )); then
+                    map_audio=("-map" "0:v" "-map" "0:a:1")
+                else
+                    echo "File '$file' has less than 2 audio streams. Skipping."
+                    continue
+                fi
+                ;;
+            3)
+                map_audio=("-map" "0:v" "-map" "0:a")
+                ;;
+        esac
+
+        # Convert the file using the selected audio stream(s)
+        ffmpeg -i "$file" "${map_audio[@]}" -c:v copy -c:a aac "$output"
+    fi
+done
+
+echo "Conversion complete."
+

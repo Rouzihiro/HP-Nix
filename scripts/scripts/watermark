@@ -1,0 +1,20 @@
+#!/bin/zsh
+
+# Prompt user for watermark file and position
+echo "Enter the watermark image file (e.g., logo.png):"
+read watermark
+echo "Enter the position (e.g., '10:10' for top-left, 'main_w-overlay_w-10:10' for top-right):"
+read position
+
+# Create folder "watermarked" if it doesn't exist
+mkdir -p watermarked
+
+# Loop through all video files
+for file in *.(avi|mp4|mkv|flv|webm); do
+    if [[ -e "$file" ]]; then
+        output="watermarked/$(basename "$file" .${file##*.}).mp4"
+        ffmpeg -i "$file" -i "$watermark" -filter_complex "overlay=$position" -c:v libx264 -preset fast -c:a copy "$output"
+        echo "Watermarked: $output"
+    fi
+done
+

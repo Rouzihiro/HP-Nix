@@ -1,0 +1,27 @@
+#!/bin/zsh
+
+# Prompt user for the file to split
+echo "Enter the name of the video file to split (e.g., video.mkv):"
+read input_file
+
+# Check if the file exists
+if [[ ! -e "$input_file" ]]; then
+    echo "File not found! Please check the file name and try again."
+    exit 1
+fi
+
+# Prompt user for start and stop times
+echo "Enter the start time (format HH:MM:SS):"
+read start_time
+echo "Enter the stop time (format HH:MM:SS):"
+read stop_time
+
+# Generate the output filename with the time range appended
+base_name=$(basename "$input_file" .${input_file##*.})
+output="${base_name}_${start_time//:/-}_to_${stop_time//:/-}.${input_file##*.}"
+
+# Split the video using ffmpeg
+ffmpeg -fflags +genpts -ss "$start_time" -i "$input_file" -to "$stop_time" -c copy "$output"
+
+echo "Created: $output"
+

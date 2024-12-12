@@ -1,0 +1,18 @@
+#!/bin/zsh
+
+# Prompt user for the video file, start time, and duration
+echo "Enter the video file to create a GIF from (e.g., video.mp4):"
+read input_file
+echo "Enter the start time (HH:MM:SS):"
+read start_time
+echo "Enter the duration (e.g., 5 for 5 seconds):"
+read duration
+
+# Output GIF filename
+output="$(basename "$input_file" .${input_file##*.}).gif"
+
+# Generate the GIF
+ffmpeg -ss "$start_time" -t "$duration" -i "$input_file" -vf "fps=15,scale=480:-1:flags=lanczos" "$output"
+
+echo "Created GIF: $output"
+

@@ -1,0 +1,17 @@
+#!/bin/zsh
+
+# Loop through all video files
+for file in *.(avi|mp4|mkv|flv|webm); do
+    if [[ -e "$file" ]]; then
+        echo "Checking for Corruption in: $file"
+        ffmpeg -v error -i "$file" -f null - 2> "errors_$file.txt"
+        if [[ -s "errors_$file.txt" ]]; then
+            echo "Corruption found in $file. Check errors_$file.txt."
+        else
+            echo "No corruption found in $file."
+            rm "errors_$file.txt"
+        fi
+        echo "-------------------------"
+    fi
+done
+

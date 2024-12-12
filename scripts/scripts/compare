@@ -1,0 +1,14 @@
+#!/bin/zsh
+
+echo "Enter the first video file:"
+read file1
+echo "Enter the second video file:"
+read file2
+
+ffprobe -v error -select_streams v:0 -show_entries stream=codec_name,width,height,avg_frame_rate -of default=noprint_wrappers=1 "$file1" > file1_info.txt
+ffprobe -v error -select_streams v:0 -show_entries stream=codec_name,width,height,avg_frame_rate -of default=noprint_wrappers=1 "$file2" > file2_info.txt
+
+echo "Comparing $file1 and $file2:"
+diff file1_info.txt file2_info.txt && echo "Files are identical in video streams!" || echo "Files differ in video streams."
+rm file1_info.txt file2_info.txt
+
