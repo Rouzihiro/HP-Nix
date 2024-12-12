@@ -9,6 +9,9 @@ nix.extraOptions = ''
   # $ nix search wget
   environment.systemPackages = with pkgs; [
 
+wofi
+nwg-look
+#catppuccin-gtk
 #qutebrowser
 #librewolf
 #vivaldi

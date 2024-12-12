@@ -1,9 +1,7 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-#if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-#fi
+echo 'POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true' >>! ~/.zshrc
+
+# Initialize Starship prompt
+eval "$(starship init zsh)"
 
 # History Configuration
 HISTFILE=$HOME/.zhistory       # File to save history
@@ -50,7 +48,7 @@ alias wayconfig="nvim ~/.config/waybar/config.ini"
 alias fetchconfig="nvim ~/.config/neofetch/config.conf"
 alias kitconfig="nvim ~/.config/kitty/kitty.conf"
 alias hconfig="nvim ~/.config/hypr/keybinds.conf"
-alias ls="eza --icons"
+alias ls="eza --icons --all"
 alias la="ls -la"
 alias lst="ls --tree"
 alias neodir="cd ~/.config/nvim"
@@ -73,27 +71,19 @@ alias ".."="cd .."
 alias cls="clear"
 alias md="mkdir"
 
-alias rey-weatherHH="curl -4 http://wttr.in/Hamburg"
-alias rey-weather="curl -4 http://wttr.in/"
-
 alias update='sudo nixos-rebuild switch'   
-#alias upgrade='sudo apt full-upgrade'
-
 alias crp='rsync -ah --progress'
 
 # Set up PATH for local scripts
 export PATH="$HOME/.local/bin:$PATH"
 #export PATH=$PATH:/snap/bin
 
-# Enable plugins or other custom functions
-# Add custom configurations or functions here
 
 # Set default editor to nvim
 export VISUAL="nvim"
 export EDITOR="nvim"
 
-# Source other configurations if needed (e.g., for zsh themes or plugins)
-#source $ZSH/oh-my-zsh.sh
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
+POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
+POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true

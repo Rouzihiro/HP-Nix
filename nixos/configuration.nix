@@ -12,7 +12,6 @@
       ./Services/default.nix
       ./Hardware/default.nix
       ./Desktop-Environment/default.nix
-      #./qtile.nix
     ];
 
   # Bootloader.
@@ -23,22 +22,6 @@
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   environment.pathsToLink = ["/libexec"]; 
-
-#services.xserver = {
-#  enable = true;
-#  desktopManager.xterm.enable = false;
-#  windowManager.i3 = {
-#    enable = true;
-#    extraPackages = with pkgs; [
-#      dmenu
-#      i3status
-#      i3blocks
-#      i3lock
-#    ];
-#  };
-#};
-
-# services.displayManager.defaultSession = "none+i3";
 
   programs.zsh.enable = true;
   users.users.rey.shell = pkgs.zsh;
@@ -131,10 +114,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
   neofetch
-  #polybar
   waybar
   rofi
   neovim
@@ -147,7 +127,6 @@
   eza
   bat
   brightnessctl
-  xclip
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
