@@ -8,8 +8,9 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./Applications/Applications.nix
-      ./Services/Default.nix
+      ./Applications/default.nix
+      ./Services/default.nix
+      ./Hardware/default.nix
       #./qtile.nix
     ];
 
@@ -103,8 +104,9 @@ services.displayManager.defaultSession = "none+i3";
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
+  services.libinput.enable = true;
+  services.libinput.touchpad.naturalScrolling = true; # Enable natural scrolling (macOS-style)
+  
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.rey = {
     isNormalUser = true;

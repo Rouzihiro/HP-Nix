@@ -3,12 +3,13 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./bluetooth-blueman.nix
+      ./audio.nix
+      #./bluetooth-blueman.nix
       #./ios.nix
-      ./kernel.nix
+      #./kernel.nix
       #./kernel2.nix
       #./light.nix
-      ./zram.nix
+      #./zram.nix
 
     ];
 

@@ -45,6 +45,7 @@ hide_edge_borders both
 
 #Enable tap-to-click for touchpad
 exec --no-startup-id xinput set-prop "ALP001C:00 044E:120A Touchpad" "libinput Tapping Enabled" 1
+exec --no-startup-id xinput set-prop "ALP001C:00 044E:120A Touchpad" "libinput Natural Scrolling Enabled" 1
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
@@ -301,7 +302,7 @@ for_window [class="Nitrogen"] floating enable
 bindsym $mod+b exec --no-startup-id "brave"
 
 # File Manager
-bindsym $mod+c exec --no-startup-id caja
+bindsym $mod+n exec --no-startup-id "nautilus"
 
 # PDF Reader Zathura 
 #bindsym $mod+Shift+o exec zathura
@@ -315,15 +316,11 @@ bindsym $mod+Shift+w exec --no-startup-id whatsie
 # JDownloader
 bindsym $mod+Shift+j exec ~/scripts/jdownloader
 
-# Screenshot : FlameShot
-#bindsym Print exec flameshot full --path ~/Pictures/screenshots
-#bindsym $mod+Print exec flameshot gui
-
 # Screenshot tool using Flameshot
-bindsym Print exec flameshot full -p ~/Pictures/screenshots/$(date +'%Y-%m-%d_%H-%M-%S.png') && notify-send "Screenshot taken"
-bindsym $mod+Print exec flameshot gui -s -p ~/Pictures/screenshots/$(date +'%Y-%m-%d_%H-%M-%S.png') && notify-send "Screenshot taken"
-bindsym Shift+Print exec flameshot full -c && notify-send "Screenshot copied to clipboard"
-bindsym $mod+Shift+Print exec flameshot gui -s -c && notify-send "Screenshot copied to clipboard"
+bindsym Shift+Print exec flameshot full -p ~/Pictures/screenshots/$(date +'%Y-%m-%d_%H-%M-%S.png') && notify-send "Screenshot taken"
+bindsym Print exec flameshot gui -s -p ~/Pictures/screenshots/$(date +'%Y-%m-%d_%H-%M-%S.png') && notify-send "Screenshot taken"
+bindsym $mod+Shift+Print exec flameshot full -c && notify-send "Screenshot copied to clipboard"
+bindsym $mod+Print exec flameshot gui -s -c && notify-send "Screenshot copied to clipboard"
 
 # start a terminal
 bindsym $mod+Return exec --no-startup-id kitty
@@ -332,7 +329,8 @@ bindsym $mod+Return exec --no-startup-id kitty
 bindsym $mod+Shift+b exec blueman-manager
 
 # Network Manager Applet
-bindsym $mod+Shift+n exec --no-startup-id nm-applet
+# bindsym $mod+Shift+n exec --no-startup-id nm-applet
+bindsym $mod+Shift+n exec --no-startup-id nmtui
 
 # Rofi
 bindsym $mod+d exec --no-startup-id rofi -show drun -disable-history -show-icons
@@ -348,8 +346,8 @@ bindsym $mod+q kill
 bindsym $mod+Shift+e exec ~/scripts/power.sh
 
 # Lock the system
-bindsym $mod+Shift+x exec "i3lock -i ~/Pictures/lock.png && systemctl suspend"
-bindsym $mod+Shift+l exec "i3lock -i ~/.config/walls/VIM.png"
+bindsym $mod+Shift+x exec "i3lock -i ~/Pictures/lockscreen/lock.png && systemctl suspend"
+bindsym $mod+Shift+l exec "i3lock -i ~/Pictures/lockscreen/VIM.png"
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -363,9 +361,9 @@ bindsym XF86MonBrightnessUp exec brightnessctl set +10%
 bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5% 
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5% 
-bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
+bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
+bindsym XF86AudioLowerVolume exec amixer set Master 5%-
+bindsym XF86AudioMute exec amixer set Master toggle
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play-pause
@@ -388,7 +386,6 @@ exec picom
 exec dunst
 
 # Polybar
-#exec_always --no-startup-id ~/.config/polybar/i3_bar.sh
 exec_always --no-startup-id polybar example
 
 # nm-applet
@@ -400,8 +397,6 @@ exec nitrogen --restore
 # get auth work with polkit
 exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
 
-# redshift - not working yet
-#bindsym $mod+r exec ~/scripts/redlight-i3
 
 # disable capslock
 # exec setxkbmap -option ctrl:nocaps
