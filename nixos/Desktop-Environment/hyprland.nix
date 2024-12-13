@@ -1,8 +1,8 @@
 { config, pkgs, ... }:
 {
 
-  # Install GDM
-  services.xserver.displayManager.gdm.enable = true;
+  services.getty.autologinUser = "rey";
+
 
   # Install Hyprland
   programs.hyprland.enable = true;
@@ -14,7 +14,8 @@
   };
 
   environment.systemPackages = with pkgs; [
-    # other packages
+  polkit_gnome
+  xdg-desktop-portal
   hyprpaper
   hyprlock
   hypridle
@@ -39,3 +40,4 @@
   };
 
   }
+

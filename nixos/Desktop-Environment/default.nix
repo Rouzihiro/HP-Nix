@@ -3,6 +3,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
+      #./greeter.nix
       #./i3.nix
       ./hyprland.nix
       ./waybar.nix
