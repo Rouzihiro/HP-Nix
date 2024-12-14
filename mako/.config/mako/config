@@ -1,0 +1,16 @@
+# Mako configuration
+
+font=Caskaydia Cove Nerd 14
+background-color=#151718
+text-color=#9FCA56
+border-color=#151718
+
+# Urgency specific styles
+[urgency=high]
+text-color=#CD3F45
+
+# Text alignment and timeouts
+text-alignment=center
+default-timeout=5000
+max-visible=3
+

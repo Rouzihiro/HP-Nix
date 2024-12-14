@@ -108,7 +108,6 @@
   rofi
   neovim
   kitty
-  dunst
   zsh
   brave
   unzip

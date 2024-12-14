@@ -10,6 +10,8 @@ nix.extraOptions = ''
     # Theme / Style Related
     nwg-look                  # Customize GTK and cursor themes
     corefonts                 # Microsoft fonts for better compatibility
+    libnotify
+    mako
 
     # File Management
     yazi                      # Best file manager for terminal
