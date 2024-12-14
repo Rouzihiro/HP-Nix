@@ -8,7 +8,7 @@
       #./i3.nix
       ./hyprland.nix
       ./waybar.nix
-      #./qtile/default.nix
+      ./qtile/default.nix
       #./gnome.nix
        ./pywal.nix   
       #./sway.nix
