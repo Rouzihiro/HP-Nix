@@ -11,7 +11,8 @@ nix.extraOptions = ''
     nwg-look                  # Customize GTK and cursor themes
     corefonts                 # Microsoft fonts for better compatibility
     libnotify
-    mako
+    swaynotificationcenter
+    swww
 
     # File Management
     yazi                      # Best file manager for terminal

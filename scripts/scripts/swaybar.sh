@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 # Simple Zsh script to generate continuous status output for swaybar
 
 while true; do
