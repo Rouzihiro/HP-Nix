@@ -56,7 +56,8 @@ nix.extraOptions = ''
     telegram-desktop          # Messaging application
     thunderbird               # Email client
     zoom-us                   # Video conferencing
-    
+    skypeforlinux
+
     # Wayland-Compatible Applications
     wofi                      # Application launcher for Wayland
 
