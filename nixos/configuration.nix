@@ -1,9 +1,13 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  host,
+  username,
+  options,
+  ...
+}:
+
+ {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -15,37 +19,13 @@
       ./scripts/default.nix
       <home-manager/nixos>  # Use the channel import
       #/nix/var/nix/profiles/per-user/root/channels/home-manager/nixos
-      ./home.nix
+      #./home.nix
    ];
-  
-  users.users.rey.isNormalUser = true;
-  home-manager.users.rey = { pkgs, ... }: {
-    home.packages = [ pkgs.atool pkgs.httpie pkgs.yazi pkgs.zsh ];
-    home.stateVersion = "24.11";
-  };
-  #home-manager.useGlobalPkgs = true;
-
-
-#users.users.rey.isNormalUser = true;
-#home-manager.users.rey = { pkgs, ... }: {
-#  home.packages = [ 
-#  pkgs.atool pkgs.httpie pkgs.yazi pkgs.zsh];
-#  programs.zsh.enable = true;
-# home.stateVersion = "24.11";
-#};
-#home-manager.useGlobalPkgs = true;
-
-#home.stateVersion = "24.11";
-#
-#home-manager = {
- # programs.zsh.enable = true; 
-#  useUserPackages = true;
- # useGlobalPkgs = true;
- # users = {
-  #  "rey" = import ./home.nix;
-  #  };
-#};
-
+ 
+#  home-manager = {
+#    useUserPackages = true;
+#    users."rey" = import ./home.nix; 
+#  };
 
    # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -56,8 +36,20 @@
 
   environment.pathsToLink = ["/libexec"]; 
 
+# Define the 'rey' group
+  users.groups.rey = {}; # Create the group 'rey'
+
+  # Define the 'rey' user
+  users.users.rey = {
+    isNormalUser = true; # Mark as a normal user
+    home = "/home/rey"; # Specify the home directory
+    group = "rey"; # Assign 'rey' as the primary group
+    extraGroups = [ "wheel" ]; # Add the user to extra groups
+    shell = pkgs.zsh; # Set Zsh as the default shell
+  };
+
   programs.zsh.enable = true;
-  users.users.rey.shell = pkgs.zsh;
+  #users.users.rey.shell = pkgs.zsh;
   users.defaultUserShell = pkgs.zsh;
 
   # Configure network proxy if necessary

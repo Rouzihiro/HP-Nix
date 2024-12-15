@@ -1,40 +1,32 @@
 { config, pkgs, ... }:
 
+let
+  username = "rey";
+  homeDir = "/home/${username}";
+in
 
 {
+  # Home Manager needs a bit of information about you and the paths it should manage.
+  home.username = username;
+  home.homeDirectory = homeDir;
 
+  # Packages that should be installed to the user profile.
+  home.packages = [ pkgs.htop pkgs.fortune ];
 
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    autosuggestions.enable = true;
-    syntaxHighlighting.enable = true;
-    ohMyZsh.enable = true;
-    ohMyZsh.plugins = [ "git" "thefuck" ];
-    ohMyZsh.theme = "robbyrussell";
-  };
-
- # programs.yazi = {
- #   enable = true;
- #   settings = {
- #     manager = {
- #       sort_by = "natural";
- #       sort_sensitive = true;
- #       sort_reverse = false;
- #       sort_dir_first = true;
- #       linemode = "none";
- #       show_hidden = true;
- #       show_symlink = true;
- #     };
-      #editor = {
-      #  command = "/etc/profiles/per-user/rey/bin/nvim";
-      #};
-      #filetypes = {
-      #  "*.nix" = "nvim";
-      #};
-  #  };
- # };
-
+  # This value determines the Home Manager release that your configuration is compatible with.
   home.stateVersion = "24.11";
-}
 
+  # Let Home Manager install and manage itself.
+  programs.home-manager.enable = true;
+
+#  programs.emacs = {
+#    enable = true;
+#    extraPackages = epkgs: [ epkgs.nix-mode epkgs.magit ];
+#  };
+
+  services.gpg-agent = {
+    enable = true;
+    defaultCacheTtl = 1800;
+    enableSshSupport = true;
+  };
+}
