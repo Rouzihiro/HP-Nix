@@ -1,8 +1,8 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
+
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -13,9 +13,41 @@
       ./DE/default.nix
       ./GPU/default.nix
       ./scripts/default.nix
-    ];
+      <home-manager/nixos>  # Use the channel import
+      #/nix/var/nix/profiles/per-user/root/channels/home-manager/nixos
+      ./home.nix
+   ];
+  
+  users.users.rey.isNormalUser = true;
+  home-manager.users.rey = { pkgs, ... }: {
+    home.packages = [ pkgs.atool pkgs.httpie pkgs.yazi pkgs.zsh ];
+    home.stateVersion = "24.11";
+  };
+  #home-manager.useGlobalPkgs = true;
 
-  # Bootloader.
+
+#users.users.rey.isNormalUser = true;
+#home-manager.users.rey = { pkgs, ... }: {
+#  home.packages = [ 
+#  pkgs.atool pkgs.httpie pkgs.yazi pkgs.zsh];
+#  programs.zsh.enable = true;
+# home.stateVersion = "24.11";
+#};
+#home-manager.useGlobalPkgs = true;
+
+#home.stateVersion = "24.11";
+#
+#home-manager = {
+ # programs.zsh.enable = true; 
+#  useUserPackages = true;
+ # useGlobalPkgs = true;
+ # users = {
+  #  "rey" = import ./home.nix;
+  #  };
+#};
+
+
+   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -89,14 +121,14 @@
   services.libinput.touchpad.naturalScrolling = true; # Enable natural scrolling (macOS-style)
   
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.rey = {
-    isNormalUser = true;
-    description = "rey";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
+  #users.users.rey = {
+  #  isNormalUser = true;
+  #  description = "rey";
+  #  extraGroups = [ "networkmanager" "wheel" ];
+  #  packages = with pkgs; [
     #  thunderbird
-    ];
-  };
+  #  ];
+  #};
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
