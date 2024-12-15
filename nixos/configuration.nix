@@ -12,6 +12,7 @@
       ./Hardware/default.nix
       ./DE/default.nix
       ./GPU/default.nix
+      ./scripts/default.nix
     ];
 
   # Bootloader.

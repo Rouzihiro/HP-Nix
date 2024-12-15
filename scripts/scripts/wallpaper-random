@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# Find all image files and select a random one
+wallpaper=$(find -L ~/Pictures/wallpapers -type f | shuf -n 1)
+
+# If a wallpaper is selected, set it using swww
+if [[ -n "$wallpaper" ]]; then
+    swww img "$wallpaper"
+else
+    echo "No wallpaper found."
+fi
+

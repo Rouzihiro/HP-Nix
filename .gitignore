@@ -1,0 +1,8 @@
+# Ignore apps folder and all subfolders
+apps/
+
+# Other common files to ignore
+*.log
+node_modules/
+.DS_Store
+

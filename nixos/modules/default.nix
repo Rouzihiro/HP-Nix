@@ -9,6 +9,7 @@
       #./thunar.nix
       ./shell.nix
       #./flatpak.nix
+      ./themes.nix
       ./polkit.nix
       ./portals.nix
       #./xserver.nix

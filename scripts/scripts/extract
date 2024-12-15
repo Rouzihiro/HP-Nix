@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 # Universal extract script for ZSH
 
 if [[ -z "$1" ]]; then
