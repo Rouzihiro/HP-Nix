@@ -35,6 +35,7 @@
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   environment.pathsToLink = ["/libexec"]; 
+  environment.variables.EDITOR = "nvim";
 
 # Define the 'rey' group
   users.groups.rey = {}; # Create the group 'rey'

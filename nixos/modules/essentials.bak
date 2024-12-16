@@ -22,30 +22,19 @@ nix.extraOptions = ''
     unrar                     # File decompression (RAR)
 
     # System Utilities & Tools
-    fastfetch                 # Display system information
+    neofetch                  # Display system information
     lxtask                    # Lightweight task manager
     pciutils                  # PCI device utilities
     openssl                   # Encryption toolkit
     stow                      # Manage dotfiles
     udev                      # Device manager for Linux
-    # libgcc bc kdePackages.dolphin lxqt.lxqt-policykit libnotify v4l-utils ydotool
-    # ripgrep lshw bat pkg-config brightnessctl virt-viewer
-    # swappy appimage-run yad playerctl nh ansible
     
     # Programming & Development
     gcc                       # GNU C compiler
     git                       # Version control system
     openjdk17                 # Java Development Kit
 
-    # go lua python3 python3Packages.pip uv clang zig rustup
-    # nodePackages_latest.pnpm nodePackages_latest.yarn nodePackages_latest.nodejs
-    # bun jdk maven gcc 
-
-    # Remote Desktop and Collaboration Tools
-    # anydesk
-
     # File Searching / Navigation
-    killall
     tree
     fd                        # Find files quickly
     fzf                       # Fuzzy finder for terminal
@@ -65,51 +54,13 @@ nix.extraOptions = ''
 
     # Communication
     discord
-    vesktop 
-    # element-desktop
     telegram-desktop          # Messaging application
     thunderbird               # Email client
     zoom-us                   # Video conferencing
     skypeforlinux
 
-    # Network and internet tools
-    aria2 # qbittorrent cloudflare-warp tailscale onedrive
-    glib
-
-    # Wayland specific
-    # hyprshot hypridle grim slurp waybar dunst wl-clipboard swaynotificationcenter
+    # Wayland-Compatible Applications
     wofi                      # Application launcher for Wayland
-
-    # System utilities
-
-
-    # Virtualization
-    # libvirt
-
-    # File systems
-    ntfs3g # os-prober
-
-    # Downloaders
-    # yt-dlp localsend
-
-    # Clipboard managers
-    cliphist
-
-    # Fun and customization
-    # cmatrix lolcat fastfetch onefetch microfetch socat cowsay 
-
-    # Networking
-    # networkmanagerapplet
-
-    # Education
-    # ciscoPacketTracer8 
-    # wireshark ventoy
-
-    # Music and streaming
-    # youtube-music spotify
-
-    # Miscellaneous
-    # greetd.tuigreet
 
     # X11-Specific Applications (excluded in future)
     #redshift                  # Adjust screen color temperature
@@ -126,13 +77,6 @@ nix.extraOptions = ''
     #glxinfo                  # OpenGL information tool
     #polybar                  # Status bar
     #xorg.xinit               # X Window System initializer
-
-    # Version control and development tools
-    # git gh lazygit lazydocker bruno gnumake coreutils nixfmt-rfc-style meson ninja
-
-  # System monitoring and management
-  # htop btop lm_sensors inxi auto-cpufreq nvtopPackages.nvidia anydesk
-
   ];
 }
 

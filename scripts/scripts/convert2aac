@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 # Create folder "1" if it doesn't exist
 mkdir -p 1
