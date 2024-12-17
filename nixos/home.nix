@@ -11,11 +11,11 @@ in
   home.stateVersion = "24.11";
 
   programs.home-manager.enable = true;
+  nixpkgs.config.allowUnfree = true;
 
   imports = [
-    ./zsh.nix
-    ./yazi.nix
-    ./kitty.nix
+    ./home-manager/default.nix
+    ./home-manager/home-essentials.nix
   ];
 
   services.gpg-agent = {

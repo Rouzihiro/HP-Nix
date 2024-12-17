@@ -8,7 +8,6 @@
     cmake
     curl
     freeglut
-    #gtk3
     libgcrypt
     libsecret
     nasm

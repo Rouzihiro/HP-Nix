@@ -6,6 +6,8 @@
       ./cleaner.nix
       ./services.nix
       #./updater.nix
+      ./portals.nix
+      ./polkit.nix
       
     ];
 

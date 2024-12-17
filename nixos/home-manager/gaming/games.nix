@@ -4,7 +4,6 @@
   environment.systemPackages = with pkgs; [
     # antimicrox
     # appimage-run
-    discord
     dbus
     cemu  # Ensure it runs with X11 backend if needed
     dolphin-emu

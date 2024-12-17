@@ -9,24 +9,18 @@
 
  {
   imports =
-    [ # Include the results of the hardware scan.
+    [ 
       ./hardware-configuration.nix
-      ./modules/default.nix
-      ./Services/default.nix
+      ./services/default.nix
       ./Hardware/default.nix
       ./DE/default.nix
       ./GPU/default.nix
       ./scripts/default.nix
+      ./system-essentials.nix
+      ./modules/themes.nix
       <home-manager/nixos>  # Use the channel import
-      #/nix/var/nix/profiles/per-user/root/channels/home-manager/nixos
-      #./home.nix
    ];
  
-#  home-manager = {
-#    useUserPackages = true;
-#    users."rey" = import ./home.nix; 
-#  };
-
    # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -36,6 +30,10 @@
 
   environment.pathsToLink = ["/libexec"]; 
   environment.variables.EDITOR = "nvim";
+  nixpkgs.config.allowUnfree = true;
+  nix.extraOptions = ''
+    experimental-features = nix-command flakes
+  '';
 
 # Define the 'rey' group
   users.groups.rey = {}; # Create the group 'rey'
@@ -113,34 +111,11 @@
   services.libinput.enable = true;
   services.libinput.touchpad.naturalScrolling = true; # Enable natural scrolling (macOS-style)
   
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  #users.users.rey = {
-  #  isNormalUser = true;
-  #  description = "rey";
-  #  extraGroups = [ "networkmanager" "wheel" ];
-  #  packages = with pkgs; [
-    #  thunderbird
-  #  ];
-  #};
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  neofetch
-  waybar
-  rofi
-  neovim
-  kitty
-  zsh
-  brave
-  unzip
-  yazi
-  eza
-  bat
-  brightnessctl
+
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

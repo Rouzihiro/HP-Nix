@@ -1,77 +1,63 @@
-{ pkgs, host, ... }:
-
+{ pkgs, ... }:
+let
+  myAliases = {
+    la = "eza --icons -l -T -L=1";
+    cat = "bat";
+    htop = "btm";
+    fd = "fd -Lu";
+    w3m = "w3m -no-cookie -v";
+    neofetch = "disfetch";
+    fetch = "disfetch";
+    gitfetch = "onefetch";
+    "," = "comma";
+    hypr-config = "nvim ~/.config/hypr/keybinds.conf";
+    ls = "ls -la";
+    lst = "ls --tree";
+    neodir = "cd ~/.config/nvim";
+    v = "nvim";
+    sv = "sudo nvim";
+    #zsource = "source ~/.zshrc";
+    #zconfig = "v ~/.zshrc";
+    home-config = "nvim ~/dotfiles/nixos/home.nix";
+    hlog = "journalctl -u hyprland --since '10 minutes ago'";
+    xx = "exit";
+    ll = "eza -lh --icons --grid --group-directories-first";
+    ".." = "cd ..";
+    cls = "clear";
+    md = "mkdir";
+    hupdate = "home-manager switch";
+    nix-update = "sudo nixos-rebuild switch";
+    crp = "rsync -ah --progress";
+  };
+in
 {
   programs.zsh = {
     enable = true;
-    autosuggestion.enable = true;
     enableCompletion = true;
-    syntaxHighlighting.enable = true;
-
-    history = {
-      size = 10000;
-      ignoreAllDups = true;
-      path = "$HOME/.zsh_history";
-      ignorePatterns = ["rm *" "pkill *" "cp *"];
-    };
-
-    plugins = [
-      {
-        name = "zsh-syntax-highlighting";
-        src = pkgs.zsh-syntax-highlighting;
-      }
-      {
-        name = "zsh-autocomplete";
-        src = pkgs.zsh-autocomplete;
-      }
-    ];
-
-    shellAliases = {
-      v = "nvim";
-      cd = "z";
-      ns = "nix-shell --command zsh -p";
-      ls = "eza --icons";
-      fetch = "fastfetch";
-      rebuild = "sudo nixos-rebuild switch --flake ~/Dotfiles#${host}";
-      update = "sudo nix flake update --flake ~/Dotfiles";
-      rprofile = "sudo nix profile wipe-history --profile /nix/var/nix/profiles/system";
-      garbage = "sudo nix-collect-garbage -d";
-      ufda = "echo 'use flake' | tee .envrc && direnv allow";
-      pyshell = "~/Dotfiles/scripts/pyshell.sh";
-      pyflake = "~/Dotfiles/scripts/pyflake.sh";
-      za = "zathura";
-    };
-
-    oh-my-zsh = {
+    autosuggestion = {
       enable = true;
-
-      # custom = "$HOME/.extra/zsh";
-      # theme = "theme";
-
-      plugins = [
-        "git"
-        "ssh-agent"
-      ];
     };
-    
+    syntaxHighlighting = {
+      enable = true;
+    };
+    #oh-my-zsh = {
+    #  enable = true;
+    #  plugins = [ "git" "thefuck" ];
+    #  theme = "robbyrussell";
+    #};
+    shellAliases = myAliases;
+    initExtra = ''
+      fastfetch
+      if [ -f $HOME/.zshrc-personal ]; then
+        source $HOME/.zshrc-personal
+      fi
+     export POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
+    '';
+     history = {
+      size = 10000;
+    }; 
   };
-  home.file.omz_zsh_theme = {
-    text = ''
-      ZSH_THEME_GIT_PROMPT_PREFIX=" - %F{blue}[%F{red}"
-      ZSH_THEME_GIT_PROMPT_SUFFIX="%F{blue}]%f"
-      ZSH_THEME_GIT_PROMPT_DIRTY=" %F{green}+"
-      ZSH_THEME_GIT_PROMPT_CLEAN=""
 
-      local pwd="%F{blue}[%f%F{grey}%~%F{blue}]%f"
-      local user="%F{blue}[%F{green}%n%f@%F{cyan}%m%F{blue}]%f"
-      local count="%F{blue}[%b%F{yellow}%!%F{blue}%B]%f"
-      local decoration="%F{magenta}$%F{blue}"
+   programs.direnv.nix-direnv.enable = true;
 
-      local sep="%b-%B"
-      PROMPT=$'%B%F{blue}┌─$user $sep $pwd$(git_prompt_info) $sep $count%B%F{blue}\n└─[$decoration]%f '
-      RPROMPT="[%*]"
-      PS2="%F{magenta}>%f "
-      PS3="%F{magenta}>%f "
-    ''; 
-    target = ".extra/zsh/theme.zsh-theme";
-  };
 }

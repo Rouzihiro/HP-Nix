@@ -3,7 +3,7 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
+  home.packages = with pkgs; [
   starship
   zsh
   zsh-syntax-highlighting
@@ -14,7 +14,5 @@
   curl
   rsync
   ];
-
-programs.zsh.promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
 
 }
