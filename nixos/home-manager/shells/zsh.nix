@@ -51,6 +51,12 @@ in
       if [ -f $HOME/.zshrc-personal ]; then
         source $HOME/.zshrc-personal
       fi
+      # Set STARSHIP_CONFIG environment variable
+      export STARSHIP_CONFIG="$HOME/.config/starship.toml"
+      # Initialize Starship prompt
+      if command -v starship &> /dev/null; then
+        eval "$(starship init zsh)"
+      fi
      export POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
      export PATH="$HOME/scripts:$PATH"
     '';

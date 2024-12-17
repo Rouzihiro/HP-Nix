@@ -26,66 +26,43 @@ convert_video() {
 }
 
 # Function to handle file selection (one file at a time)
-select_file() {
+select_files() {
     local selected_file
-    # Find unique video files in ~/Downloads and ~/Videos (including subfolders, but not parent directories)
-    selected_file=$(find ~/Downloads ~/Videos -type f \( -iname \*.avi -o -iname \*.mp4 -o -iname \*.mkv -o -iname \*.flv -o -iname \*.webm \) \
-        -exec realpath {} \; | sort -u | rofi -dmenu -p "Select a video file")
+    # Find unique video files and list them for selection
+    selected_file=$(find . ../.. ~/Downloads ~/Videos ~/Pictures -type f \( -iname \*.avi -o -iname \*.mp4 -o -iname \*.mkv -o -iname \*.flv -o -iname \*.webm \) \
+        -exec realpath {} \; | sort -u | wofi --dmenu --prompt "Select a video file")
     echo "$selected_file"
-}
-
-# Function to ask if user wants to select another file
-ask_for_another_file() {
-    local response
-    response=$(echo -e "Yes\nNo" | rofi -dmenu -p "Do you want to select another file?")
-    echo "$response"
 }
 
 # Function to select video codec
 select_video_codec() {
     local selected_video_codec
-    selected_video_codec=$(echo -e "Passthrough\nlibx264\nlibx265" | rofi -dmenu -p "Select video codec")
+    selected_video_codec=$(echo -e "Passthrough\nlibx264\nlibx265" | wofi --dmenu --prompt "Select video codec")
     echo "$selected_video_codec"
 }
 
 # Function to select audio codec
 select_audio_codec() {
     local selected_audio_codec
-    selected_audio_codec=$(echo -e "Passthrough\naac\nmp3" | rofi -dmenu -p "Select audio codec")
+    selected_audio_codec=$(echo -e "Passthrough\naac\nmp3" | wofi --dmenu --prompt "Select audio codec")
     echo "$selected_audio_codec"
 }
 
 # Function to select preset (encoding speed)
 select_preset() {
     local selected_preset
-    selected_preset=$(echo -e "fast\nnormal\nslow" | rofi -dmenu -p "Select encoding preset")
+    selected_preset=$(echo -e "fast\nnormal\nslow" | wofi --dmenu --prompt "Select encoding preset")
     echo "$selected_preset"
 }
 
-# Array to hold selected files
-selected_files=()
+# Get file to convert
+file_to_convert=$(select_files)
 
-# Select files
-while true; do
-    file_to_convert=$(select_file)
-
-    # Check if a file was selected
-    if [ -z "$file_to_convert" ]; then
-        notify-send "Video Conversion" "No file selected. Exiting."
-        exit 1
-    fi
-
-    # Add the selected file to the list
-    selected_files+=("$file_to_convert")
-
-    # Ask if the user wants to select another file
-    another_file=$(ask_for_another_file)
-
-    # If the user chooses "No", break the loop
-    if [ "$another_file" != "Yes" ]; then
-        break
-    fi
-done
+# Check if a file was selected
+if [ -z "$file_to_convert" ]; then
+    notify-send "Video Conversion" "No file selected. Exiting."
+    exit 1
+fi
 
 # Get video codec choice
 video_codec_choice=$(select_video_codec)
@@ -114,13 +91,10 @@ if [ -z "$preset_choice" ]; then
     exit 1
 fi
 
-# Convert each selected file
-for file_to_convert in "${selected_files[@]}"; do
-    # Extract filename without extension
-    output_file="$HOME/Videos/converted/$(basename "$file_to_convert" .${file_to_convert##*.}).mkv"
+# Extract filename without extension
+output_file="$HOME/Videos/converted/$(basename "$file_to_convert" .${file_to_convert##*.}).mkv"
 
-    # Convert video
-    convert_video "$file_to_convert" "$output_file" "$video_codec_choice" "$audio_codec_choice" "$preset_choice"
-    notify-send "Video Conversion" "Conversion complete: $output_file"
-done
+# Convert video
+convert_video "$file_to_convert" "$output_file" "$video_codec_choice" "$audio_codec_choice" "$preset_choice"
+notify-send "Video Conversion" "Conversion complete: $output_file"
 
