@@ -10,6 +10,7 @@
     # redshift                # (x11) Adjust screen color temperature
 
     # System Utilities & Tools
+    man-pages
     neovim
     openssl                   # Encryption toolkit
     stow                      # Manage dotfiles
