@@ -1,7 +1,7 @@
 #!/bin/sh
 
-# Create the output folder if it doesn't exist
-mkdir -p converted
+# Create the output folder in ~/Videos if it doesn't exist
+mkdir -p ~/Videos/converted
 
 # Function to convert video
 convert_video() {
@@ -16,7 +16,7 @@ convert_video() {
         video_codec="copy"
     fi
 
-    # If audio codec is "Passthrough", use copy (for audio stream)
+    # If audio codec is "passthrough", use copy (for audio stream)
     if [ "$audio_codec" = "Passthrough" ]; then
         audio_codec="copy"
     fi
@@ -25,11 +25,13 @@ convert_video() {
     ffmpeg -i "$input_file" -c:v "$video_codec" -preset "$preset" -c:a "$audio_codec" "$output_file"
 }
 
-# Function to handle file selection (multiple files)
+# Function to handle file selection (one file at a time)
 select_files() {
-    local selected_files
-    selected_files=$(find . -type f \( -iname \*.avi -o -iname \*.mp4 -o -iname \*.mkv -o -iname \*.flv -o -iname \*.webm \) | wofi --dmenu --multiple --prompt "Select video files")
-    echo "$selected_files"
+    local selected_file
+    # Find unique video files and list them for selection
+    selected_file=$(find . ../.. ~/Downloads ~/Videos ~/Pictures -type f \( -iname \*.avi -o -iname \*.mp4 -o -iname \*.mkv -o -iname \*.flv -o -iname \*.webm \) \
+        -exec realpath {} \; | sort -u | wofi --dmenu --prompt "Select a video file")
+    echo "$selected_file"
 }
 
 # Function to select video codec
@@ -53,12 +55,12 @@ select_preset() {
     echo "$selected_preset"
 }
 
-# Get files to convert
-files_to_convert=$(select_files)
+# Get file to convert
+file_to_convert=$(select_files)
 
-# Check if any files were selected
-if [ -z "$files_to_convert" ]; then
-    notify-send "Video Conversion" "No files selected. Exiting."
+# Check if a file was selected
+if [ -z "$file_to_convert" ]; then
+    notify-send "Video Conversion" "No file selected. Exiting."
     exit 1
 fi
 
@@ -89,13 +91,10 @@ if [ -z "$preset_choice" ]; then
     exit 1
 fi
 
-# Process each selected file
-for file_to_convert in $files_to_convert; do
-    # Extract filename without extension
-    output_file="converted/$(basename "$file_to_convert" .${file_to_convert##*.}).mkv"
+# Extract filename without extension
+output_file="$HOME/Videos/converted/$(basename "$file_to_convert" .${file_to_convert##*.}).mkv"
 
-    # Convert video
-    convert_video "$file_to_convert" "$output_file" "$video_codec_choice" "$audio_codec_choice" "$preset_choice"
-    notify-send "Video Conversion" "Conversion complete: $output_file"
-done
+# Convert video
+convert_video "$file_to_convert" "$output_file" "$video_codec_choice" "$audio_codec_choice" "$preset_choice"
+notify-send "Video Conversion" "Conversion complete: $output_file"
 

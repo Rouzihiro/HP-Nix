@@ -17,7 +17,7 @@ let
     v = "nvim";
     sv = "sudo nvim";
     #zsource = "source ~/.zshrc";
-    #zconfig = "v ~/.zshrc";
+    zconfig = "v ~/dotfiles/nixos/home-manager/shells/zsh.nix";
     home-config = "nvim ~/dotfiles/nixos/home.nix";
     hlog = "journalctl -u hyprland --since '10 minutes ago'";
     xx = "exit";
@@ -52,6 +52,7 @@ in
         source $HOME/.zshrc-personal
       fi
      export POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
+     export PATH="$HOME/scripts:$PATH"
     '';
      history = {
       size = 10000;

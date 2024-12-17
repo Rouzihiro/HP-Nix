@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Kill any existing instances of hyprsunset
+killall hyprsunset
+
 # Offer predefined options with wofi
 value=$(echo -e "6000\n5000\n4000\n3000\n2000" | wofi --dmenu --prompt "Select sunset value (or enter your own): ")
 

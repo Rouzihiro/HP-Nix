@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 # Function to show disk space for a specific directory
 show_space() {
