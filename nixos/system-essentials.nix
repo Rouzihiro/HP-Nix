@@ -10,7 +10,6 @@
     # redshift                # (x11) Adjust screen color temperature
 
     # System Utilities & Tools
-    nixos-option
     neovim
     openssl                   # Encryption toolkit
     stow                      # Manage dotfiles
@@ -20,6 +19,7 @@
     ntfs3g                    # NTFS filesystem tools
     glib                      # Core libraries
     brightnessctl 
+    killall
     # virt-viewer appimage-run yad playerctl
     # ansible ripgrep lshw bat pkg-config v4l-utils
 

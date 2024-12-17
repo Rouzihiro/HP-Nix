@@ -7,8 +7,7 @@
       ./services.nix
       #./updater.nix
       ./portals.nix
-      ./polkit.nix
-      
+      ./gnome-polkit.nix
     ];
 
 }
