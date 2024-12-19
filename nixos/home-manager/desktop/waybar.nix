@@ -112,11 +112,16 @@
             warning = 30;
             critical = 15;
           };
-          format = "{time} {icon}";
-          format-charging = "{capacity}%";
-          format-plugged = "{capacity}%";
+          format = "{icon} {capacity}%";  # Show both icon and percentage
+          format-charging = "{icon} {capacity}%";  # Show both icon and percentage while charging
+          format-plugged = "{icon} {capacity}%";  # Show both icon and percentage when plugged in
+          format-discharging = "{icon} {capacity}%";  # Show both icon and percentage when discharging
+          #format = "{time} {icon}";
+          #format-charging = "{capacity}%";
+          #format-plugged = "{capacity}%";
           format-icons = ["󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
-        };
+          # on-click = "exec your-battery-script-to-toggle-icon";  # Optional: script to toggle if needed
+	};
         network = {
           # "interface"= "wlp2*"; # (Optional) To force the use of this interface
           format-wifi = " ";
