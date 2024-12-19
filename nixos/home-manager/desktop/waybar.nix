@@ -106,8 +106,8 @@
 
         network = {
           format-wifi = " ";
+          tooltip-format = "{essid}";
           format-ethernet = "󰈀 ";
-          tooltip-format = "{ifname} via {gwaddr} ";
           format-disconnected = "⚠ ";
         };
 
