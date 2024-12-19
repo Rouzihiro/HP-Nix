@@ -3,6 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     # Theme / Style Related 
+    pywal
     swaybg
     corefonts                 # Microsoft fonts for compatibility
     libnotify

@@ -66,6 +66,11 @@ in
     #};
     shellAliases = myAliases;
     initExtra = ''
+    # Start SSH agent and add key
+    if ! pgrep -u $USER ssh-agent > /dev/null; then
+    eval "$(ssh-agent -s)"
+    ssh-add ~/.ssh/id_ed25519
+    fi
       #fastfetch
       #if [ -f $HOME/.zshrc-personal ]; then
       #  source $HOME/.zshrc-personal

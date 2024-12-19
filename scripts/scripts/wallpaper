@@ -1,29 +1,44 @@
 #!/bin/sh
 
 # Directory containing the wallpapers
-PICTURES_DIR="$HOME/Pictures"
+PICTURES_DIR="$HOME/Pictures/wallpapers"
 
-# Get a list of image files (including symlinks) in the Pictures directory
-# Only include common image file extensions
+# Get a list of image files (including symlinks) in the Wallpapers directory
 files=$(find -L "$PICTURES_DIR" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.jpeg" -o -iname "*.gif" \))
 
-# Strip the path and leave only filenames
-filenames=$(echo "$files" | sed "s|$PICTURES_DIR/||")
+# Check if wallpapers are available
+if [ -z "$files" ]; then
+    echo "No wallpapers found in $PICTURES_DIR"
+    exit 1
+fi
 
-# Use wofi to display the list of filenames
-selected=$(echo "$filenames" | wofi --dmenu --title "Select Wallpaper" --width 600 --height 600)
+# Display a selection menu with rofi or wofi
+selected_file=$(echo "$files" | rofi -dmenu -i -p "Select Wallpaper") # Replace `rofi` with `wofi` if needed
 
-# Get the full path of the selected file
-selected_file=$(echo "$files" | grep "$selected")
+# Check if a file was selected
+if [ -z "$selected_file" ]; then
+    echo "No wallpaper selected"
+    exit 1
+fi
 
 # Verbose output
-echo "Selected file: $selected_file"
+echo "Selected wallpaper: $selected_file"
 
-# If a selection was made, set it as the wallpaper using swaybg
+# Kill any existing swaybg processes
+pkill -x swaybg || echo "No swaybg process to kill"
+
+# Set the selected image as the wallpaper using swaybg
 if [ -n "$selected_file" ]; then
-    echo "Setting wallpaper to $selected_file..."
     swaybg -i "$selected_file" -m fill || echo "Failed to set wallpaper"
 else
-    echo "No wallpaper selected"
+    echo "No wallpapers found"
+    exit 1
+fi
+
+# Generate colors with wal
+if command -v wal >/dev/null; then
+    wal -i "$selected_file" || echo "Failed to generate colors with wal"
+else
+    echo "wal command not found"
 fi
 

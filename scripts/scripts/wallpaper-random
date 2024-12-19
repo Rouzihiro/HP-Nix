@@ -4,8 +4,13 @@
 PICTURES_DIR="$HOME/Pictures/wallpapers"
 
 # Get a list of image files (including symlinks) in the Wallpapers directory
-# Only include common image file extensions
 files=$(find -L "$PICTURES_DIR" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.jpeg" -o -iname "*.gif" \))
+
+# Check if wallpapers are available
+if [ -z "$files" ]; then
+    echo "No wallpapers found in $PICTURES_DIR"
+    exit 1
+fi
 
 # Select a random file from the list
 random_file=$(echo "$files" | shuf -n 1)
@@ -14,12 +19,20 @@ random_file=$(echo "$files" | shuf -n 1)
 echo "Selected random wallpaper: $random_file"
 
 # Kill any existing swaybg processes
-killall swaybg
+pkill -x swaybg || echo "No swaybg process to kill"
 
 # Set the selected image as the wallpaper using swaybg
 if [ -n "$random_file" ]; then
     swaybg -i "$random_file" -m fill || echo "Failed to set wallpaper"
 else
     echo "No wallpapers found"
+    exit 1
+fi
+
+# Generate colors with wal
+if command -v wal >/dev/null; then
+    wal -i "$random_file" || echo "Failed to generate colors with wal"
+else
+    echo "wal command not found"
 fi
 

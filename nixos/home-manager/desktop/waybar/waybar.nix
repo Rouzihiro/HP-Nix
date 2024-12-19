@@ -126,50 +126,6 @@
       };
     };
 
-    style = ''
-      * {
-        border: none;
-        font-family: Noto Sans Mono;
-        font-size: 20px;
-      }
-
-      window#waybar {
-        color: #FFFFFF;  /* Foreground color */
-        background: rgba(0, 0, 0, 0);  /* Transparent background */
-        transition-property: background-color;
-        transition-duration: .5s;
-        border-radius: 1em;
-      }
-
-      .modules-right, .modules-left {
-        color: #FFD700;  /* Yellow for symbols */
-        padding-left: 0.6em;
-        padding-right: 0.6em;
-      }
-
-      #workspaces button {
-        color: #FFD700;  /* Yellow for workspace numbers */
-        font-size: large;
-        border-radius: 0.8em;
-        background: rgba(0, 0, 0, 0);  /* Transparent background for buttons */
-        padding: 6px 12px;
-      }
-
-      #workspaces button.active {
-        background: #006400;  /* Dark green for active workspace */
-        color: #FFD700;  /* Yellow for active workspace number */
-        padding-left: 0.5em;
-        padding-right: 0.5em;
-      }
-
-      #clock, #battery, #cpu, #memory, #temperature, #network, #pulseaudio, #custom-media, #tray, #mode, #custom-power, #custom-menu, #idle_inhibitor {
-        color: #FFD700;  /* Yellow color for icons */
-      }
-
-      #clock {
-        font-weight: bold;
-      }
-    '';
   };
 }
 

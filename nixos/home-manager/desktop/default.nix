@@ -11,8 +11,8 @@
     #./swaync.nix
     #./vivaldi.nix
     #./vesktop
-    ./waybar.nix
-    #./wofi.nix
+    ./waybar/waybar.nix
+    ./wofi/wofi.nix
   ];
 
 }
