@@ -10,14 +10,17 @@ files=$(find -L "$PICTURES_DIR" -type f \( -iname "*.jpg" -o -iname "*.png" -o -
 # Strip the path and leave only filenames
 filenames=$(echo "$files" | sed "s|$PICTURES_DIR/||")
 
-# Use wofi to display the list of filenames
-selected=$(echo "$filenames" | wofi --dmenu --title "Select Wallpaper" --width 600 --height 600)
+# Use rofi to display the list of filenames
+selected=$(echo "$filenames" | rofi -dmenu -i -p "Select Wallpaper" -width 30 -lines 10)
 
 # Get the full path of the selected file
 selected_file=$(echo "$files" | grep "$selected")
 
 # Verbose output
 echo "Selected file: $selected_file"
+
+# Kill any existing swaybg processes
+killall swaybg
 
 # If a selection was made, set it as the wallpaper using swaybg
 if [ -n "$selected_file" ]; then

@@ -2,14 +2,16 @@
 
 {
   environment.systemPackages = with pkgs; [
-    # Theme / Style Related
+    # Theme / Style Related 
+    swaybg
     corefonts                 # Microsoft fonts for compatibility
     libnotify
     swaynotificationcenter    # System-wide notifications
-    swww                      # Wallpaper manager
+    #feh #swww                # Wallpaper manager
     # redshift                # (x11) Adjust screen color temperature
 
     # System Utilities & Tools
+    pass gnupg pinentry #security
     neovim
     openssl                   # Encryption toolkit
     stow                      # Manage dotfiles

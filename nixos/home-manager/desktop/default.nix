@@ -11,6 +11,7 @@
     #./swaync.nix
     #./vivaldi.nix
     #./vesktop
+    ./waybar.nix
     #./wofi.nix
   ];
 

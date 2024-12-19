@@ -1,0 +1,34 @@
+#!/bin/sh
+
+# Set the SMB share URL and mount point
+SMB_SHARE="smb://192.168.178.1/FRITZ.NAS"
+MOUNT_POINT="$HOME/fritz_nas"
+
+# Retrieve the SMB credentials from pass
+USER=$(pass smb/drive/username)
+PASS=$(pass smb/drive/password)
+WORKGROUP=$(pass smb/drive/workgroup)
+
+# Check if the mount point exists, if not, create it
+if [ ! -d "$MOUNT_POINT" ]; then
+  mkdir -p "$MOUNT_POINT"
+fi
+
+# Check if it's already mounted
+if ! gio mount -l | grep -q "$SMB_SHARE"; then
+  echo "Mounting $SMB_SHARE..."
+  
+  # Use the credentials to mount the SMB share
+  gio mount smb://$USER:$PASS@192.168.178.1/FRITZ.NAS
+else
+  echo "$SMB_SHARE is already mounted."
+fi
+
+# Create a symlink if it's mounted
+if gio mount -l | grep -q "$SMB_SHARE"; then
+  ln -snf "$MOUNT_POINT" "$HOME/fritz_nas_link"
+  echo "Symlink created at $HOME/fritz_nas_link"
+else
+  echo "Failed to mount $SMB_SHARE."
+fi
+

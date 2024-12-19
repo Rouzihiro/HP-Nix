@@ -1,12 +1,25 @@
 #!/bin/sh
 
-# Find all image files and select a random one
-wallpaper=$(find -L ~/Pictures/wallpapers -type f | shuf -n 1)
+# Directory containing the wallpapers
+PICTURES_DIR="$HOME/Pictures/wallpapers"
 
-# If a wallpaper is selected, set it using swww
-if [[ -n "$wallpaper" ]]; then
-    swww img "$wallpaper"
+# Get a list of image files (including symlinks) in the Wallpapers directory
+# Only include common image file extensions
+files=$(find -L "$PICTURES_DIR" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.jpeg" -o -iname "*.gif" \))
+
+# Select a random file from the list
+random_file=$(echo "$files" | shuf -n 1)
+
+# Verbose output
+echo "Selected random wallpaper: $random_file"
+
+# Kill any existing swaybg processes
+killall swaybg
+
+# Set the selected image as the wallpaper using swaybg
+if [ -n "$random_file" ]; then
+    swaybg -i "$random_file" -m fill || echo "Failed to set wallpaper"
 else
-    echo "No wallpaper found."
+    echo "No wallpapers found"
 fi
 

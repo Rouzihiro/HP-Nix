@@ -11,7 +11,7 @@
   polkit
   polkit_gnome
   xdg-desktop-portal
-  hyprpaper
+  #hyprpaper
   hyprlock
   hypridle
   hyprshot

@@ -1,33 +1,52 @@
 { pkgs, ... }:
 let
   myAliases = {
+    ls = "eza --icons --grid --all --color=always";
     la = "eza --icons -l -T -L=1";
     cat = "bat";
-    htop = "btm";
-    fd = "fd -Lu";
-    w3m = "w3m -no-cookie -v";
-    neofetch = "disfetch";
-    fetch = "disfetch";
-    gitfetch = "onefetch";
     "," = "comma";
     hypr-config = "nvim ~/.config/hypr/keybinds.conf";
-    ls = "ls -la";
-    lst = "ls --tree";
     neodir = "cd ~/.config/nvim";
     v = "nvim";
     sv = "sudo nvim";
-    #zsource = "source ~/.zshrc";
+    zsource = "source ~/.zshrc";
     zconfig = "v ~/dotfiles/nixos/home-manager/shells/zsh.nix";
-    home-config = "nvim ~/dotfiles/nixos/home.nix";
+    hconfig = "nvim ~/dotfiles/nixos/home.nix";
     hlog = "journalctl -u hyprland --since '10 minutes ago'";
     xx = "exit";
-    ll = "eza -lh --icons --grid --group-directories-first";
     ".." = "cd ..";
     cls = "clear";
     md = "mkdir";
     hupdate = "home-manager switch";
-    nix-update = "sudo nixos-rebuild switch";
+    nupdate = "sudo nixos-rebuild switch";
     crp = "rsync -ah --progress";
+
+  ga="git add .";            # Stage all changes
+  gc="git commit -m";        # Commit with a message
+  #gca="git commit --amend";  # Amend the last commit
+  gp="git push origin main";  # Push changes
+  gpl="git pull";            # Pull latest changes
+  gst="git status";          # Show git status
+  gsb="git checkout";        # Switch branches
+  gcb="git checkout -b";     # Create a new branch
+  gsc="git diff";             # Show changes
+  gss="git diff --staged";   # Show staged changes
+  gl="git log --oneline --graph --all --decorate";  # Pretty log
+  #gcl="git clone";           # Clone a repo
+  #gr="git restore";          # Restore changes in working directory
+  #grs="git restore --staged"; # Unstage changes
+  #grb="git rebase";          # Start a rebase
+  #grbi="git rebase -i";      # Interactive rebase
+  #gb="git branch";           # List branches
+  #gba="git branch -a";       # List all branches (local + remote)
+  #gm="git merge";            # Merge branches
+  #gs???="git stash save";      # Stash changes
+  #gsp="git stash pop";       # Apply stashed changes
+  #gsa="git stash apply";     # Apply without removing from stash
+  #gsl="git stash list";      # List stashes
+  #gsta="git stash drop";     # Drop a stash
+  #gpr="git pull --rebase";   # Pull with rebase
+
   };
 in
 {
@@ -47,10 +66,10 @@ in
     #};
     shellAliases = myAliases;
     initExtra = ''
-      fastfetch
-      if [ -f $HOME/.zshrc-personal ]; then
-        source $HOME/.zshrc-personal
-      fi
+      #fastfetch
+      #if [ -f $HOME/.zshrc-personal ]; then
+      #  source $HOME/.zshrc-personal
+      #fi
       # Set STARSHIP_CONFIG environment variable
       export STARSHIP_CONFIG="$HOME/.config/starship.toml"
       # Initialize Starship prompt
@@ -59,6 +78,7 @@ in
       fi
      export POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
      export PATH="$HOME/scripts:$PATH"
+     export GPG_TTY=$(tty)
     '';
      history = {
       size = 10000;

@@ -17,7 +17,7 @@
       ./GPU/default.nix
       ./scripts/default.nix
       ./system-essentials.nix
-      ./modules/themes.nix
+      ./modules/default.nix
       <home-manager/nixos>  # Use the channel import
    ];
  
@@ -43,7 +43,7 @@
     isNormalUser = true; # Mark as a normal user
     home = "/home/rey"; # Specify the home directory
     group = "rey"; # Assign 'rey' as the primary group
-    extraGroups = [ "wheel" ]; # Add the user to extra groups
+    extraGroups = [ "wheel" "input" "video" "audio" "plugdev" "networkmanager" "docker" "power" "uucp" "seat" ];
     shell = pkgs.zsh; # Set Zsh as the default shell
   };
 
