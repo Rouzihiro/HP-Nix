@@ -24,6 +24,7 @@
         pkgs = import nixpkgs { system = "x86_64-linux"; };
         modules = [
           ./hosts/HP/home.nix
+          stylix.homeManagerModules.stylix # Add stylix for Home Manager.
         ];
       };
     };
