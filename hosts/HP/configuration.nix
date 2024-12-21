@@ -17,8 +17,6 @@
       ./DE/default.nix
       ./GPU/default.nix
       ./system-essentials.nix
-      #home-manager.nixosModules.home-manager
-      #<home-manager/nixos>  # Use the channel import
    ];
 
 
