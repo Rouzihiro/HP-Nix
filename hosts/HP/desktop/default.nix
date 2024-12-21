@@ -3,7 +3,7 @@
 {
   imports = [
     #./brave.nix
-    ./cursor.nix
+    #./cursor.nix
     #./firefox.nix
     #./gimp.nix
     #./rofi
@@ -11,8 +11,9 @@
     #./swaync.nix
     #./vivaldi.nix
     #./vesktop
-    ./waybar/waybar.nix
-    ./wofi/wofi.nix
+    #./waybar/waybar.nix
+    ./waybar.nix
+    #./wofi/wofi.nix
   ];
 
 }

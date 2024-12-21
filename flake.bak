@@ -9,6 +9,8 @@
   };
 
   outputs = { self, stylix, nixpkgs, home-manager, ... }: {
+    defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
+
     nixosConfigurations = {
       HP = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -16,17 +18,18 @@
           ./hosts/HP/configuration.nix
           stylix.nixosModules.stylix
         ];
-      };
     };
 
     homeConfigurations = {
       rey = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs { system = "x86_64-linux"; };
-        modules = [
-          ./hosts/HP/home.nix
-        ];
+        system = "x86_64-linux"; 
+        homeDirectory = "/home/rey"; 
+        username = "rey";
+	configuration = import ./hosts/HP/home.nix;
+        #configuration.imports = [ ./hosts/HP/home.nix ];
       };
+       specialArgs = { inherit self; }; 
     };
   };
+};
 }
-
