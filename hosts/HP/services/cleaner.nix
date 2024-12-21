@@ -6,7 +6,7 @@
   nix = {
     settings = {
       auto-optimise-store = true;
-      experimental-features = ["nix-command"];
+      #experimental-features = ["nix-command"];
       warn-dirty = false;
       trusted-users = ["root" "@wheel"];
       log-lines = 30;

@@ -2,6 +2,8 @@
   config,
   pkgs,
   host,
+  lib,
+  inputs,
   username,
   options,
   ...
@@ -11,16 +13,19 @@
   imports =
     [ 
       ./hardware-configuration.nix
-      ./services/default.nix
       ./Hardware/default.nix
       ./DE/default.nix
       ./GPU/default.nix
-      ./scripts/default.nix
       ./system-essentials.nix
-      ./modules/default.nix
-      <home-manager/nixos>  # Use the channel import
+      #home-manager.nixosModules.home-manager
+      #<home-manager/nixos>  # Use the channel import
    ];
- 
+
+
+
+ # Enable nix-command and flakes
+  nix.settings.experimental-features = [ "nix-command" "flakes" ]; 
+
    # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -30,10 +35,7 @@
 
   environment.pathsToLink = ["/libexec"]; 
   environment.variables.EDITOR = "nvim";
-  nixpkgs.config.allowUnfree = true;
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-  '';
+   nixpkgs.config.allowUnfree = true;
 
 # Define the 'rey' group
   users.groups.rey = {}; # Create the group 'rey'
@@ -89,7 +91,7 @@
   console.keyMap = "de";
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+ # services.printing.enable = true;
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
