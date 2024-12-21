@@ -17,6 +17,7 @@
       ./DE/default.nix
       ./GPU/default.nix
       ./system-essentials.nix
+      ./modules
    ];
 
 
