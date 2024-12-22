@@ -6,9 +6,17 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     stylix.url = "github:danth/stylix";
+
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+
+
   };
 
-  outputs = { self, stylix, nixpkgs, home-manager, ... }: {
+  outputs = { self, stylix, nixvim, nixpkgs, home-manager, ... }: {
     nixosConfigurations = {
       HP = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -22,9 +30,11 @@
     homeConfigurations = {
       rey = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs { system = "x86_64-linux"; };
+        extraSpecialArgs = { inherit allowed-unfree-packages; };
         modules = [
           ./hosts/HP/home.nix
-          stylix.homeManagerModules.stylix # Add stylix for Home Manager.
+          stylix.homeManagerModules.stylix
+          nixvim.homeManagerModules.nixvim
         ];
       };
     };

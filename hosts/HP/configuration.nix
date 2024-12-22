@@ -34,7 +34,7 @@
 
   environment.pathsToLink = ["/libexec"]; 
   environment.variables.EDITOR = "nvim";
-   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = true;
 
 # Define the 'rey' group
   users.groups.rey = {}; # Create the group 'rey'

@@ -12,7 +12,7 @@
     #./vivaldi.nix
     #./vesktop
     #./waybar/waybar.nix
-    ./waybar.nix
+    #./waybar.nix
     #./wofi/wofi.nix
   ];
 
