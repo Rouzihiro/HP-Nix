@@ -1,14 +1,13 @@
-{config, pkgs, ...}:
-{
-services.greetd = {
-  enable = true;
-  settings = rec {
-    initial_session = {
-      command = "${pkgs.sway}/bin/sway";
-      user = "rey";
+{ config, pkgs, ... }: {
+  services.greetd = {
+    enable = true;
+    settings = rec {
+      initial_session = {
+        command = "${pkgs.sway}/bin/sway";
+        user = "rey";
+      };
+      default_session = initial_session;
     };
-    default_session = initial_session;
   };
-};
 
 }

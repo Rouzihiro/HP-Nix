@@ -1,11 +1,9 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [  
+  imports = [
 
     #./android.nix
-    
-    ];
-}
 
+  ];
+}

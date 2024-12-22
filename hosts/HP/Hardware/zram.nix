@@ -1,19 +1,19 @@
-{ config, pkgs, lib, input,... }:
+{ config, pkgs, lib, input, ... }:
 
 {
-#==> Drives <==#
+  #==> Drives <==#
 
- #= Enable Trim Needed for SSD's
+  #= Enable Trim Needed for SSD's
   services.fstrim.enable = true;
   services.fstrim.interval = "weekly";
 
- #= Swap
+  #= Swap
   zramSwap = {
-      enable = true;
-      priority = 100;
-      memoryPercent = 50;
-      algorithm = "zstd";
-      swapDevices = 2;
+    enable = true;
+    priority = 100;
+    memoryPercent = 50;
+    algorithm = "zstd";
+    swapDevices = 2;
   };
 
 }

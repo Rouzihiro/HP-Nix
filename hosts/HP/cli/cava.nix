@@ -16,8 +16,7 @@
         gradient_color_6 = "'#81A1C1'";
         gradient_color_7 = "'#88C0D0'";
         gradient_color_8 = "'#88C0D0'";
-      }
-      else if theme == "everforest" then {
+      } else if theme == "everforest" then {
         # foreground = "'#5E81AC'";
         gradient = 8;
         gradient_color_1 = "'#48584E'";
@@ -28,8 +27,8 @@
         gradient_color_6 = "'#83C092'";
         gradient_color_7 = "'#D3C6AA'";
         gradient_color_8 = "'#D3C6AA'";
-      }
-      else {};
+      } else
+        { };
     };
   };
 }

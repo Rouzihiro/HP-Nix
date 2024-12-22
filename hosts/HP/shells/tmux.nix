@@ -7,12 +7,10 @@
     terminal = "tmux-256color";
     prefix = "C-a";
     keyMode = "vi";
-    plugins = with pkgs; [
-      {
-        plugin = tmuxPlugins.nord;
-        extraConfig = "set -g @plugin 'nord/tmux'";
-      }
-    ];
+    plugins = with pkgs; [{
+      plugin = tmuxPlugins.nord;
+      extraConfig = "set -g @plugin 'nord/tmux'";
+    }];
     extraConfig = ''
       setw -g mode-keys vi
       set -sg escape-time 5

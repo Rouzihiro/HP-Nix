@@ -44,15 +44,18 @@
     shell = pkgs.zsh; # Set Zsh as the default shell
   };
 
+  security.sudo.enable = true;
+  security.sudo.extraConfig = ''
+    rey ALL=(ALL) NOPASSWD: ALL
+  '';
+
+
   nix = {
     settings = {
       auto-optimise-store = true;
-      experimental-features = ["nix-command" "flakes" ];
+      experimental-features = [ "nix-command" "flakes" ];
       warn-dirty = false;
-      trusted-users = [
-        "root"
-        "@wheel"
-      ];
+      trusted-users = [ "root" "@wheel" ];
       log-lines = 30;
       http-connections = 50;
     };
@@ -128,13 +131,15 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
-  services.libinput.touchpad.naturalScrolling = true; # Enable natural scrolling (macOS-style)
+  services.libinput.touchpad.naturalScrolling =
+    true; # Enable natural scrolling (macOS-style)
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs;
+    [
 
-  ];
+    ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

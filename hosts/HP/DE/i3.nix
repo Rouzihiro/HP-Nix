@@ -1,6 +1,4 @@
-{ config, pkgs, lib, ... }:
-{
-
+{ config, pkgs, lib, ... }: {
 
   # Enable LightDM display manager
   #services.xserver.displayManager.lightdm.enable = true;
@@ -26,7 +24,7 @@
     lxappearance
     ueberzugpp
 
-    ];
+  ];
 
   # System performance tweaks (optional)
   # powerManagement.cpuFreqGovernor = lib.mkDefault "performance";

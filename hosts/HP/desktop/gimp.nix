@@ -1,9 +1,7 @@
 { pkgs, ... }:
 
 {
-  home.packages = [
-    pkgs.gimp
-  ];
+  home.packages = [ pkgs.gimp ];
   xdg.configFile."GIMP/2.10/themerc".text = ''
     style "gimp-spin-scale-style"
     {

@@ -20,4 +20,3 @@
     vk-bootstrap
   ];
 }
-

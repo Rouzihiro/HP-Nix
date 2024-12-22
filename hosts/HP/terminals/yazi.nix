@@ -1,14 +1,12 @@
 { config, pkgs, ... }:
 
-let
-  yaziPackage = pkgs.yazi;
-in
-{
+let yaziPackage = pkgs.yazi;
+in {
   programs.yazi = {
     enable = true;
     enableZshIntegration = true;
-    
-      settings = {
+
+    settings = {
       manager = {
         layout = [ 1 4 3 ];
         sort_by = "natural";
@@ -31,13 +29,13 @@ in
         ueberzug_offset = [ 0 0 0 0 ];
       };
 
-   keymap = {
-      manager.prepend_keymap = [{
-        on = [ "l" ];
-        run = "plugin --sync smart-enter";
-        desc = "Enter the child directory, or open the file";
-      }];
-    };
+      keymap = {
+        manager.prepend_keymap = [{
+          on = [ "l" ];
+          run = "plugin --sync smart-enter";
+          desc = "Enter the child directory, or open the file";
+        }];
+      };
 
       tasks = {
         micro_workers = 5;
@@ -50,4 +48,3 @@ in
   # Optionally, you can enable the stylix integration if needed
   # programs.stylix.targets.yazi.enable = true;
 }
-

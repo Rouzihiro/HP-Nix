@@ -1,9 +1,7 @@
 { config, pkgs, lib, ... }:
 
-let
-  cfg = config.programs.zsh.autosuggestions;
-in
-{
+let cfg = config.programs.zsh.autosuggestions;
+in {
   environment.systemPackages = with pkgs; [ zsh zsh-autosuggestions ];
 
   programs.zsh.autosuggestions = {
@@ -14,7 +12,8 @@ in
       description = "Highlight style for suggestions";
     };
     strategy = lib.mkOption {
-      type = lib.types.listOf (lib.types.enum [ "history" "completion" "match_prev_cmd" ]);
+      type = lib.types.listOf
+        (lib.types.enum [ "history" "completion" "match_prev_cmd" ]);
       default = [ "history" ]; # adjust to your preferred strategy
       description = "ZSH Autosuggestions strategy";
     };
@@ -25,7 +24,7 @@ in
     };
     extraConfig = lib.mkOption {
       type = lib.types.attrsOf lib.types.str;
-      default = {};
+      default = { };
       description = "Additional configuration values";
     };
   };
@@ -33,9 +32,12 @@ in
   programs.zsh.interactiveShellInit = ''
     source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
     export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="${cfg.highlightStyle}"
-    export ZSH_AUTOSUGGEST_STRATEGY=(${builtins.concatStringsSep " " cfg.strategy})
+    export ZSH_AUTOSUGGEST_STRATEGY=(${
+      builtins.concatStringsSep " " cfg.strategy
+    })
     ${lib.optionalString (!cfg.async) "unset ZSH_AUTOSUGGEST_USE_ASYNC"}
-    ${builtins.concatStringsSep "\\n" (lib.mapAttrsToList (key: value: "export ${key}=\"${value}\"") cfg.extraConfig)}
+    ${builtins.concatStringsSep "\\n"
+    (lib.mapAttrsToList (key: value: ''export ${key}="${value}"'')
+      cfg.extraConfig)}
   '';
 }
-

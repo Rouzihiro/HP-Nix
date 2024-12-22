@@ -2,12 +2,13 @@
 
 {
   # Install Nautilus and necessary components
-  environment.systemPackages = with pkgs; [
-    nautilus
-    #gvfs
-    #samba
-    #smbclient
-  ];
+  environment.systemPackages = with pkgs;
+    [
+      nautilus
+      #gvfs
+      #samba
+      #smbclient
+    ];
 
   # Enable udisks2 service for automatic mounting of devices
   services.udisks2.enable = true;
@@ -27,14 +28,13 @@
   '';
 
   # Make sure nautilus is started at boot (if you want it to run as a background process)
-  systemd.user.services.nautilus = {
-    enable = true;
-    description = "Start Nautilus as a background service";
-    wantedBy = [ "default.target" ];
-    serviceConfig = {
-      ExecStart = "${pkgs.nautilus}/bin/nautilus --no-desktop --browser";
-      Restart = "always";
-    };
-  };
+  #systemd.user.services.nautilus = {
+  #  enable = true;
+  #  description = "Start Nautilus as a background service";
+  #  wantedBy = [ "default.target" ];
+  #  serviceConfig = {
+  #    ExecStart = "${pkgs.nautilus}/bin/nautilus --no-desktop --browser";
+  #    Restart = "always";
+  #  };
+ # };
 }
-

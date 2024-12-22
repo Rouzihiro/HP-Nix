@@ -12,37 +12,43 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-
-
   };
 
-  outputs = { self, stylix, nixvim, nixpkgs, home-manager, ... }: {
-    
-    nixpkgs = import nixpkgs {
-      system = "x86_64-linux";
-      config.allowUnfree = true;  
-    };
+  outputs =
+    {
+      self,
+      stylix,
+      nixvim,
+      nixpkgs,
+      home-manager,
+      ...
+    }:
+    {
 
-    nixosConfigurations = {
-      HP = nixpkgs.lib.nixosSystem {
+      nixpkgs = import nixpkgs {
         system = "x86_64-linux";
-        modules = [
-          ./hosts/HP/configuration.nix
-          stylix.nixosModules.stylix
-        ];
+        config.allowUnfree = true;
       };
-    };
 
-    homeConfigurations = {
-      rey = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs { system = "x86_64-linux"; };
-        modules = [
-          ./hosts/HP/home.nix
-          stylix.homeManagerModules.stylix
-          nixvim.homeManagerModules.nixvim
-        ];
+      nixosConfigurations = {
+        HP = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./hosts/HP/configuration.nix
+            stylix.nixosModules.stylix
+          ];
+        };
+      };
+
+      homeConfigurations = {
+        rey = home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs { system = "x86_64-linux"; };
+          modules = [
+            ./hosts/HP/home.nix
+            stylix.homeManagerModules.stylix
+            nixvim.homeManagerModules.nixvim
+          ];
+        };
       };
     };
-  };
 }
-

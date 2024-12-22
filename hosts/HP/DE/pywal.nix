@@ -1,7 +1,7 @@
-{ pkgs, lib, config, ... }:
-{
-environment.systemPackages = with pkgs; [
-  pywal
-  #pywal-gtk
-];
+{ pkgs, lib, config, ... }: {
+  environment.systemPackages = with pkgs;
+    [
+      pywal
+      #pywal-gtk
+    ];
 }

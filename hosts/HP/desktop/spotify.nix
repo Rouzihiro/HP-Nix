@@ -1,16 +1,14 @@
-{inputs, pkgs, theme, ... }:
+{ inputs, pkgs, theme, ... }:
 
 {
   programs.spicetify =
-    let
-      spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
-    in
-    {
+    let spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
+    in {
       enable = true;
       enabledExtensions = with spicePkgs.extensions; [
         adblock
         hidePodcasts
-        shuffle 
+        shuffle
         fullScreen
         volumePercentage
       ];
@@ -44,5 +42,5 @@
       #   pagelink-active = "BF616A";
       #   radio-btn-active = "BF616A";
       # };
-   };
+    };
 }

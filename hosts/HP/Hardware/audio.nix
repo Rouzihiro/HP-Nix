@@ -1,9 +1,6 @@
 { config, pkgs, ... }:
 
 {
-environment.systemPackages = with pkgs; [
-  alsa-utils
-];
+  environment.systemPackages = with pkgs; [ alsa-utils ];
 
 }
-

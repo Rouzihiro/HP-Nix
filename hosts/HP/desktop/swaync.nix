@@ -1,541 +1,312 @@
-{ theme, ... }:
+{ config, ... }:
 
 {
-  services.swaync = {
-    enable = true;
-    settings = {
-        "$schema" = "/etc/xdg/swaync/configSchema.json";
-
-        positionX = "right";
-        positionY = "top";
-        control-center-positionX = "left";
-        control-center-positionY = "none";
-        control-center-margin-top = 30;
-        control-center-margin-bottom = 8;
-        control-center-margin-right = 8;
-        control-center-margin-left = 7;
-        control-center-width = 500;
-        control-center-height = 1040;
-        fit-to-screen = true;
-
-        layer = "overlay";
-        control-center-layer = "overlay";
-        cssPriority = "user";
-        notification-icon-size = 64;
-        notification-body-image-height = 100;
-        notification-body-image-width = 200;
-        notification-inline-replies = true;
-        timeout = 10;
-        timeout-low = 5;
-        timeout-critical = 0;
-        notification-window-width = 500;
-        keyboard-shortcuts = true;
-        image-visibility = "when-available";
-        transition-time = 200;
-        hide-on-clear = true;
-        hide-on-action = true;
-        script-fail-notify = true;
-
-        widgets = [
-            "inhibitors"
-            "title"
-            "dnd"
-            "mpris"
-            "notifications"
-        ];
-        widget-config = {
-            inhibitors = {
-                text = "Inhibitors";
-                button-text = "Clear All";
-                clear-all-button = true;
-            };
-            title = {
-                text = "Notifications";
-                clear-all-button = false;
-                button-text = "Clear All";
-            };
-            dnd = {
-                text = "Do Not Disturb";
-            };
-            label = {
-                max-lines = 5;
-                text = "Label Text";
-            };
-            mpris = {
-            image-size = 96;
-            image-radius = 12;
-            };
-        };
-    };
-    style = if theme == "nord" then ''
-      @define-color cc-bg #2E3440;
-      @define-color noti-border-color #5E81AC;
-      @define-color noti-bg #2E3440;
-      @define-color noti-bg-darker #2E3440;
-      @define-color noti-bg-hover rgb(27, 27, 43);
-      @define-color noti-bg-focus rgba(27, 27, 27, 0.6);
-      @define-color text-color #f9f5d7;
-      @define-color text-color-disabled #bdae93;
-      @define-color bg-selected #3B4252;
-      
-      * {
-          font-family: JetBrains Mono Medium;
-          font-weight: bold;
-          font-size: 15px
-      }
-      
-      .control-center .notification-row:focus,
-      .control-center .notification-row:hover {
-          opacity: 1;
-          background: @noti-bg-darker
-      }
-      
-      .notification-row {
-          outline: none;
-          margin: 10px;
-          padding: 0;
-      }
-      
-      .notification {
-          background: transparent;
-          margin: 0px;
-      }
-      
-      .notification-content {
-          background: @cc-bg;
-          padding: 4px;
-          border-radius: 0px;
-          border: 2px solid #5E81AC;
-          margin: 0;
-      }
-      
-      .close-button {
-          background: #BF616A;
-          color: @cc-bg;
-          text-shadow: none;
-          padding: 0;
-          border-radius: 4px;
-          margin-top: 3px;
-          margin-right: 3px;
-      }
-      
-      .close-button:hover {
-          box-shadow: none;
-          background: #9D5158;
-          transition: all .15s ease-in-out;
-          border: none
-      }
-      
-      .notification-action {
-          color: #5E81AC;
-          border: 2px solid #5E81AC;
-          border-top: none;
-          border-radius: 0px;
-          background: #32302F;
-      }
-      
-      .notification-default-action:hover,
-      .notification-action:hover {
-          color: #81A1C1;
-          background: #32302F;
-      }
-      
-      .summary {
-          padding-top: 7px;
-          font-size: 13px;
-          color: #81A1C1;
-      }
-      
-      .time {
-          font-size: 11px;
-          color: #81A1C1;
-          margin-right: 24px
-      }
-      
-      .body {
-          font-size: 12px;
-          color: #81A1C1;
-      }
-      
-      .control-center {
-          background: @cc-bg;
-          border: 2px solid #5E81AC;
-          border-radius: 0px;
-      }
-      
-      .control-center-list {
-          background: transparent
-      }
-      
-      .control-center-list-placeholder {
-          opacity: .5
-      }
-      
-      .floating-notifications {
-          background: transparent
-      }
-      
-      .blank-window {
-          background: alpha(black, 0.1)
-      }
-      
-      .widget-title {
-          color: #81A1C1;
-          background: @noti-bg-darker;
-          padding: 5px 10px;
-          margin: 10px 10px 5px 10px;
-          font-size: 1.5rem;
-          border: 2px solid #5E81AC;
-          border-radius: 4px;
-      }
-      
-      .widget-title>button {
-          font-size: 1rem;
-          color: #81A1C1;
-          text-shadow: none;
-          background: @noti-bg;
-          box-shadow: none;
-          border: 2px solid #5E81AC;
-          border-radius: 4px;
-      }
-      
-      .widget-title>button:hover {
-          background: #81A1C1;
-          color: #81A1C1;
-      }
-      
-      .widget-dnd {
-          background: @noti-bg-darker;
-          padding: 5px 10px;
-          margin: 5px 10px 10px 10px;
-          border: 2px solid #5E81AC;
-          border-radius: 4px;
-          font-size: large;
-          color: #81A1C1;
-      }
-      
-      .widget-dnd>switch {
-          border-radius: 4px;
-          border: 2px solid #5E81AC;
-          background: #2E3440;
-      }
-      
-      .widget-dnd>switch:checked {
-          background: #5E81AC;
-          border: 2px solid #5E81AC;
-      }
-      
-      .widget-dnd>switch slider {
-          background: @cc-bg;
-          border-radius: 4px
-      }
-      
-      .widget-dnd>switch:checked slider {
-          background: @cc-bg;
-          border-radius: 4px
-      }
-      
-      .widget-label {
-          margin: 10px 10px 5px 10px;
-      }
-      
-      .widget-label>label {
-          font-size: 1rem;
-          color: @text-color;
-      }
-      
-      .widget-mpris {
-          color: @text-color;
-          background: @noti-bg-darker;
-          padding: 5px 10px 0px 0px;
-          margin: 5px 10px 5px 10px;
-          border-radius: 4px;
-      }
-      
-      .widget-mpris > box > button {
-          border-radius: 4px;
-      }
-      
-      .widget-mpris-player {
-          padding: 5px 10px;
-          margin: 10px
-      }
-      
-      .widget-mpris-title {
-          font-weight: 700;
-          font-size: 1.25rem
-      }
-      
-      .widget-mpris-subtitle {
-          font-size: 1.1rem
-      }
-      
-      .widget-buttons-grid {
-          font-size: x-large;
-          padding: 5px;
-          margin: 5px 10px 10px 10px;
-          border-radius: 4px;
-          background: @noti-bg-darker;
-      }
-      
-      .widget-buttons-grid>flowbox>flowboxchild>button {
-          margin: 3px;
-          background: @cc-bg;
-          border-radius: 4px;
-          color: #32302F;
-      }
-      
-      .widget-buttons-grid>flowbox>flowboxchild>button:hover {
-          background: #d79921;
-          color: @cc-bg;
-      }
-      
-      .widget-menubar>box>.menu-button-bar>button {
-          border: none;
-          background: transparent
-      }
-      
-      .topbar-buttons>button {
-          border: none;
-          background: transparent
-      }
-      
-      ''
-    else if theme == "everforest" then ''
-      @define-color cc-bg #2D353B;
-      @define-color noti-border-color #48584E;
-      @define-color noti-bg #2D353B;
-      @define-color noti-bg-darker #2D353B;
-      @define-color noti-bg-hover rgb(35, 42, 46);
-      @define-color noti-bg-focus rgba(27, 27, 27, 0.6);
-      @define-color text-color #9DA9A0;
-      @define-color text-color-disabled #9DA9A0;
-      @define-color bg-selected #3D484D;
-      
-      * {
-          font-family: JetBrains Mono Medium;
-          font-weight: bold;
-          font-size: 15px
-      }
-      
-      .control-center .notification-row:focus,
-      .control-center .notification-row:hover {
-          opacity: 1;
-          background: @noti-bg-darker
-      }
-      
-      .notification-row {
-          outline: none;
-          margin: 10px;
-          padding: 0;
-      }
-      
-      .notification {
-          background: transparent;
-          margin: 0px;
-      }
-      
-      .notification-content {
-          background: @cc-bg;
-          padding: 4px;
-          border-radius: 0px;
-          border: 2px solid #425047;
-          margin: 0;
-      }
-      
-      .close-button {
-          background: #E67E80;
-          color: @cc-bg;
-          text-shadow: none;
-          padding: 0;
-          border-radius: 4px;
-          margin-top: 3px;
-          margin-right: 3px;
-      }
-      
-      .close-button:hover {
-          box-shadow: none;
-          background: #9D5158;
-          transition: all .15s ease-in-out;
-          border: none
-      }
-      
-      .notification-action {
-          color: #425047;
-          border: 2px solid #425047;
-          border-top: none;
-          border-radius: 0px;
-          background: #2D353B;
-      }
-
-
-      .notification-default-action:hover,
-      .notification-action:hover {
-          color: #A7C080;
-          background: #2D353B;
-      }
-      
-      .summary {
-          padding-top: 7px;
-          font-size: 13px;
-          color: #A7C080;
-      }
-      
-      .time {
-          font-size: 11px;
-          color: #A7C080;
-          margin-right: 24px
-      }
-      
-      .body {
-          font-size: 12px;
-          color: #A7C080;
-      }
-      
-      .control-center {
-          background: @cc-bg;
-          border: 2px solid #A7C080;
-          border-radius: 0px;
-      }
-      
-      .control-center-list {
-          background: transparent
-      }
-      
-      .control-center-list-placeholder {
-          opacity: .5
-      }
-      
-      .floating-notifications {
-          background: transparent
-      }
-      
-      .blank-window {
-          background: alpha(black, 0.1)
-      }
-      
-      .widget-title {
-          color: #A7C080;
-          background: @noti-bg-darker;
-          padding: 5px 10px;
-          margin: 10px 10px 5px 10px;
-          font-size: 1.5rem;
-          border: 2px solid #425047;
-          border-radius: 4px;
-      }
-      
-      .widget-title>button {
-          font-size: 1rem;
-          color: #A7C080;
-          text-shadow: none;
-          background: @noti-bg;
-          box-shadow: none;
-          border: 2px solid #425047;
-          border-radius: 4px;
-      }
-      
-      .widget-title>button:hover {
-          background: #425047;
-          color: #A7C080;
-      }
-      
-      .widget-dnd {
-          background: @noti-bg-darker;
-          padding: 5px 10px;
-          margin: 5px 10px 10px 10px;
-          border: 2px solid #425047;
-          border-radius: 4px;
-          font-size: large;
-          color: #A7C080;
-      }
-      
-      .widget-dnd>switch {
-          border-radius: 4px;
-          border: 2px solid #425047;
-          background: #2D353B;
-      }
-      
-      .widget-dnd>switch:checked {
-          background: #425047;
-          border: 2px solid #425047;
-      }
-      
-      .widget-dnd>switch slider {
-          background: @cc-bg;
-          border-radius: 4px
-      }
-      
-      .widget-dnd>switch:checked slider {
-          background: @cc-bg;
-          border-radius: 4px
-      }
-      
-      .widget-label {
-          margin: 10px 10px 5px 10px;
-      }
-      
-      .widget-label>label {
-          font-size: 1rem;
-          color: @text-color;
-      }
-      
-      .widget-mpris {
-          color: @text-color;
-          background: @noti-bg-darker;
-          padding: 5px 10px 0px 0px;
-          margin: 5px 10px 5px 10px;
-          border-radius: 4px;
-      }
-      
-      .widget-mpris > box > button {
-          border-radius: 4px;
-      }
-      
-      .widget-mpris-player {
-          padding: 5px 10px;
-          margin: 10px
-      }
-      
-      .widget-mpris-title {
-          font-weight: 700;
-          font-size: 1.25rem
-      }
-      
-      .widget-mpris-subtitle {
-          font-size: 1.1rem
-      }
-      
-      .widget-buttons-grid {
-          font-size: x-large;
-          padding: 5px;
-          margin: 5px 10px 10px 10px;
-          border-radius: 4px;
-          background: @noti-bg-darker;
-      }
-      
-      .widget-buttons-grid>flowbox>flowboxchild>button {
-          margin: 3px;
-          background: @cc-bg;
-          border-radius: 4px;
-          color: #3D484D;
-      }
-      
-      .widget-buttons-grid>flowbox>flowboxchild>button:hover {
-          background: #DBBC7F;
-          color: @cc-bg;
-      }
-      
-      .widget-menubar>box>.menu-button-bar>button {
-          border: none;
-          background: transparent
-      }
-      
-      .topbar-buttons>button {
-          border: none;
-          background: transparent
-      }
-      
-      ''
-    else {};
-  };
+  home.file.".config/swaync/config.json".text = ''
+    {
+      "$schema": "/etc/xdg/swaync/configSchema.json",
+      "positionX": "right",
+      "positionY": "top",
+      "control-center-margin-top": 10,
+      "control-center-margin-bottom": 10,
+      "control-center-margin-right": 10,
+      "control-center-margin-left": 10,
+      "notification-icon-size": 64,
+      "notification-body-image-height": 100,
+      "notification-body-image-width": 200,
+      "timeout": 10,
+      "timeout-low": 5,
+      "timeout-critical": 0,
+      "fit-to-screen": false,
+      "control-center-width": 500,
+      "control-center-height": 1025,
+      "notification-window-width": 500,
+      "keyboard-shortcuts": true,
+      "image-visibility": "when-available",
+      "transition-time": 200,
+      "hide-on-clear": false,
+      "hide-on-action": true,
+      "script-fail-notify": true,
+      "widgets": [
+        "title",
+        "mpris",
+        "volume",
+        "backlight",
+        "dnd",
+        "notifications"
+      ],
+      "widget-config": {
+        "title": {
+          "text": "Notification Center",
+          "clear-all-button": true,
+          "button-text": "󰆴 Clear All"
+        },
+        "dnd": {
+          "text": "Do Not Disturb"
+        },
+        "label": {
+          "max-lines": 1,
+          "text": "Notification Center"
+        },
+        "mpris": {
+          "image-size": 96,
+          "image-radius": 7
+        },
+        "volume": {
+          "label": "󰕾"
+        },
+        "backlight": {
+          "label": "󰃟"
+        },
+      }
+    }
+  '';
+  home.file.".config/swaync/style.css".text = ''
+    * {
+      font-family: JetBrainsMono Nerd Font Mono;
+      font-weight: bold;
+    }
+    .control-center .notification-row:focus,
+    .control-center .notification-row:hover {
+      opacity: 0.9;
+      background: #${config.stylix.base16Scheme.base00}
+    }
+    .notification-row {
+      outline: none;
+      margin: 10px;
+      padding: 0;
+    }
+    .notification {
+      background: transparent;
+      padding: 0;
+      margin: 0px;
+    }
+    .notification-content {
+      background: #${config.stylix.base16Scheme.base00};
+      padding: 10px;
+      border-radius: 5px;
+      border: 2px solid #${config.stylix.base16Scheme.base0D};
+      margin: 0;
+    }
+    .notification-default-action {
+      margin: 0;
+      padding: 0;
+      border-radius: 5px;
+    }
+    .close-button {
+      background: #${config.stylix.base16Scheme.base08};
+      color: #${config.stylix.base16Scheme.base00};
+      text-shadow: none;
+      padding: 0;
+      border-radius: 5px;
+      margin-top: 5px;
+      margin-right: 5px;
+    }
+    .close-button:hover {
+      box-shadow: none;
+      background: #${config.stylix.base16Scheme.base0D};
+      transition: all .15s ease-in-out;
+      border: none
+    }
+    .notification-action {
+      border: 2px solid #${config.stylix.base16Scheme.base0D};
+      border-top: none;
+      border-radius: 5px;
+    }
+    .notification-default-action:hover,
+    .notification-action:hover {
+      color: #${config.stylix.base16Scheme.base0B};
+      background: #${config.stylix.base16Scheme.base0B}
+    }
+    .notification-default-action {
+      border-radius: 5px;
+      margin: 0px;
+    }
+    .notification-default-action:not(:only-child) {
+      border-bottom-left-radius: 7px;
+      border-bottom-right-radius: 7px
+    }
+    .notification-action:first-child {
+      border-bottom-left-radius: 10px;
+      background: #${config.stylix.base16Scheme.base00}
+    }
+    .notification-action:last-child {
+      border-bottom-right-radius: 10px;
+      background: #${config.stylix.base16Scheme.base00}
+    }
+    .inline-reply {
+      margin-top: 8px
+    }
+    .inline-reply-entry {
+      background: #${config.stylix.base16Scheme.base00};
+      color: #${config.stylix.base16Scheme.base05};
+      caret-color: #${config.stylix.base16Scheme.base05};
+      border: 1px solid #${config.stylix.base16Scheme.base09};
+      border-radius: 5px
+    }
+    .inline-reply-button {
+      margin-left: 4px;
+      background: #${config.stylix.base16Scheme.base00};
+      border: 1px solid #${config.stylix.base16Scheme.base09};
+      border-radius: 5px;
+      color: #${config.stylix.base16Scheme.base05}
+    }
+    .inline-reply-button:disabled {
+      background: initial;
+      color: #${config.stylix.base16Scheme.base03};
+      border: 1px solid transparent
+    }
+    .inline-reply-button:hover {
+      background: #${config.stylix.base16Scheme.base00}
+    }
+    .body-image {
+      margin-top: 6px;
+      background-color: #${config.stylix.base16Scheme.base05};
+      border-radius: 5px
+    }
+    .summary {
+      font-size: 16px;
+      font-weight: 700;
+      background: transparent;
+      color: rgba(158, 206, 106, 1);
+      text-shadow: none
+    }
+    .time {
+      font-size: 16px;
+      font-weight: 700;
+      background: transparent;
+      color: #${config.stylix.base16Scheme.base05};
+      text-shadow: none;
+      margin-right: 18px
+    }
+    .body {
+      font-size: 15px;
+      font-weight: 400;
+      background: transparent;
+      color: #${config.stylix.base16Scheme.base05};
+      text-shadow: none
+    }
+    .control-center {
+      background: #${config.stylix.base16Scheme.base00};
+      border: 2px solid #${config.stylix.base16Scheme.base0C};
+      border-radius: 5px;
+    }
+    .control-center-list {
+      background: transparent
+    }
+    .control-center-list-placeholder {
+      opacity: .5
+    }
+    .floating-notifications {
+      background: transparent
+    }
+    .blank-window {
+      background: alpha(black, 0)
+    }
+    .widget-title {
+      color: #${config.stylix.base16Scheme.base0B};
+      background: #${config.stylix.base16Scheme.base00};
+      padding: 5px 10px;
+      margin: 10px 10px 5px 10px;
+      font-size: 1.5rem;
+      border-radius: 5px;
+    }
+    .widget-title>button {
+      font-size: 1rem;
+      color: #${config.stylix.base16Scheme.base05};
+      text-shadow: none;
+      background: #${config.stylix.base16Scheme.base00};
+      box-shadow: none;
+      border-radius: 5px;
+    }
+    .widget-title>button:hover {
+      background: #${config.stylix.base16Scheme.base08};
+      color: #${config.stylix.base16Scheme.base00};
+    }
+    .widget-dnd {
+      background: #${config.stylix.base16Scheme.base00};
+      padding: 5px 10px;
+      margin: 10px 10px 5px 10px;
+      border-radius: 5px;
+      font-size: large;
+      color: #${config.stylix.base16Scheme.base0B};
+    }
+    .widget-dnd>switch {
+      border-radius: 5px;
+      /* border: 1px solid #${config.stylix.base16Scheme.base0B}; */
+      background: #${config.stylix.base16Scheme.base0B};
+    }
+    .widget-dnd>switch:checked {
+      background: #${config.stylix.base16Scheme.base08};
+      border: 1px solid #${config.stylix.base16Scheme.base08};
+    }
+    .widget-dnd>switch slider {
+      background: #${config.stylix.base16Scheme.base00};
+      border-radius: 5px
+    }
+    .widget-dnd>switch:checked slider {
+      background: #${config.stylix.base16Scheme.base00};
+      border-radius: 5px
+    }
+    .widget-label {
+        margin: 10px 10px 5px 10px;
+    }
+    .widget-label>label {
+      font-size: 1rem;
+      color: #${config.stylix.base16Scheme.base05};
+    }
+    .widget-mpris {
+      color: #${config.stylix.base16Scheme.base05};
+      padding: 5px 10px;
+      margin: 10px 10px 5px 10px;
+      border-radius: 5px;
+    }
+    .widget-mpris > box > button {
+      border-radius: 5px;
+    }
+    .widget-mpris-player {
+      padding: 5px 10px;
+      margin: 10px
+    }
+    .widget-mpris-title {
+      font-weight: 700;
+      font-size: 1.25rem
+    }
+    .widget-mpris-subtitle {
+      font-size: 1.1rem
+    }
+    .widget-menubar>box>.menu-button-bar>button {
+      border: none;
+      background: transparent
+    }
+    .topbar-buttons>button {
+      border: none;
+      background: transparent
+    }
+    .widget-volume {
+      background: #${config.stylix.base16Scheme.base01};
+      padding: 5px;
+      margin: 10px 10px 5px 10px;
+      border-radius: 5px;
+      font-size: x-large;
+      color: #${config.stylix.base16Scheme.base05};
+    }
+    .widget-volume>box>button {
+      background: #${config.stylix.base16Scheme.base0B};
+      border: none
+    }
+    .per-app-volume {
+      background-color: #${config.stylix.base16Scheme.base00};
+      padding: 4px 8px 8px;
+      margin: 0 8px 8px;
+      border-radius: 5px;
+    }
+    .widget-backlight {
+      background: #${config.stylix.base16Scheme.base01};
+      padding: 5px;
+      margin: 10px 10px 5px 10px;
+      border-radius: 5px;
+      font-size: x-large;
+      color: #${config.stylix.base16Scheme.base05}
+    }
+  '';
 }

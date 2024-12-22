@@ -3,11 +3,11 @@
 {
   imports = [
     #./btop.nix
-   # ./cava.nix
+    # ./cava.nix
     #./direnv.nix
     ./fastfetch.nix
     ./git.nix
     ./zoxide.nix
   ];
 
- }
+}

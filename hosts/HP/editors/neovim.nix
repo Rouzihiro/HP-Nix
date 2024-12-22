@@ -5,7 +5,7 @@
     enable = true;
     defaultEditor = true;
     vimdiffAlias = true;
-    
+
     opts = {
       number = true;
       relativenumber = true;
@@ -20,8 +20,8 @@
     #  settings = {
     #    borders = true;
     #    italic = false;
-     # };
-   # };
+    # };
+    # };
 
     clipboard.register = "unnamedplus";
 
@@ -61,11 +61,7 @@
         enable = true;
         autoReloadOnWrite = true;
         openOnSetup = true;
-        extraOptions = {
-          view = {
-            side = "right";
-          };  
-        };
+        extraOptions = { view = { side = "right"; }; };
       };
 
       treesitter = {
@@ -80,23 +76,20 @@
               "^data/"
               "%.ipynb"
             ];
-            layout_config = {
-              prompt_position = "top";
-            };
+            layout_config = { prompt_position = "top"; };
             mappings = {
               i = {
                 "<A-j>" = {
                   __raw = "require('telescope.actions').move_selection_next";
                 };
                 "<A-k>" = {
-                  __raw = "require('telescope.actions').move_selection_previous";
+                  __raw =
+                    "require('telescope.actions').move_selection_previous";
                 };
               };
             };
             selection_caret = "> ";
-            set_env = {
-              COLORTERM = "truecolor";
-            };
+            set_env = { COLORTERM = "truecolor"; };
             sorting_strategy = "ascending";
           };
         };
@@ -120,21 +113,14 @@
             '';
           };
           snippet = {
-            expand = "function(args) require('luasnip').lsp_expand(args.body) end";
+            expand =
+              "function(args) require('luasnip').lsp_expand(args.body) end";
           };
           sources = [
-            {
-              name = "nvim_lsp";
-            }
-            {
-              name = "luasnip";
-            }
-            {
-              name = "path";
-            }
-            {
-              name = "buffer";
-            }
+            { name = "nvim_lsp"; }
+            { name = "luasnip"; }
+            { name = "path"; }
+            { name = "buffer"; }
           ];
         };
       };
@@ -144,7 +130,7 @@
       cmp-buffer.enable = true;
 
       cmp-nvim-lsp.enable = true;
-  
+
       direnv.enable = true;
 
       noice.enable = true;
@@ -196,9 +182,9 @@
           gt = "type_definition";
         };
       };
-      
+
       comment.enable = true;
-      
+
       alpha = {
         enable = true;
         theme = "dashboard";
@@ -206,7 +192,7 @@
 
       indent-blankline.enable = true;
 
-      telescope.enable = true; 
+      telescope.enable = true;
     };
   };
 }

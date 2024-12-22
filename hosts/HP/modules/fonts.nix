@@ -1,6 +1,5 @@
-{ pkgs, config, host, username, options, lib, inputs, system, ... }:
-{
-   fonts.packages = with pkgs; [
+{ pkgs, config, host, username, options, lib, inputs, system, ... }: {
+  fonts.packages = with pkgs; [
     noto-fonts
     fira-code
     noto-fonts-cjk-sans
@@ -11,7 +10,7 @@
     font-awesome
     terminus_font
     nerd-fonts.monaspace
-    nerd-fonts.jetbrains-mono 
-    
- 	];
+    nerd-fonts.jetbrains-mono
+
+  ];
 }

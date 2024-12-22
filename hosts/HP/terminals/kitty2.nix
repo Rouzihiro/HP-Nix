@@ -3,9 +3,7 @@
 {
   programs.kitty = {
     enable = true;
-    environment = {
-      "LS_COLORS" = "1";
-    };
+    environment = { "LS_COLORS" = "1"; };
     font = {
       name = "JetBrains Mono Nerd Font";
       size = 12;
@@ -59,8 +57,7 @@
       # white
       color7 = "#E5E9F0";
       color15 = "#ECEFF4";
-    }
-    else if theme == "everforest" then {
+    } else if theme == "everforest" then {
       tab_bar_style = "powerline";
       tab_powerline_style = "round";
       window_padding_width = 15;
@@ -129,7 +126,7 @@
       #: white
       color7 = "#859289";
       color15 = "#9da9a0";
-    }
-    else {};
+    } else
+      { };
   };
 }

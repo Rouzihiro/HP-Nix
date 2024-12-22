@@ -1,11 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [
-    xfce.thunar-volman
-    gvfs
-    polkit
-  ];
+  environment.systemPackages = with pkgs; [ xfce.thunar-volman gvfs polkit ];
 
   # Ensure udisks2 service is enabled
   services.udisks2.enable = true;

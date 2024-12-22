@@ -1,5 +1,4 @@
-{ config, pkgs, lib, ... }:
-{
+{ config, pkgs, lib, ... }: {
   # game related apps
   environment.systemPackages = with pkgs; [
     unzip
@@ -8,6 +7,5 @@
     xxd
     pkgs.xorg.xwininfo
     yad
-      ];
-  }
-
+  ];
+}

@@ -3,7 +3,7 @@
 {
   imports = [
     #./nautilus.nix
-    #./thunar.nix
+    ./thunar.nix
   ];
 
 }

@@ -3,8 +3,6 @@
 {
   hardware.graphics = {
     enable = true;
-    extraPackages = with pkgs; [
-      vpl-gpu-rt
-    ];
+    extraPackages = with pkgs; [ vpl-gpu-rt ];
   };
 }

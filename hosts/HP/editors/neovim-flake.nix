@@ -11,8 +11,7 @@ let
   # Define yazi here, just like you did for finecmdline
   yazi = pkgs.vimPlugins.yazi-nvim;
   whichKey = pkgs.vimPlugins.which-key-nvim;
-in
-{
+in {
   programs = {
     neovim = {
       enable = true;
@@ -95,4 +94,3 @@ in
     };
   };
 }
-

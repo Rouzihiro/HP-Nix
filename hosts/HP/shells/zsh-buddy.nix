@@ -11,7 +11,7 @@
       size = 10000;
       ignoreAllDups = true;
       path = "$HOME/.zsh_history";
-      ignorePatterns = ["rm *" "pkill *" "cp *"];
+      ignorePatterns = [ "rm *" "pkill *" "cp *" ];
     };
 
     plugins = [
@@ -33,7 +33,8 @@
       fetch = "fastfetch";
       rebuild = "sudo nixos-rebuild switch --flake ~/Dotfiles#${host}";
       update = "sudo nix flake update --flake ~/Dotfiles";
-      rprofile = "sudo nix profile wipe-history --profile /nix/var/nix/profiles/system";
+      rprofile =
+        "sudo nix profile wipe-history --profile /nix/var/nix/profiles/system";
       garbage = "sudo nix-collect-garbage -d";
       ufda = "echo 'use flake' | tee .envrc && direnv allow";
       pyshell = "~/Dotfiles/scripts/pyshell.sh";
@@ -47,12 +48,9 @@
       # custom = "$HOME/.extra/zsh";
       # theme = "theme";
 
-      plugins = [
-        "git"
-        "ssh-agent"
-      ];
+      plugins = [ "git" "ssh-agent" ];
     };
-    
+
   };
   home.file.omz_zsh_theme = {
     text = ''
@@ -71,7 +69,7 @@
       RPROMPT="[%*]"
       PS2="%F{magenta}>%f "
       PS3="%F{magenta}>%f "
-    ''; 
+    '';
     target = ".extra/zsh/theme.zsh-theme";
   };
 }

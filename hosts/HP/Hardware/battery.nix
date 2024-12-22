@@ -1,21 +1,12 @@
-{
-  pkgs,
-  drivers,
-  timezone,
-  locale,
-  host,
-  ...
-}:
+{ pkgs, drivers, timezone, locale, host, ... }:
 
-let
-  host = "laptop";
-in
+let host = "laptop";
 
-{
+in {
 
-networking.hostName = "laptop"; # Set the hostname for your system
+  networking.hostName = "laptop"; # Set the hostname for your system
 
-# Laptop battery settings
+  # Laptop battery settings
   services = {
     thermald.enable = if host == "laptop" then true else false;
     tlp = {

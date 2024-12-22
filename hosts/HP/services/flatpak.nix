@@ -2,11 +2,9 @@
 
 {
   # Flatpak & Flatpak-Repositories
-  environment.systemPackages = with pkgs; [
-    flatpak
-  ];
+  environment.systemPackages = with pkgs; [ flatpak ];
 
-# Enable XDG Desktop Portals for Flatpak
+  # Enable XDG Desktop Portals for Flatpak
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
@@ -28,9 +26,9 @@
   '';
 
   # Flatpak-Installation
-     system.activationScripts.flatpakApps = ''
-     #${pkgs.flatpak}/bin/flatpak install -y flathub com.github.tchx84.Flatseal
-     ${pkgs.flatpak}/bin/flatpak install -y flathub org.jdownloader.JDownloader
-     #${pkgs.flatpak}/bin/flatpak install -y flathub com.ugetdm.uGet
-   '';
+  system.activationScripts.flatpakApps = ''
+    #${pkgs.flatpak}/bin/flatpak install -y flathub com.github.tchx84.Flatseal
+    ${pkgs.flatpak}/bin/flatpak install -y flathub org.jdownloader.JDownloader
+    #${pkgs.flatpak}/bin/flatpak install -y flathub com.ugetdm.uGet
+  '';
 }
