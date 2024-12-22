@@ -5,7 +5,7 @@
   stylix = {
     enable = true;
     image = ./active.jpg;
-    #image = ~/Pictures/wallpapers/active.jpg;
+    base16Scheme = "gruvbox-dark";
     # base16Scheme = {
     #   base00 = "232136";
     #   base01 = "2a273f";
