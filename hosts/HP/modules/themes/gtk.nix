@@ -1,8 +1,7 @@
 { config, pkgs, theme, ... }:
 
 {
-  # Ensure dconf is properly enabled
-  programs.dconf = {
+  dconf = {
     enable = true;
     settings = {
       "org/gnome/desktop/interface" = {
@@ -11,10 +10,9 @@
     };
   };
 
-  # GTK Configuration
   gtk = {
     enable = true;
-
+  
     gtk3 = {
       bookmarks = let
         home = config.home.homeDirectory;
@@ -48,7 +46,7 @@
       package = pkgs.everforest-gtk-theme;
       name = "Everforest-Dark-BL";
     }
-    else null;
+    else {};
 
     iconTheme = if theme == "nord" then {
       package = pkgs.papirus-nord.override {
@@ -60,7 +58,6 @@
       package = pkgs.numix-icon-theme;
       name = "Numix";
     }
-    else null;
+    else {};
   };
 }
-

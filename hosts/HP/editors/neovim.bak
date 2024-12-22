@@ -54,23 +54,7 @@
 
     plugins = {
       web-devicons.enable = true;
-      
-      which-key = {
-      plugin = "folke/which-key.nvim";
-      enable = true;
-      config = ''
-        require("which-key").setup {
-          plugins = {
-            spelling = {
-              enabled = true;
-            };
-          };
-          window = {
-            border = "rounded";
-          };
-        }
-      '';
-    }; 
+
       lualine.enable = true;
 
       nvim-tree = {

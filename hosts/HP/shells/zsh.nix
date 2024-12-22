@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, ... }:
 let
   myAliases = {
     ls = "eza --icons --grid --all --color=always";
@@ -17,8 +17,10 @@ let
     ".." = "cd ..";
     cls = "clear";
     md = "mkdir";
-    hupdate = "home-manager switch";
-    nupdate = "sudo nixos-rebuild switch";
+    #hupdate = "home-manager switch";
+    #nupdate = "sudo nixos-rebuild switch";
+    HP = "sudo nixos-rebuild switch --flake .#$HP";
+    REY = "home-manager switch --flake .#rey";  
     crp = "rsync -ah --progress";
 
   ga="git add .";            # Stage all changes
@@ -53,6 +55,7 @@ in
   programs.zsh = {
     enable = true;
     enableCompletion = true;
+    autocd = true;
     autosuggestion = {
       enable = true;
     };
