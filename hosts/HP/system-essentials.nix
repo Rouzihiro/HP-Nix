@@ -3,6 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     # Theme / Style Related 
+    #hyprpanel
     pywal
     swaybg
     corefonts                 # Microsoft fonts for compatibility

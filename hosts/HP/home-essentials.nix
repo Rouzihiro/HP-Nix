@@ -4,6 +4,7 @@
 
   home.packages = with pkgs; [
     # Theme / Style Related
+    #hyprpanel
     nwg-look                  # Customize GTK and cursor themes
     # catppuccin-gtk           # Catppuccin theme for GTK
 

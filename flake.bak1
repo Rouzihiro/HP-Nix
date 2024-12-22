@@ -11,15 +11,15 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-
-
+   
+   # hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
   };
 
-  outputs = { self, stylix, nixvim, nixpkgs, home-manager, ... }: {
-    
+  outputs = { self, stylix, nixvim, nixpkgs, home-manager, ... }: let
+    system = "x86_64-linux"; # change to your system if necessary
+  in {
     nixpkgs = import nixpkgs {
-      system = "x86_64-linux";
+      system = system;
       config.allowUnfree = true;  
     };
 
@@ -35,11 +35,14 @@
 
     homeConfigurations = {
       rey = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs { system = "x86_64-linux"; };
+        pkgs = import nixpkgs { system = system; };
         modules = [
           ./hosts/HP/home.nix
           stylix.homeManagerModules.stylix
           nixvim.homeManagerModules.nixvim
+         # hyprpanel.homeManagerModules.hyprpanel
+          {home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;}
         ];
       };
     };
