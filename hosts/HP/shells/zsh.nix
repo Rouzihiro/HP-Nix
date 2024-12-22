@@ -19,9 +19,12 @@ let
     md = "mkdir";
     #hupdate = "home-manager switch";
     #nupdate = "sudo nixos-rebuild switch";
-    HP = "sudo nixos-rebuild switch --flake .#$HP";
+    HP = "sudo nixos-rebuild switch --flake .#HP";
     REY = "home-manager switch --flake .#rey";  
     crp = "rsync -ah --progress";
+    
+    garbage = "sudo nix-collect-garbage -d";
+    rprofile = "sudo nix profile wipe-history --profile /nix/var/nix/profiles/system";
 
   ga="git add .";            # Stage all changes
   gc="git commit -m";        # Commit with a message

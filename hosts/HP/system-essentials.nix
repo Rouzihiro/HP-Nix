@@ -3,7 +3,6 @@
 {
   environment.systemPackages = with pkgs; [
     # Theme / Style Related 
-    #hyprpanel
     pywal
     swaybg
     corefonts                 # Microsoft fonts for compatibility
@@ -14,6 +13,7 @@
 
     # System Utilities & Tools
     pass gnupg pinentry #security
+    nixfmt-rfc-style
     neovim
     openssl                   # Encryption toolkit
     stow                      # Manage dotfiles

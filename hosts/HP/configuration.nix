@@ -1,53 +1,71 @@
+{ pkgs, ... }:
+
 {
-  config,
-  pkgs,
-  host,
-  lib,
-  inputs,
-  username,
-  options,
-  ...
-}:
+  imports = [
+    ./hardware-configuration.nix
+    ./Hardware/default.nix
+    ./DE/default.nix
+    ./GPU/default.nix
+    ./system-essentials.nix
+    ./modules
+  ];
 
- {
-  imports =
-    [ 
-      ./hardware-configuration.nix
-      ./Hardware/default.nix
-      ./DE/default.nix
-      ./GPU/default.nix
-      ./system-essentials.nix
-      ./modules
-   ];
-
-
-
- # Enable nix-command and flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ]; 
-
-   # Bootloader.
+  # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
- # networking.hostName = "nixos"; # Define your hostname.
+  # networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  environment.pathsToLink = ["/libexec"]; 
+  environment.pathsToLink = [ "/libexec" ];
   environment.variables.EDITOR = "nvim";
   nixpkgs.config.allowUnfree = true;
 
-# Define the 'rey' group
-  users.groups.rey = {}; # Create the group 'rey'
+  # Define the 'rey' group
+  users.groups.rey = { }; # Create the group 'rey'
 
   # Define the 'rey' user
   users.users.rey = {
     isNormalUser = true; # Mark as a normal user
     home = "/home/rey"; # Specify the home directory
     group = "rey"; # Assign 'rey' as the primary group
-    extraGroups = [ "wheel" "input" "video" "audio" "plugdev" "networkmanager" "docker" "power" "uucp" "seat" ];
+    extraGroups = [
+      "wheel"
+      "input"
+      "video"
+      "audio"
+      "plugdev"
+      "networkmanager"
+      "docker"
+      "power"
+      "uucp"
+      "seat"
+    ];
     shell = pkgs.zsh; # Set Zsh as the default shell
   };
 
+  nix = {
+    settings = {
+      auto-optimise-store = true;
+      experimental-features = ["nix-command" "flakes" ];
+      warn-dirty = false;
+      trusted-users = [
+        "root"
+        "@wheel"
+      ];
+      log-lines = 30;
+      http-connections = 50;
+    };
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
+    optimise = {
+      automatic = true;
+      dates = [ "weekly" ];
+    };
+  };
   programs.zsh.enable = true;
   #users.users.rey.shell = pkgs.zsh;
   users.defaultUserShell = pkgs.zsh;
@@ -90,7 +108,7 @@
   console.keyMap = "de";
 
   # Enable CUPS to print documents.
- # services.printing.enable = true;
+  # services.printing.enable = true;
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
@@ -101,7 +119,7 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
-  #jack.enable = true;
+    #jack.enable = true;
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
@@ -111,7 +129,6 @@
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
   services.libinput.touchpad.naturalScrolling = true; # Enable natural scrolling (macOS-style)
-  
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
