@@ -6,6 +6,8 @@
     ./stylix.nix
     ./fonts.nix
     ./file-manager/default.nix
+    ./swaync.nix
+    ./rofi.nix
     #./bluetooth-blueman.nix
     #./ios.nix
     #./kernel.nix
