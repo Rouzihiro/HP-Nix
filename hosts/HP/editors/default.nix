@@ -3,7 +3,7 @@
 {
   imports = [
     #./neovim.nix
-    #./neovim-flake.nix
+    ./neovim-flake.nix
     #./vscode.nix
   ];
 

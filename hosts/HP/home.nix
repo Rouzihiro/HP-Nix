@@ -14,7 +14,7 @@ in {
   home.stateVersion = "24.11";
   programs.zsh.enable = true;
   programs.home-manager.enable = true;
-  #nixpkgs.config.allowUnfree = true
+  nixpkgs.config.allowUnfree = true;
  
  # Styling Options
   stylix.targets.waybar.enable = false;

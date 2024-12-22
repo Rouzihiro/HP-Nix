@@ -17,6 +17,12 @@
   };
 
   outputs = { self, stylix, nixvim, nixpkgs, home-manager, ... }: {
+    
+    nixpkgs = import nixpkgs {
+      system = "x86_64-linux";
+      config.allowUnfree = true;  # Allow unfree packages globally
+    };
+
     nixosConfigurations = {
       HP = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -30,7 +36,6 @@
     homeConfigurations = {
       rey = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs { system = "x86_64-linux"; };
-        extraSpecialArgs = { inherit allowed-unfree-packages; };
         modules = [
           ./hosts/HP/home.nix
           stylix.homeManagerModules.stylix
