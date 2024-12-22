@@ -4,7 +4,7 @@
   # Styling Options
   stylix = {
     enable = true;
-    image = ../../assets/active.jpg;
+    image = "./assets/active.jpg";
     #base16Scheme = "gruvbox-dark";
     base16Scheme = {
       base00 = "232136";

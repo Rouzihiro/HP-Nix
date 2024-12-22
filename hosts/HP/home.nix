@@ -18,9 +18,9 @@ in {
   stylix.targets.rofi.enable = false;
   stylix.targets.hyprland.enable = false;
 
-home.file."assets/active.jpg" = {
-  source = ./assets/active.jpg;
-};
+#home.file."assets/active.jpg" = {
+#  source = ./assets/active.jpg;
+#};
 
 
 }
