@@ -16,13 +16,11 @@
 
   outputs =
     {
-      self,
-      stylix,
       nixvim,
       nixpkgs,
       home-manager,
       ...
-    }:
+    }@inputs:
     {
 
       nixpkgs = import nixpkgs {
@@ -33,9 +31,12 @@
       nixosConfigurations = {
         HP = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs = {
+            inherit inputs;
+          };
           modules = [
             ./hosts/HP/configuration.nix
-            stylix.nixosModules.stylix
+            inputs.stylix.nixosModules.stylix
           ];
         };
       };
@@ -45,7 +46,6 @@
           pkgs = import nixpkgs { system = "x86_64-linux"; };
           modules = [
             ./hosts/HP/home.nix
-            #stylix.homeManagerModules.stylix
             nixvim.homeManagerModules.nixvim
           ];
         };

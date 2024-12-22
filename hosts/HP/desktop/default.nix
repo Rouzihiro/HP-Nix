@@ -8,7 +8,7 @@
     #./gimp.nix
     #./rofi
     #./spotify.nix
-    ./swaync.nix
+    #./swaync.nix
     #./vivaldi.nix
     #./vesktop
     ./waybar/waybar.nix
