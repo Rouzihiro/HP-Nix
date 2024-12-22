@@ -11,7 +11,7 @@
       #./kernel2.nix
       #./light.nix
       #./zram.nix
-      ./themes/default.nix
+      #./themes/default.nix
 
 
     ];

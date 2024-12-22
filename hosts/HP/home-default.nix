@@ -12,6 +12,7 @@
       ./prompts/default.nix
       ./shells/default.nix
       ./terminals/default.nix
+      ./themes/default.nix
       ./virtualisation/default.nix
 
 ];
