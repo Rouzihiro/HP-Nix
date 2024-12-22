@@ -4,7 +4,8 @@
  # Styling Options
   stylix = {
     enable = true;
-    image = ~/Pictures/wallpapers/active.jpg;
+    image = ./active.jpg;
+    #image = ~/Pictures/wallpapers/active.jpg;
     # base16Scheme = {
     #   base00 = "232136";
     #   base01 = "2a273f";
@@ -24,4 +25,6 @@
     #   base0F = "56526e";
     # };
 
-    }
+    };
+
+}
