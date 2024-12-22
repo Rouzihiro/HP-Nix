@@ -8,6 +8,7 @@
     ./file-manager/default.nix
     ./swaync.nix
     ./rofi.nix
+    ./wofi.nix
     #./bluetooth-blueman.nix
     #./ios.nix
     #./kernel.nix
