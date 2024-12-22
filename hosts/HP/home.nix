@@ -16,14 +16,6 @@ in {
   programs.home-manager.enable = true;
   nixpkgs.config.allowUnfree = true;
  
-  programs = {
-    #nix-ld.enable = true;
-    #xfconf.enable = true;
-   # fish.enable = true;
-    #zsh.enable = true;
-    dconf.enable = true;
-  };
-
  # Styling Options
   stylix.targets.waybar.enable = false;
   stylix.targets.rofi.enable = false;
