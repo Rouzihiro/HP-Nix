@@ -13,7 +13,6 @@
       ./shells/default.nix
       ./terminals/default.nix
       ./virtualisation/default.nix
-      ./themes/default.nix
 
 ];
 }
