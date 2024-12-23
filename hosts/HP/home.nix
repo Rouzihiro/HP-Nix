@@ -2,7 +2,7 @@
 
 let
   homeEssentials = import ./home-essentials.nix;
-  homeDefault = import ./home-default.nix;
+  homeDefault = import ./../../home-default.nix;
 in {
   imports = [ homeEssentials homeDefault ];
 
