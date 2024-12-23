@@ -2,6 +2,6 @@
 
 {
   imports = [
-    ./../../common.nix
+    ./home-manager/default.nix
   ];
 }

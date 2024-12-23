@@ -4,7 +4,7 @@ let
 in 
 {
   ## Allowed Signers file for Git
-  home.file.".ssh/allowed_signers".text = "* ${builtins.readFile ../shared/keys/HP-Nixo.pub}";
+home.file.".ssh/allowed_signers".text = "* ${builtins.readFile /home/rey/.ssh/HP-Nixo.pub}";
 
   # Git
   programs.git = {
