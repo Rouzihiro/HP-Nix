@@ -64,6 +64,16 @@
         extraOptions = { view = { side = "right"; }; };
       };
 
+      # Add vimtex for LaTeX support
+      vimtex = {
+        enable = true;
+        settings = {
+          lualine = false;  # Disable lualine in vimtex (optional)
+          latexmk = true;  # Enable latexmk for compiling LaTeX
+        };
+      };
+
+
       treesitter = {
         enable = true;
         settings = {

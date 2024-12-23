@@ -10,10 +10,11 @@ let
     v = "nvim";
     sv = "sudo nvim";
     zsource = "source ~/.zshrc";
-    zconfig = "v ~/dotfiles/hosts/shells/zsh.nix";
-    hconfig = "nvim ~/dotfiles/hosts/home.nix";
+    zconfig = "v ~/dotfiles/hosts/HP/shells/zsh.nix";
+    hconfig = "nvim ~/dotfiles/hosts/HP/home.nix";
     hlog = "journalctl -u hyprland --since '10 minutes ago'";
     xx = "exit";
+    cd = "z";
     ".." = "cd ..";
     cls = "clear";
     md = "mkdir";
@@ -23,13 +24,12 @@ let
     REY = "home-manager switch --flake .#rey";
     crp = "rsync -ah --progress";
     clean = "sudo nix-collect-garbage -d && sudo nix-env --delete-generations old";
-    #garbage = "sudo nix-collect-garbage -d";
     wipe = "sudo nix profile wipe-history --profile /nix/var/nix/profiles/system";
 
     ga = "git add ."; # Stage all changes
     gc = "git commit -m"; # Commit with a message
     #gca="git commit --amend";  # Amend the last commit
-    gp = "git push origin main"; # Push changes
+    gp = "git push origin flakes"; # main"; # Push changes
     gpl = "git pull"; # Pull latest changes
     gst = "git status"; # Show git status
     gsb = "git checkout"; # Switch branches
@@ -72,17 +72,10 @@ in {
       eval "$(ssh-agent -s)"
       ssh-add ~/.ssh/id_ed25519
       fi
-        #fastfetch
-        #if [ -f $HOME/.zshrc-personal ]; then
-        #  source $HOME/.zshrc-personal
-        #fi
-        # Set STARSHIP_CONFIG environment variable
         export STARSHIP_CONFIG="$HOME/.config/starship.toml"
-        # Initialize Starship prompt
         if command -v starship &> /dev/null; then
           eval "$(starship init zsh)"
         fi
-       export POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
        export PATH="$HOME/scripts:$PATH"
        export GPG_TTY=$(tty)
     '';
