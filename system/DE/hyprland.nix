@@ -14,7 +14,7 @@
     hypridle
     hyprshot
     hyprsunset
-    hyprland-qtutils
+    #hyprland-qtutils --> need to figure out how to install this plugin !!!!
     #swaylock
     #sway
     gtk3
