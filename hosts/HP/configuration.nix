@@ -2,14 +2,9 @@
 
 {
   imports = [
+    ./../../common.nix
     ./hardware-configuration.nix
-    ./Hardware/default.nix
-    ./DE/default.nix
-    ./GPU/default.nix
-    ./system-essentials.nix
-    ./modules
-    #./hyprland-base.nix
-  ];
+     ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

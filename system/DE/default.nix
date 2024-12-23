@@ -2,7 +2,6 @@
 
 {
   imports = [
-    # Include the results of the hardware scan.
     #./boot.nix
     ./greetd.nix
     #./i3.nix
