@@ -6,7 +6,7 @@
     ./cursor.nix
     #./firefox.nix
     #./gimp.nix
-    #./rofi
+    ./rofi
     #./spotify.nix
     #./swaync.nix
     #./vivaldi.nix
