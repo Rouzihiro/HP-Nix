@@ -10,7 +10,7 @@ let
     v = "nvim";
     sv = "sudo nvim";
     zsource = "source ~/.zshrc";
-    zconfig = "v ~/dotfiles/hosts/HP/shells/zsh.nix";
+    zconfig = "v ~/dotfiles/home-manager/shells/zsh.nix";
     hconfig = "nvim ~/dotfiles/hosts/HP/home.nix";
     hlog = "journalctl -u hyprland --since '10 minutes ago'";
     xx = "exit";
@@ -18,10 +18,7 @@ let
     ".." = "cd ..";
     cls = "clear";
     md = "mkdir";
-    #hupdate = "home-manager switch";
-    #nupdate = "sudo nixos-rebuild switch";
     HP = "sudo nixos-rebuild switch --flake .#HP";
-    REY = "home-manager switch --flake .#rey";
     crp = "rsync -ah --progress";
     clean = "sudo nix-collect-garbage -d && sudo nix-env --delete-generations old";
     wipe = "sudo nix profile wipe-history --profile /nix/var/nix/profiles/system";
@@ -70,7 +67,7 @@ in {
       # Start SSH agent and add key
       if ! pgrep -u $USER ssh-agent > /dev/null; then
       eval "$(ssh-agent -s)"
-      ssh-add ~/.ssh/id_ed25519
+      ssh-add ~/.ssh/HP-Nixo
       fi
         export STARSHIP_CONFIG="$HOME/.config/starship.toml"
         if command -v starship &> /dev/null; then

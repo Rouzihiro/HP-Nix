@@ -14,6 +14,7 @@
     hypridle
     hyprshot
     hyprsunset
+    hyprland-qtutils
     #swaylock
     #sway
     gtk3
