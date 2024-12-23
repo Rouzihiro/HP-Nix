@@ -13,14 +13,9 @@ in {
   programs.home-manager.enable = true;
   nixpkgs.config.allowUnfree = true;
 
-  # Styling Options
-  #stylix.targets.waybar.enable = false;
-  #stylix.targets.rofi.enable = false;
-  #stylix.targets.hyprland.enable = false;
-
-#home.file."assets/active.jpg" = {
-#  source = ./assets/active.jpg;
-#};
-
+  #Styling Options
+  stylix.targets.waybar.enable = false;
+  stylix.targets.rofi.enable = false;
+  stylix.targets.hyprland.enable = false;
 
 }

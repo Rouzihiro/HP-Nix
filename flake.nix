@@ -1,54 +1,86 @@
 {
-  description = "My Home Manager flake";
+  description = "Nixos config flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    stylix.url = "github:danth/stylix";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    
+    stylix.url = "github:danth/stylix";
+    
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
     {
-      nixvim,
+      self,
       nixpkgs,
       home-manager,
+      nixvim,
+      spicetify-nix,
       ...
     }@inputs:
-    {
-
-      nixpkgs = import nixpkgs {
-        system = "x86_64-linux";
-        config.allowUnfree = true;
+    let
+      # System settings
+      system-settings = {
+        host = "HP"; # select hostname desktop/laptop
+        user = "rey"; # select user
+        drivers = "intel"; # select drivers amd/nvidia/intel
+        timezone = "Europe/Berlin"; # select timezone
+        locale = "de_DE.UTF-8"; # select locale
+        shell = "zsh"; # zsh/fish/bash
+        theme = "nord"; # select theme currently available nord/everforest
       };
 
+      propagated-args = system-settings // {
+        inherit inputs;
+      };
+    in
+    {
       nixosConfigurations = {
-        HP = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = {
-            inherit inputs;
-          };
+        # Host config
+        "${system-settings.host}" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux"; # System architecture
+          specialArgs = propagated-args;
+
           modules = [
             ./hosts/HP/configuration.nix
             inputs.stylix.nixosModules.stylix
-          ];
-        };
-      };
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useUserPackages = true;
+                useGlobalPkgs = true;
+                extraSpecialArgs = propagated-args;
 
-      homeConfigurations = {
-        rey = home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs { system = "x86_64-linux"; };
-          modules = [
-            ./hosts/HP/home.nix
-            nixvim.homeManagerModules.nixvim
+                # Enable Home Manager backup functionality
+                backupFileExtension = "backup";  # Set file extension for backup files
+
+                users = {
+                  "${system-settings.user}" = import ./hosts/HP/home.nix; # Make sure home.nix is correct
+                };
+
+                # Add any shared modules you need
+                sharedModules = with inputs; [
+                  spicetify-nix.homeManagerModules.default
+                  nixvim.homeManagerModules.nixvim
+                ];
+              };
+            }
           ];
         };
       };
     };
 }
+

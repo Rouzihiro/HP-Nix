@@ -2,6 +2,7 @@
 
 {
   imports = [
+    #./hyprland.nix
     ./android/default.nix
     ./cli/default.nix
     ./desktop/default.nix
@@ -11,6 +12,8 @@
     ./shells/default.nix
     ./terminals/default.nix
     ./virtualisation/default.nix
+    ./ssh.nix
+    ./git.nix
 
   ];
 }

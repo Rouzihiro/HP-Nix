@@ -3,7 +3,7 @@
 {
   imports = [
     # Include the results of the hardware scan.
-    ./stylix.nix
+    #./stylix.nix
     ./fonts.nix
     ./file-manager/default.nix
     ./swaync.nix

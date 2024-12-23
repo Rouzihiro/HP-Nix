@@ -3,6 +3,9 @@
 {
   environment.systemPackages = with pkgs; [
     # Theme / Style Related
+	    brave
+    yazi
+	    kitty
     pywal
     swaybg
     corefonts # Microsoft fonts for compatibility

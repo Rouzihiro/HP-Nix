@@ -8,6 +8,7 @@
     ./GPU/default.nix
     ./system-essentials.nix
     ./modules
+    #./hyprland-base.nix
   ];
 
   # Bootloader.
@@ -17,7 +18,6 @@
   # networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  environment.pathsToLink = [ "/libexec" ];
   environment.variables.EDITOR = "nvim";
   nixpkgs.config.allowUnfree = true;
 
@@ -48,7 +48,6 @@
   security.sudo.extraConfig = ''
     rey ALL=(ALL) NOPASSWD: ALL
   '';
-
 
   nix = {
     settings = {
