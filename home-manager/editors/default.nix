@@ -2,7 +2,7 @@
 
 {
   imports = [
-    #./neovim.nix
+    ./neovim.nix
     #./neovim-flake.nix
     #./vscode.nix
   ];
