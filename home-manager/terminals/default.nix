@@ -4,9 +4,9 @@
   imports = [
     ./kitty.nix
     #./kitty2.nix
-    #./yazi.nix
-    ./yazi2.nix
-    ./yazi-plugins.nix
+    ./yazi.nix
+    #./yazi2.nix
+    #./yazi-plugins.nix
   ];
 
 }

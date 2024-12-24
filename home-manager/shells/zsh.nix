@@ -4,7 +4,6 @@ let
     ls = "eza --icons --grid --all --color=always";
     la = "eza --icons -l -T -L=1";
     cat = "bat";
-    "," = "comma";
     hypr-config = "nvim ~/.config/hypr/keybinds.conf";
     neodir = "cd ~/.config/nvim";
     v = "nvim";
@@ -16,12 +15,18 @@ let
     xx = "exit";
     cd = "z";
     ".." = "cd ..";
-    cls = "clear";
-    md = "mkdir";
+    md = "mkdir -pv";
     HP = "sudo nixos-rebuild switch --flake .#HP";
     crp = "rsync -ah --progress";
     clean = "sudo nix-collect-garbage -d && sudo nix-env --delete-generations old";
     wipe = "sudo nix profile wipe-history --profile /nix/var/nix/profiles/system";
+    rm = "rm -Ivr";
+    mv = "mv -iv";
+    cp = "xcp -vr";
+    c = "clear";
+    df = "duf -hide special";
+    mem = "free -h";
+    ko = "pkill";
 
     ga = "git add ."; # Stage all changes
     gc = "git commit -m"; # Commit with a message
@@ -62,6 +67,10 @@ in {
     #  plugins = [ "git" "thefuck" ];
     #  theme = "robbyrussell";
     #};
+    sessionVariables = {
+        #DIRENV_LOG_FORMAT = "";
+        PROMPT_EOL_MARK = "󱞥";
+      };
     shellAliases = myAliases;
     initExtra = ''
       # Start SSH agent and add key

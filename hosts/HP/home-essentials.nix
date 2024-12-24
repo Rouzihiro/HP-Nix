@@ -4,7 +4,7 @@
 
   home.packages = with pkgs; [
     # Theme / Style Related
-    #hyprpanel
+    #hyprpanel - how to install ?
     nwg-look # Customize GTK and cursor themes
     # catppuccin-gtk           # Catppuccin theme for GTK
 
@@ -15,6 +15,7 @@
     # lxqt.lxqt-policykit      # Lightweight PolicyKit configuration
 
     # User Utilities & Tools
+    xcp dunst duf  
     fastfetch # Display system information
     lxtask # Lightweight task manager
     tree # Directory viewer
