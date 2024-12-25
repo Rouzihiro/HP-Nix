@@ -1,6 +1,6 @@
 {
   imports = [
-  ./sytylix.nix
+  ./stylix.nix
   #./stylix2.nix
   ];
 }

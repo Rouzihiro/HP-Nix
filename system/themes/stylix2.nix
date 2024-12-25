@@ -2,7 +2,7 @@
   stylix = {
     enable = true;
     polarity = "dark";
-    image = "${pkgs.my-misc}/share/passive/oxocarbon.png";
+    image = ./assets/active.jpg;
     base16Scheme = {
       slug = "oxocarbon-dark";
       name = "Oxocarbon Dark";

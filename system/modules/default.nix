@@ -3,11 +3,9 @@
 {
   imports = [
     # Include the results of the hardware scan.
-    #./stylix.nix
     ./fonts.nix
     ./file-manager/default.nix
     ./swaync.nix
-    ./rofi.nix
     ./wofi.nix
     #./bluetooth-blueman.nix
     #./ios.nix
