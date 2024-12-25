@@ -82,7 +82,7 @@
 
     # Wayland Specific
     wofi # Application launcher for Wayland
-    # rofi # X11
+    rofi-wayland
     # hyprshot                 # Screenshot tool
     # hypridle                 # Idle manager
     # grim                     # Screenshot tool

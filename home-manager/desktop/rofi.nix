@@ -18,7 +18,7 @@
     extraConfig = {
       modi = "drun,calc,window,emoji,run";
       sidebar-mode = true;
-      terminal = "kitty";
+      terminal = "footclient";
       show-icons = true;
       kb-remove-char-back = "BackSpace";
       kb-accept-entry = "Control+m,Return,KP_Enter";
