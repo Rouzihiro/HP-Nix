@@ -7,6 +7,7 @@
     ./GPU/default.nix
     ./system-essentials.nix
     ./modules/default.nix
+    ./themes/default.nix
     #./hyprland-base.nix
   ];
 }
