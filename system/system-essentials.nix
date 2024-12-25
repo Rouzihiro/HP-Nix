@@ -3,9 +3,9 @@
 {
   environment.systemPackages = with pkgs; [
     # Theme / Style Related
-	    brave
+    brave
     yazi
-	    kitty
+    kitty
     pywal
     swaybg
     corefonts # Microsoft fonts for compatibility
@@ -15,6 +15,7 @@
     # redshift                # (x11) Adjust screen color temperature
 
     # System Utilities & Tools
+    cifs-utils
     pass gnupg pinentry # security
     # nixfmt-rfc-style + auto formatting tool: nix-shell -p nixfmt; find . -type f -name "*.nix" -exec nixfmt {} +
     neovim

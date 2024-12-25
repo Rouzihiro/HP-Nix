@@ -1,34 +1,19 @@
 #!/bin/sh
 
-# Set the SMB share URL and mount point
-SMB_SHARE="smb://192.168.178.1/FRITZ.NAS"
-MOUNT_POINT="$HOME/fritz_nas"
+# Ensure the mount point exists
+mkdir -p /mnt/FRITZ_NAS
 
-# Retrieve the SMB credentials from pass
-USER=$(pass smb/drive/username)
-PASS=$(pass smb/drive/password)
-WORKGROUP=$(pass smb/drive/workgroup)
-
-# Check if the mount point exists, if not, create it
-if [ ! -d "$MOUNT_POINT" ]; then
-  mkdir -p "$MOUNT_POINT"
-fi
-
-# Check if it's already mounted
-if ! gio mount -l | grep -q "$SMB_SHARE"; then
-  echo "Mounting $SMB_SHARE..."
-  
-  # Use the credentials to mount the SMB share
-  gio mount smb://$USER:$PASS@192.168.178.1/FRITZ.NAS
+# Check if already mounted
+if ! mount | grep -q '/mnt/FRITZ_NAS'; then
+  # Mount the SMB share if not already mounted
+  sudo mount -t cifs //192.168.178.1/FRITZ.NAS /mnt/FRITZ_NAS -o credentials=/etc/samba/creds,uid=1000,gid=990,file_mode=0777,dir_mode=0777
 else
-  echo "$SMB_SHARE is already mounted."
+  echo "Share already mounted."
 fi
 
-# Create a symlink if it's mounted
-if gio mount -l | grep -q "$SMB_SHARE"; then
-  ln -snf "$MOUNT_POINT" "$HOME/fritz_nas_link"
-  echo "Symlink created at $HOME/fritz_nas_link"
-else
-  echo "Failed to mount $SMB_SHARE."
-fi
+# manual procedere in case script doesnt work:
+# sudo mount -t cifs //192.168.178.1/FRITZ.NAS /mnt/FRITZ_NAS -o credentials=/etc/samba/creds,uid=1000,gid=990,file_mode=0777,dir_mode=0777
 
+# Consider adding vers=3.0: If you're having compatibility issues or if SMB version 2 is problematic, adding vers=3.0 can sometimes help with newer SMB servers:
+
+#sudo mount -t cifs //192.168.178.1/FRITZ.NAS /mnt/FRITZ_NAS -o credentials=/etc/samba/creds,uid=1000,gid=990,file_mode=0777,dir_mode=0777,vers=3.0
