@@ -8,6 +8,7 @@
     #./updater.nix
     #./portals.nix
     ./gnome-polkit.nix
+    ./samba.nix
   ];
 
 }

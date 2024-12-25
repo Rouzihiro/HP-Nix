@@ -5,13 +5,13 @@ let
     la = "eza --icons -l -T -L=1";
     cat = "bat";
     hypr-config = "nvim ~/.config/hypr/keybinds.conf";
-    neodir = "cd ~/.config/nvim";
+    #neodir = "cd ~/.config/nvim";
     v = "nvim";
     sv = "sudo nvim";
     zsource = "source ~/.zshrc";
     zconfig = "v ~/dotfiles/home-manager/shells/zsh.nix";
     hconfig = "nvim ~/dotfiles/hosts/HP/home.nix";
-    hlog = "journalctl -u hyprland --since '10 minutes ago'";
+    #hlog = "journalctl -u hyprland --since '10 minutes ago'";
     xx = "exit";
     cd = "z";
     ".." = "cd ..";
