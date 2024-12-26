@@ -4,8 +4,8 @@
 
   home.packages = with pkgs; [
     # Theme / Style Related
-    #hyprpanel - how to install ?
-    nwg-look # Customize GTK and cursor themes
+    # hyprpanel - how to install ?
+    # nwg-look # Customize GTK and cursor themes
     # catppuccin-gtk           # Catppuccin theme for GTK
 
     # File Management
@@ -15,6 +15,7 @@
     # lxqt.lxqt-policykit      # Lightweight PolicyKit configuration
 
     # User Utilities & Tools
+    tmux
     xcp dunst duf  
     fastfetch # Display system information
     lxtask # Lightweight task manager
@@ -81,7 +82,7 @@
     # onedrive                 # Cloud storage
 
     # Wayland Specific
-    wofi # Application launcher for Wayland
+    wofi     
     rofi-wayland
     # hyprshot                 # Screenshot tool
     # hypridle                 # Idle manager
