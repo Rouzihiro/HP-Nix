@@ -16,7 +16,7 @@
 
     # User Utilities & Tools
     tmux
-    xcp dunst duf  
+    xcp dunst duf nh
     fastfetch # Display system information
     lxtask # Lightweight task manager
     tree # Directory viewer
@@ -30,6 +30,7 @@
     ####################
     # Programming & Development
     ####################
+    nodejs
     gcc # GNU Compiler Collection for C, C++, and other languages
     lazygit # Simple terminal-based Git UI
     live-server # Development server with live reloading
@@ -45,8 +46,8 @@
     brightnessctl # CLI tool to adjust screen brightness
     cmatrix # "Matrix" screensaver for the terminal
     #htop                     # Interactive system monitor
-    #manga-cli                # CLI manga downloader and reader
-    #nh                       # CLI tool for accessing nhentai.net content
+    manga-cli                # CLI manga downloader and reader
+    nhentai                       # CLI tool for accessing nhentai.net content
     #playerctl                # CLI media player controller
     zathura # Lightweight PDF viewer
     ffmpeg-full # Multimedia utilities

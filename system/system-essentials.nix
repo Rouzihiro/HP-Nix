@@ -3,6 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     # Theme / Style Related
+    chromium
     brave
     yazi
     kitty

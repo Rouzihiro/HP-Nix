@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./ani-cli.nix
     #./btop.nix
     # ./cava.nix
     #./direnv.nix
