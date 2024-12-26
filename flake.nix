@@ -55,12 +55,10 @@
         "${system-settings.host}" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux"; # System architecture
           specialArgs = propagated-args;
-          overlays = [
-          inputs.hyprpanel.overlay
-	  ];
           modules = [
             ./hosts/HP/configuration.nix
             inputs.stylix.nixosModules.stylix
+            {nixpkgs.overlays = [inputs.hyprpanel.overlay];}
             home-manager.nixosModules.home-manager
             {
               home-manager = {
