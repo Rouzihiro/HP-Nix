@@ -16,6 +16,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
+
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -53,7 +55,9 @@
         "${system-settings.host}" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux"; # System architecture
           specialArgs = propagated-args;
-
+          overlays = [
+          inputs.hyprpanel.overlay
+	  ];
           modules = [
             ./hosts/HP/configuration.nix
             inputs.stylix.nixosModules.stylix
