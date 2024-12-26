@@ -8,6 +8,7 @@
     ./system-essentials.nix
     ./modules/default.nix
     ./themes/default.nix
+    ./scripts/scripts.nix
     #./hyprland-base.nix
   ];
 }

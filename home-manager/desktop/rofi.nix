@@ -274,7 +274,7 @@
       modi: "filebrowser";
       filebrowser {
         directories-first: false;
-        directory: "${pkgs.my-walls}/share/wallpapers";
+        directory: "../Pictures/Pictures/wallpapers/coffee.jpg";
         command: "swww img -f Mitchell -t any --transition-fps 75 --transition-duration 2";
       }
     }
