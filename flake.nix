@@ -40,9 +40,8 @@
       ...
     }@inputs:
     let
-      # System settings
       system-settings = {
-        host = "HP"; # select hostname desktop/laptop
+        host = builtins.readFile "/etc/hostname" // "HP"; 
         user = "rey"; # select user
         drivers = "intel"; # select drivers amd/nvidia/intel
         timezone = "Europe/Berlin"; # select timezone
@@ -62,7 +61,7 @@
           system = "x86_64-linux"; # System architecture
           specialArgs = propagated-args;
           modules = [
-            ./hosts/${host}/configuration.nix
+            ./hosts/${system-settings.host}/configuration.nix
             inputs.stylix.nixosModules.stylix
             #{nixpkgs.overlays = [inputs.hyprpanel.overlay];}
             home-manager.nixosModules.home-manager
@@ -76,7 +75,7 @@
                 backupFileExtension = "backup";  # Set file extension for backup files
 
                 users = {
-                  "${system-settings.user}" = import ./hosts/${host}/home.nix; # Make sure home.nix is correct
+                  "${system-settings.user}" = import ./hosts/${system-settings.host}/home.nix; # Make sure home.nix is correct
                 };
 
                 # Add any shared modules you need
