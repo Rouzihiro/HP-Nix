@@ -16,6 +16,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+      fine-cmdline = {
+      url = "github:VonHeikemen/fine-cmdline.nvim";
+      flake = false;
+    };
+
     #hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
     # deactivated again since battery-state isnt shown correctly
 
