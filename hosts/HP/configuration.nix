@@ -4,6 +4,7 @@
   imports = [
     ./../../system-default.nix
     ./hardware-configuration.nix
+    ./hyprland.nix
      ];
 
   # Bootloader.

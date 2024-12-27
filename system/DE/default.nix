@@ -5,7 +5,7 @@
     #./boot.nix
     ./greetd.nix
     #./i3.nix
-    ./hyprland.nix
+    #./hyprland.nix
     #./waybar.nix
     #./gnome.nix
     #./pywal.nix
