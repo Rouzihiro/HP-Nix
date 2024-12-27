@@ -62,7 +62,7 @@
           system = "x86_64-linux"; # System architecture
           specialArgs = propagated-args;
           modules = [
-            ./hosts/HP/configuration.nix
+            ./hosts/${host}/configuration.nix
             inputs.stylix.nixosModules.stylix
             #{nixpkgs.overlays = [inputs.hyprpanel.overlay];}
             home-manager.nixosModules.home-manager
@@ -76,7 +76,7 @@
                 backupFileExtension = "backup";  # Set file extension for backup files
 
                 users = {
-                  "${system-settings.user}" = import ./hosts/HP/home.nix; # Make sure home.nix is correct
+                  "${system-settings.user}" = import ./hosts/${host}/home.nix; # Make sure home.nix is correct
                 };
 
                 # Add any shared modules you need
