@@ -4,7 +4,7 @@
   environment.systemPackages = with pkgs; [
     # Theme / Style Related
     # hyprpanel
-    chromium
+    chromium # need for Hamburg-Events Script
     brave
     yazi
     kitty
@@ -17,18 +17,16 @@
     # redshift                # (x11) Adjust screen color temperature
 
     # System Utilities & Tools
-    tesseract grim slurp 
+    tesseract grim slurp # needed for Screenshot - OCR script 
     cifs-utils
-    # pass gnupg pinentry # security
+    # pass gnupg pinentry # security, not needed atm
     # nixfmt-rfc-style + auto formatting tool: nix-shell -p nixfmt; find . -type f -name "*.nix" -exec nixfmt {} +
     neovim
     openssl # Encryption toolkit
     stow # Manage dotfiles
     udev # Device manager
     pciutils # PCI utilities
-    unzip
-    zip
-    unrar # Compression tools
+    unzip zip unrar # Compression tools
     ntfs3g # NTFS filesystem tools
     glib # Core libraries
     brightnessctl
@@ -41,8 +39,5 @@
     git # Version control system
     openjdk17 # Java Development Kit
     # libgcc bc libvirt
-
-    # Wayland Specific
-    swaynotificationcenter
   ];
 }
