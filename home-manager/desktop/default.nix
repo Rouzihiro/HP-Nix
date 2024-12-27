@@ -8,6 +8,7 @@
     #./gimp.nix
     ./hypr
     ./rofi
+    #./rofi-zaney.nix
     #./spotify.nix
     #./swaync.nix
     #./vivaldi.nix
