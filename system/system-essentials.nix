@@ -3,7 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     # Theme / Style Related
-    hyprpanel
+    # hyprpanel
     chromium
     brave
     yazi

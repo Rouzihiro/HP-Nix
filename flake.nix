@@ -16,7 +16,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
+    #hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
+    # deactivated again since battery-state isnt shown correctly
 
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
@@ -58,7 +59,7 @@
           modules = [
             ./hosts/HP/configuration.nix
             inputs.stylix.nixosModules.stylix
-            {nixpkgs.overlays = [inputs.hyprpanel.overlay];}
+            #{nixpkgs.overlays = [inputs.hyprpanel.overlay];}
             home-manager.nixosModules.home-manager
             {
               home-manager = {
