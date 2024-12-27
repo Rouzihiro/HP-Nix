@@ -14,6 +14,7 @@
     # lxqt.lxqt-policykit      # Lightweight PolicyKit configuration
 
     # User Utilities & Tools
+    joplin-desktop
     tmux
     xcp dunst duf nh
     fastfetch # Display system information

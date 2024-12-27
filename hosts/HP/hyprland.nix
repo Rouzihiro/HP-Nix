@@ -2,7 +2,6 @@
 
   services.getty.autologinUser = "rey";
 
-  # Install Hyprland
   programs.hyprland.enable = true;
 
   environment.systemPackages = with pkgs; [
@@ -15,15 +14,11 @@
     hyprshot
     hyprsunset
     #hyprland-qtutils --> need to figure out how to install this plugin !!!!
-    #swaylock
-    #sway
     gtk3
     gtk4
-    #rofi-wayland
     waybar
     grim
     wl-clipboard
-    #hsetroot
 
   ];
 

@@ -19,7 +19,7 @@
     # System Utilities & Tools
     tesseract grim slurp 
     cifs-utils
-    pass gnupg pinentry # security
+    # pass gnupg pinentry # security
     # nixfmt-rfc-style + auto formatting tool: nix-shell -p nixfmt; find . -type f -name "*.nix" -exec nixfmt {} +
     neovim
     openssl # Encryption toolkit
