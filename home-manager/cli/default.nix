@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
   imports = [
@@ -9,6 +9,7 @@
     ./git.nix
     ./ssh.nix
     ./zoxide.nix
+    ./p-vault/simple.nix
   ];
 
 }
