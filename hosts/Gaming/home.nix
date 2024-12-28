@@ -7,7 +7,7 @@ in {
   imports = [ homeEssentials homeDefault ];
 
 home.packages = [
-  inputs.zen-browser.packages."${system}".default;
+  inputs.zen-browser.packages."${system}".default
 ];
 
   home.username = "rey";
