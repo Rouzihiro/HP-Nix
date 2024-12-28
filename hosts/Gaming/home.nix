@@ -1,10 +1,14 @@
-{ config, pkgs, lib, ... }:
+{ inputs, config, pkgs, lib, ... }:
 
 let
   homeEssentials = import ./home-essentials.nix;
   homeDefault = import ./../../home-default.nix;
 in {
   imports = [ homeEssentials homeDefault ];
+
+home.packages = [
+  inputs.zen-browser.packages."${system}".default;
+];
 
   home.username = "rey";
   home.homeDirectory = "/home/rey";
