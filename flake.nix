@@ -40,26 +40,14 @@
       ...
     }@inputs:
     let
-    # Read hostname with error handling
-    readHostname = builtins.tryEval' (builtins.readFile "/etc/hostname"); 
-    hostname = 
-      if builtins.isString readHostname 
-      then readHostname 
-      else 
-        let 
-          errMsg = "Failed to read hostname from /etc/hostname. Using fallback."; 
-          logMsg = builtins.trace errMsg null; 
-        in "HP";
-
       system-settings = {
-        #host = builtins.readFile "/etc/hostname" // "HP"; 
-        host = hostname;
+        host = "HP";
         user = "rey"; # select user
         drivers = "intel"; # select drivers amd/nvidia/intel
         timezone = "Europe/Berlin"; # select timezone
         locale = "de_DE.UTF-8"; # select locale
         shell = "zsh"; # zsh/fish/bash
-        theme = "nord"; # select theme currently available nord/everforest
+        #theme = "nord"; # select theme currently available nord/everforest
       };
 
       propagated-args = system-settings // {

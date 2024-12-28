@@ -6,7 +6,7 @@
     ./cli/default.nix
     ./desktop/default.nix
     ./editors/default.nix 
-    ./gaming/default.nix
+    #./gaming/default.nix
     ./prompts/default.nix
     ./shells/default.nix
     ./terminals/default.nix
