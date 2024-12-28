@@ -5,6 +5,7 @@
     ./../../system-default.nix
     ./hardware-configuration.nix
     ./hyprland.nix
+    ./gaming/default.nix
      ];
 
   # Bootloader.
