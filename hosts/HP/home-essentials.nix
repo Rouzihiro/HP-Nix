@@ -48,8 +48,7 @@
     #htop                     # Interactive system monitor
     manga-cli                # CLI manga downloader and reader
     nhentai                       # CLI tool for accessing nhentai.net content
-    porn-vault
-    stash
+    stash                     # http://localhost:9999/
     #playerctl                # CLI media player controller
     zathura # Lightweight PDF viewer
     ffmpeg-full # Multimedia utilities
