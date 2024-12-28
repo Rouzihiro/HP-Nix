@@ -16,7 +16,7 @@
       w = "switch";
       ca = "commit --amend";
       cn = "commit --amend --no-edit";
-      a = "add -v";
+      a = "add . -v";
       r = "restore";
       v = "revert";
       va = "revert --abort";

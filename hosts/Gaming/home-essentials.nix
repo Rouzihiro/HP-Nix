@@ -71,6 +71,7 @@
     thunderbird # Email client
     zoom-us # Video conferencing
     skypeforlinux # Skype client
+    whatsapp-for-linux
     # element-desktop          # Decentralized messaging app
     # anydesk                  # Remote desktop client
     # localsend                # Local file sharing
