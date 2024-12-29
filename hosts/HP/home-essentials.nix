@@ -3,10 +3,11 @@
 {
 
   home.packages = with pkgs; [
+    
     # Theme / Style Related
     # nwg-look # Customize GTK and cursor themes
     # catppuccin-gtk           # Catppuccin theme for GTK
-    librewolf
+    
     # File Management
     yazi # Terminal file manager
     pdfarranger # PDF editor
@@ -62,7 +63,7 @@
     # Browsers
     brave # Privacy-focused browser
     # qutebrowser              # Keyboard-focused web browser
-    # librewolf                # Firefox fork for privacy
+    librewolf                # Firefox fork for privacy
     # vivaldi                  # Chromium-based browser
     # falkon                   # Lightweight Qt-based web browser
 
@@ -96,7 +97,7 @@
     # wl-clipboard             # Clipboard manager
 
     # Miscellaneous
-    # cmatrix                  # Matrix effect in terminal
+     cmatrix                  # Matrix effect in terminal
     # lolcat                   # Colorize terminal output
     # onefetch                 # Git repository overview
     # cowsay                   # Fun ASCII art generator

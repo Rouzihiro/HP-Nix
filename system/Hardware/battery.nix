@@ -1,16 +1,16 @@
 { pkgs, drivers, timezone, locale, host, ... }:
 
-let host = "laptop";
+let host = "HP";
 
 in {
 
-  networking.hostName = "laptop"; # Set the hostname for your system
+  networking.hostName = "HP"; # Set the hostname for your system
 
   # Laptop battery settings
   services = {
-    thermald.enable = if host == "laptop" then true else false;
+    thermald.enable = if host == "HP" then true else false;
     tlp = {
-      enable = if host == "laptop" then true else false;
+      enable = if host == "HP" then true else false;
       settings = {
         TLP_DEFAULT_MODE = "BAT";
         TLP_PERSISTENT_DEFAULT = 1;

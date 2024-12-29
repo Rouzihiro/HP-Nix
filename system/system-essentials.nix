@@ -9,7 +9,6 @@
     yazi
     kitty
     pywal
-    swaybg
     corefonts # Microsoft fonts for compatibility
     libnotify
     swaynotificationcenter # System-wide notifications

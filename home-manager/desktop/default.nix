@@ -8,10 +8,7 @@
     #./firefox.nix
     #./gimp.nix
     ./hypr
-    #./rofi
-    #./rofi-zaney
-    #./rofi.nix
-    #./rofi-zaney/rofi.nix
+    ./rofi/default.nix
     #./spotify.nix
     #./swaync.nix
     #./vivaldi.nix

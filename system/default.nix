@@ -9,6 +9,5 @@
     ./modules/default.nix
     ./themes/default.nix
     ./scripts/default.nix
-    #./hyprland-base.nix
   ];
 }

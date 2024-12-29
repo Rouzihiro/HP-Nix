@@ -1,10 +1,11 @@
-{ pkgs, theme, host, ... }:
+{ pkgs, ... }:
 
 {
-  programs.rofi = {
-    enable = true;
-    package = pkgs.rofi-wayland;
-    theme = ./${theme}-${host}.rasi;
-    terminal = "kitty";
-  };
+  imports = [
+    ./rofi.nix
+    ./config-long.nix
+    ./config-emoji.nix
+  
+  ];
+
 }
