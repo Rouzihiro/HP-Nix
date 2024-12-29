@@ -21,10 +21,10 @@
       flake = false;
     };
 
-    #hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
+    # hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
     # deactivated again since battery-state isnt shown correctly
     
-    zen-browser.url = "github:Gurjaka/zen-browser-nix";
+    # zen-browser.url = "github:Gurjaka/zen-browser-nix";
     
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
