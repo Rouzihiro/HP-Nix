@@ -2,9 +2,9 @@
 
 {
   imports = [
-    ./rofi.nix
-    ./config-long.nix
-    ./config-emoji.nix
+    #./rofi.nix
+    #./config-long.nix
+    #./config-emoji.nix
   
   ];
 
