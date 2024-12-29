@@ -49,7 +49,7 @@
         timezone = "Europe/Berlin"; # select timezone
         locale = "de_DE.UTF-8"; # select locale
         shell = "zsh"; # zsh/fish/bash
-        theme = "everforest"; # select theme currently available nord/everforest
+        #theme = "everforest"; # select theme currently available nord/everforest
         GitUser = "Rouzihiro";
         GitMail = "ryossj@gmail.com";
       };

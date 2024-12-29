@@ -3,12 +3,12 @@
 {
   imports = [
     ./brave.nix
-    ./librewolf.nix
+    #./librewolf.nix
     #./cursor.nix
     #./firefox.nix
     #./gimp.nix
     ./hypr
-    ./rofi
+    #./rofi
     #./rofi-zaney
     #./rofi.nix
     #./rofi-zaney/rofi.nix
