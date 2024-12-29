@@ -43,7 +43,7 @@
     }@inputs:
     let
       system-settings = {
-        host = "Gaming";
+        host = "HP";
         user = "rey"; # select user
         drivers = "intel"; # select drivers amd/nvidia/intel
         timezone = "Europe/Berlin"; # select timezone
