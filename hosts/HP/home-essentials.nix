@@ -6,7 +6,7 @@
     # Theme / Style Related
     # nwg-look # Customize GTK and cursor themes
     # catppuccin-gtk           # Catppuccin theme for GTK
-
+    librewolf
     # File Management
     yazi # Terminal file manager
     pdfarranger # PDF editor

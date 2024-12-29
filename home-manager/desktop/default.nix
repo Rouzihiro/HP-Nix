@@ -3,6 +3,7 @@
 {
   imports = [
     ./brave.nix
+    ./librewolf.nix
     #./cursor.nix
     #./firefox.nix
     #./gimp.nix
