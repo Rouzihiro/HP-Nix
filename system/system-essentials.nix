@@ -13,7 +13,7 @@
     corefonts # Microsoft fonts for compatibility
     libnotify
     swaynotificationcenter # System-wide notifications
-    #feh #swww                # Wallpaper manager
+    swww #feh                # Wallpaper manager
     # redshift                # (x11) Adjust screen color temperature
 
     # System Utilities & Tools

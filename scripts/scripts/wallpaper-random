@@ -1,38 +1,15 @@
 #!/bin/sh
 
-# Directory containing the wallpapers
-PICTURES_DIR="$HOME/Pictures/wallpapers"
+wallpaper_folder="${HOME}/Pictures/wallpapers"
+selected_file=$(shuf -n 1 -e "$wallpaper_folder"/*)
+wall="$selected_file"
+wal -i "$wall";
+pkill swaync;
+pkill waybar;
+swaync &
+waybar &
+swww img --transition-type random --transition-fps 60 --transition-duration 2 "$wall"
 
-# Get a list of image files (including symlinks) in the Wallpapers directory
-files=$(find -L "$PICTURES_DIR" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.jpeg" -o -iname "*.gif" \))
-
-# Check if wallpapers are available
-if [ -z "$files" ]; then
-    echo "No wallpapers found in $PICTURES_DIR"
-    exit 1
-fi
-
-# Select a random file from the list
-random_file=$(echo "$files" | shuf -n 1)
-
-# Verbose output
-echo "Selected random wallpaper: $random_file"
-
-# Kill any existing swaybg processes
-pkill -x swaybg || echo "No swaybg process to kill"
-
-# Set the selected image as the wallpaper using swaybg
-if [ -n "$random_file" ]; then
-    swaybg -i "$random_file" -m fill || echo "Failed to set wallpaper"
-else
-    echo "No wallpapers found"
-    exit 1
-fi
-
-# Generate colors with wal
-if command -v wal >/dev/null; then
-    wal -i "$random_file" || echo "Failed to generate colors with wal"
-else
-    echo "wal command not found"
-fi
+# swww img --transition-type fade --transition-duration 2 --transition-fps 60 $wall;
+# swww img --transition-type grow --transition-pos 0.5,0.5 --transition-fps 60 $wall;
 

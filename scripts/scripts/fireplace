@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 # Switch to workspace 5
 i3-msg workspace 5
 # Wait a bit for the workspace switch to take effect

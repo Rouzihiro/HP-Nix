@@ -1,44 +1,37 @@
 #!/bin/sh
 
 # Directory containing the wallpapers
-PICTURES_DIR="$HOME/Pictures/wallpapers"
+wallpaper_folder="${HOME}/Pictures/wallpapers"
 
-# Get a list of image files (including symlinks) in the Wallpapers directory
-files=$(find -L "$PICTURES_DIR" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.jpeg" -o -iname "*.gif" \))
-
-# Check if wallpapers are available
+# Get a list of wallpapers (shortened to filenames)
+files=$(find -L "$wallpaper_folder" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.jpeg" -o -iname "*.gif" \))
 if [ -z "$files" ]; then
-    echo "No wallpapers found in $PICTURES_DIR"
+    echo "No wallpapers found in $wallpaper_folder"
     exit 1
 fi
 
-# Display a selection menu with rofi or wofi
-selected_file=$(echo "$files" | rofi -dmenu -i -p "Select Wallpaper") # Replace `rofi` with `wofi` if needed
+# Display a selection menu with Rofi (show only filenames)
+selected_filename=$(echo "$files" | xargs -I{} basename {} | rofi -dmenu -i -p "Select Wallpaper")
 
-# Check if a file was selected
-if [ -z "$selected_file" ]; then
-    echo "No wallpaper selected"
-    exit 1
-fi
-
-# Verbose output
-echo "Selected wallpaper: $selected_file"
-
-# Kill any existing swaybg processes
-pkill -x swaybg || echo "No swaybg process to kill"
-
-# Set the selected image as the wallpaper using swaybg
-if [ -n "$selected_file" ]; then
-    swaybg -i "$selected_file" -m fill || echo "Failed to set wallpaper"
+# If the user cancels the selection, fallback to a random wallpaper
+if [ -z "$selected_filename" ]; then
+    echo "No wallpaper selected, choosing a random one."
+    selected_file=$(shuf -n 1 <<< "$files")
 else
-    echo "No wallpapers found"
-    exit 1
+    # Map the selected filename back to its full path
+    selected_file=$(find -L "$wallpaper_folder" -type f -name "$selected_filename")
 fi
 
-# Generate colors with wal
-if command -v wal >/dev/null; then
-    wal -i "$selected_file" || echo "Failed to generate colors with wal"
-else
-    echo "wal command not found"
-fi
+# Set the wallpaper
+wall="$selected_file"
+wal -i "$wall"
+
+# Restart services
+pkill swaync
+pkill waybar
+swaync &
+waybar &
+
+# Apply wallpaper with a random transition
+swww img --transition-type random --transition-fps 60 --transition-duration 2 "$wall"
 
