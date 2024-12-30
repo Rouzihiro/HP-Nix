@@ -7,6 +7,7 @@ let
     v = "nvim";
     sv = "sudo nvim";
     zsource = "source ~/.zshrc";
+    g = "git";
     #hlog = "journalctl -u hyprland --since '10 minutes ago'";
     xx = "exit";
     cd = "z";
