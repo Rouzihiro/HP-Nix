@@ -21,6 +21,8 @@
       flake = false;
     };
 
+    hyprland-qtutils.url = "github:hyprwm/hyprland-qtutils";
+
     # hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
     # deactivated again since battery-state isnt shown correctly
     
@@ -38,6 +40,7 @@
       nixpkgs,
       home-manager,
       nixvim,
+      hyprland-qtutils,
       spicetify-nix,
       ...
     }@inputs:

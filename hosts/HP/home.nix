@@ -8,6 +8,8 @@ in {
 
   home.packages = with pkgs; [
     inputs.zen-browser.packages."${system}".default
+    #inputs.hyprland-qtutils.packages."${pkgs.system}".default
+    inputs.hyprland-qtutils.packages."${system}".default
   ];
 
   home.username = "rey";
