@@ -1,4 +1,4 @@
-{ theme, pkgs, ... }:
+{ theme, pkgs, inputs, ... }:
 
 {
   programs.nixvim = {
@@ -54,9 +54,10 @@
 
     plugins = {
       web-devicons.enable = true;
-
       lualine.enable = true;
       which-key.enable = true;
+      nvim-cmp.enable = true;
+      cmp-path.enable = true;
       nvim-tree = {
         enable = true;
         autoReloadOnWrite = true;

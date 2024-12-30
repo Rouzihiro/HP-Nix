@@ -31,6 +31,10 @@ let
     df = "duf -hide special";
     mem = "free -h";
     ko = "pkill";
+    h = "history | fzf";
+    edithome = "cd ~/dotfiles/ && ${editor} home-manager/home.nix home-manager/packages.nix";
+    editsysconf = "cd ~/dotfiles/ && ${editor} system/configuration.nix flake.nix";
+
   };
 in {
   programs.zsh = {
