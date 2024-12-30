@@ -1,4 +1,4 @@
-{ ... }:
+{ editor, host, ... }:
 let
   myAliases = {
     ls = "eza --icons --grid --all --color=always";
@@ -32,8 +32,8 @@ let
     mem = "free -h";
     ko = "pkill";
     h = "history | fzf";
-    edithome = "cd ~/dotfiles/ && ${editor} home-manager/home.nix home-manager/packages.nix";
-    editsysconf = "cd ~/dotfiles/ && ${editor} system/configuration.nix flake.nix";
+    edithome = "cd ~/dotfiles/ && ${editor} hosts/${host}/home.nix hosts/${host}/home-essentials.nix";
+    editsys = "cd ~/dotfiles/ && ${editor} system/system-essentials.nix flake.nix";
 
   };
 in {
