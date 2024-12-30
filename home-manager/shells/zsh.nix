@@ -59,6 +59,12 @@ in {
         fi
        export PATH="$HOME/scripts:$PATH"
        export GPG_TTY=$(tty)
+
+    # Start SSH agent and add the private key if not already loaded
+    if ! pgrep -u $USER ssh-agent > /dev/null; then
+      eval "$(ssh-agent -s)"
+      ssh-add ~/.ssh/HP-Nixo
+    fi
     '';
     history = { size = 10000; };
   };
