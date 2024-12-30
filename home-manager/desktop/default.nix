@@ -3,11 +3,11 @@
 {
   imports = [
     ./brave.nix
-    #./librewolf.nix
     #./cursor.nix
     #./firefox.nix
     #./gimp.nix
     ./hypr
+    ./swaync.nix
     ./rofi/default.nix
     #./spotify.nix
     #./swaync.nix
