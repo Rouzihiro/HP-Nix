@@ -59,6 +59,8 @@
       core = {
         whitespace = "trailing-space,space-before-tab";
       };
+      # credential.helper = "store";
+      # core.editor = "nvim";
       pull.ff = "only";
       branch.autoSetupMerge = true;
       merge.conflictStyle = "diff3";
@@ -79,3 +81,4 @@
     };
   };
 }
+

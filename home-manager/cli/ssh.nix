@@ -1,6 +1,7 @@
-{...}: {
+{ pkgs, lib, ...}: {
   programs.ssh = {
     enable = true;
+    #addKeysToAgent = "yes";
 
     matchBlocks = {
       "Git" = {
@@ -12,4 +13,10 @@
       };
     };
   };
+
+#  services.ssh-agent = {
+#    enable = lib.modules.mkIf pkgs.stdenv.isLinux true;
+#  };
+
+
 }

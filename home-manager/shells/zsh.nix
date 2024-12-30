@@ -4,12 +4,9 @@ let
     ls = "eza --icons --grid --all --color=always";
     la = "eza --icons -l -T -L=1";
     cat = "bat";
-    hypr-config = "nvim ~/.config/hypr/keybinds.conf";
     v = "nvim";
     sv = "sudo nvim";
     zsource = "source ~/.zshrc";
-    zconfig = "v ~/dotfiles/home-manager/shells/zsh.nix";
-    hconfig = "nvim ~/dotfiles/hosts/HP/home.nix";
     #hlog = "journalctl -u hyprland --since '10 minutes ago'";
     xx = "exit";
     cd = "z";
@@ -34,7 +31,8 @@ let
     h = "history | fzf";
     edithome = "cd ~/dotfiles/ && ${editor} hosts/${host}/home.nix hosts/${host}/home-essentials.nix";
     editsys = "cd ~/dotfiles/ && ${editor} system/system-essentials.nix flake.nix";
-
+    editshell = "v ~/dotfiles/home-manager/shells/zsh.nix";
+    edithypr = "nvim ~/.config/hypr/keybinds.conf";
   };
 in {
   programs.zsh = {
