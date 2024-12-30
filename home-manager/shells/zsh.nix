@@ -53,6 +53,10 @@ in {
       };
     shellAliases = myAliases;
     initExtra = ''
+      s() {
+        grep -rin "$1" .
+      }
+
           export STARSHIP_CONFIG="$HOME/.config/starship.toml"
         if command -v starship &> /dev/null; then
           eval "$(starship init zsh)"

@@ -57,6 +57,7 @@
       lualine.enable = true;
       which-key.enable = true;
       cmp-path.enable = true;
+      conform-nvim.enable = true;
       nvim-tree = {
         enable = true;
         autoReloadOnWrite = true;
