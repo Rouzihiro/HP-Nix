@@ -1,7 +1,5 @@
 { config, pkgs, ... }: {
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   home.packages = with pkgs; [
     starship
     zsh
