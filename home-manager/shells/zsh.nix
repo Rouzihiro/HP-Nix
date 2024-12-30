@@ -53,12 +53,7 @@ in {
       };
     shellAliases = myAliases;
     initExtra = ''
-      # Start SSH agent and add key
-      if ! pgrep -u $USER ssh-agent > /dev/null; then
-      eval "$(ssh-agent -s)"
-      ssh-add ~/.ssh/HP-Nixo
-      fi
-        export STARSHIP_CONFIG="$HOME/.config/starship.toml"
+          export STARSHIP_CONFIG="$HOME/.config/starship.toml"
         if command -v starship &> /dev/null; then
           eval "$(starship init zsh)"
         fi

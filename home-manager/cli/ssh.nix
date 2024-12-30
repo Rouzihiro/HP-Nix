@@ -1,14 +1,14 @@
 { pkgs, lib, ...}: {
   programs.ssh = {
     enable = true;
-    #addKeysToAgent = "yes";
+    addKeysToAgent = "yes";
 
     matchBlocks = {
       "Git" = {
         host = "github.com";
         identitiesOnly = true;
         identityFile = [
-          "~/.ssh/HP-Nixo.pub"
+          "~/.ssh/HP-Nixo"
         ];
       };
     };
