@@ -6,9 +6,9 @@ let
 in {
   imports = [ homeEssentials homeDefault ];
 
- # home.packages = with pkgs; [
- #   inputs.zen-browser.packages."${system}".default
- # ];
+  home.packages = with pkgs; [
+    inputs.zen-browser.packages."${system}".default
+  ];
 
   home.username = "rey";
   home.homeDirectory = "/home/rey";

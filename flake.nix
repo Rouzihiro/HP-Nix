@@ -24,7 +24,7 @@
     # hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
     # deactivated again since battery-state isnt shown correctly
     
-    # zen-browser.url = "github:Gurjaka/zen-browser-nix";
+    zen-browser.url = "github:Gurjaka/zen-browser-nix";
     
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
@@ -44,10 +44,10 @@
     let
       system-settings = {
         host = "HP";
-        user = "rey"; # select user
+        user = "rey"; 
         drivers = "intel"; # select drivers amd/nvidia/intel
-        timezone = "Europe/Berlin"; # select timezone
-        locale = "de_DE.UTF-8"; # select locale
+        timezone = "Europe/Berlin";
+        locale = "de_DE.UTF-8"; 
         shell = "zsh"; # zsh/fish/bash
         editor = "nvim";
         #theme = "everforest"; # select theme currently available nord/everforest
@@ -63,7 +63,7 @@
       nixosConfigurations = {
         # Host config
         "${system-settings.host}" = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux"; # System architecture
+          system = "x86_64-linux";
           specialArgs = propagated-args;
           modules = [
             ./hosts/${system-settings.host}/configuration.nix
@@ -75,13 +75,9 @@
                 useUserPackages = true;
                 useGlobalPkgs = true;
                 extraSpecialArgs = propagated-args;
-
-                # Enable Home Manager backup functionality
-                backupFileExtension = "backup";  # Set file extension for backup files
-
+                backupFileExtension = "backup";  
                 users = {
-                  "${system-settings.user}" = import ./hosts/${system-settings.host}/home.nix; # Make sure home.nix is correct
-                };
+                  "${system-settings.user}" = import ./hosts/${system-settings.host}/home.nix;                 };
 
                 # Add any shared modules you need
                 sharedModules = with inputs; [
