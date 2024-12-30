@@ -5,7 +5,7 @@
     ./shell.nix
     #./tmux.nix
     ./zsh.nix
-    #./zsh-buddy.nix
+   # ./zsh-autosuggestion-untested.nix
   ];
 
 }

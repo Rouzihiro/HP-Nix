@@ -56,7 +56,6 @@
       web-devicons.enable = true;
       lualine.enable = true;
       which-key.enable = true;
-      nvim-cmp.enable = true;
       cmp-path.enable = true;
       nvim-tree = {
         enable = true;

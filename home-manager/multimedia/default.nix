@@ -2,7 +2,8 @@
 
 {
   imports = [
-    #./spotify-player.nix
+  # ./spotify-player.nix
+  # ./spotify.nix
   ];
 
 }

@@ -2,10 +2,10 @@
 
 {
   imports = [
+    # ./alacritty.nix
+    # ./ranger.nix
     ./kitty.nix
-    #./kitty2.nix
     ./yazi.nix
-    #./yazi2.nix
     #./yazi-plugins.nix
   ];
 
