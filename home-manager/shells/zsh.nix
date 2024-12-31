@@ -30,6 +30,7 @@ let
     mem = "free -h";
     ko = "pkill";
     h = "history | fzf";
+    yt = "yt-x";
     edithome = "cd ~/dotfiles/ && ${editor} hosts/${host}/home.nix hosts/${host}/home-essentials.nix";
     editsys = "cd ~/dotfiles/ && ${editor} system/system-essentials.nix flake.nix";
     editshell = "v ~/dotfiles/home-manager/shells/zsh.nix";
