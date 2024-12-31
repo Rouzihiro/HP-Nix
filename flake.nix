@@ -25,7 +25,9 @@
 
     # hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
     # deactivated again since battery-state isnt shown correctly
-    
+
+    yt-x.url = "github:Benexl/yt-x";
+
     zen-browser.url = "github:Gurjaka/zen-browser-nix";
     
     spicetify-nix = {
