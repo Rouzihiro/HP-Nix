@@ -82,7 +82,6 @@
                 users = {
                   "${system-settings.user}" = import ./hosts/${system-settings.host}/home.nix;                 };
 
-                # Add any shared modules you need
                 sharedModules = with inputs; [
                   spicetify-nix.homeManagerModules.default
                   nixvim.homeManagerModules.nixvim
