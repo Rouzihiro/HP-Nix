@@ -13,6 +13,7 @@
     libnotify
     swaynotificationcenter # System-wide notifications
     swww #feh                # Wallpaper manager
+    waybar
     # redshift                # (x11) Adjust screen color temperature
 
     # System Utilities & Tools

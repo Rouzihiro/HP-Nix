@@ -8,16 +8,12 @@
     polkit
     polkit_gnome
     xdg-desktop-portal
-    #hyprpaper
     hyprlock
     hypridle
     hyprshot
     hyprsunset
-    #hyprland-qtutils --> need to figure out how to install this plugin !!!!
     gtk3
     gtk4
-    waybar
-    grim
     wl-clipboard
 
   ];

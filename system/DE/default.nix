@@ -3,7 +3,7 @@
 {
   imports = [
     #./boot.nix
-    ./greetd.nix
+    #./greetd.nix
     #./i3.nix
     #./hyprland.nix
     #./waybar.nix
