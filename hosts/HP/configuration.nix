@@ -6,6 +6,7 @@
     ./hardware-configuration.nix
     ./greetd.nix
     ./hyprland.nix
+    ./sway.nix
      ];
 
   # Bootloader.

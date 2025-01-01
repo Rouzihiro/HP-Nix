@@ -14,7 +14,6 @@
     hyprsunset
     gtk3
     gtk4
-    wl-clipboard
 
   ];
 

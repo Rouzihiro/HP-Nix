@@ -94,7 +94,7 @@
     # slurp                    # Select region for screenshot
     # waybar                   # Wayland status bar
     # dunst                    # Notification daemon
-    # wl-clipboard             # Clipboard manager
+    wl-clipboard             # Clipboard manager
 
     # Miscellaneous
      cmatrix                  # Matrix effect in terminal

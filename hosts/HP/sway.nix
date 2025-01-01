@@ -32,22 +32,17 @@ in {
   environment.systemPackages = with pkgs; [
 
     sway
-    swaybg # Background setter
-    swayidle # Idle management
-    swaylock # Screen locker
+    swaybg
+    swayidle 
+    swaylock
     light # Brightness contro
     dbus-sway-environment
     configure-gtk
     wayland
-    rofi-wayland
     xdg-utils
     glib
-    whitesur-icon-theme
-    grim
-    slurp # Region selector
-    wl-clipboard
-    waybar
-    capitaine-cursors
+    #whitesur-icon-theme
+    #capitaine-cursors
   ];
 
   services.dbus.enable = true;

@@ -42,12 +42,8 @@ in {
     rofi-wayland
     xdg-utils
     glib
-    whitesur-icon-theme
-    grim
-    slurp # Region selector
-    wl-clipboard
-    waybar
-    capitaine-cursors
+    #whitesur-icon-theme
+    #capitaine-cursors
   ];
 
   services.dbus.enable = true;
