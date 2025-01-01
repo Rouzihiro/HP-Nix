@@ -7,6 +7,7 @@
     ./greetd.nix
     ./hyprland.nix
     ./sway.nix
+    ./sway2.nix
      ];
 
   # Bootloader.

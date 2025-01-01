@@ -5,13 +5,7 @@
 
 Currently transitioning to a new setup, the old dotfiles can be found in the [`old` Hyprland](https://github.com/Rouzihiro/HP-Nix/tree/Hyprland).
 
-NixOS dotfiles <!-- # with support for:
-
-#- Darling erasure - restoring the machine to a clean state on every boot
-#- Secureboot via [lanzaboote](https://github.com/nix-community/lanzaboote)
-#- LUKS encryption with TPM unlocking
-#- Flicker-free boot with Plymouth
-#- Sensible defaults for garbage collection to reduce disk usage -->
+NixOS dotfiles 
 
 Further the dotfiles include:
 - ZSH setup
