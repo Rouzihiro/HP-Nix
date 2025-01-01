@@ -24,4 +24,9 @@ in {
   stylix.targets.rofi.enable = false;
   stylix.targets.hyprland.enable = false;
 
+
+  home.file = {
+  "sway/config".source = "/home/rey/dotfiles/hosts/HP/conf";
+ };
+
 }
