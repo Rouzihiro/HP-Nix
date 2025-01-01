@@ -6,7 +6,7 @@ let
     set $mod Mod4
     set $terminal kitty
     set $browser brave
-    set $fileManager thunar
+    set $fileManager nautilus
     set $menu rofi -show drun
 
     # Keybindings from Hyprland
@@ -73,7 +73,7 @@ let
     bindsym $mod+6 workspace $workspace6
 
     # Assign applications to workspaces
-    assign [app_id="thunar"] $workspace1
+    assign [app_id="nautilus"] $workspace1
     assign [app_id="brave"] $workspace2
 
     assign [app_id="discord"] $workspace3
