@@ -1,0 +1,95 @@
+# ####################
+# ### KEYBINDINGS ###
+# ####################
+
+# Set the "Windows" key as main modifier
+set $mainMod Mod4
+
+# Example binds
+bindsym $mainMod+Return exec $terminal
+bindsym $mainMod+q kill
+bindsym $mainMod+Shift+BackSpace exec ~/scripts/powerswitch-rofi
+bindsym $mainMod+f exec $fileManager
+bindsym $mainMod+b exec $browser
+bindsym $mainMod+Shift+l exec swaylock
+bindsym $mainMod+Tab focus floating
+bindsym $mainMod+space exec $menu
+bindsym $mainMod+Shift+space exec wofi --show drun
+bindsym $mod+p exec $terminal -e zsh -c 'tmp="$(mktemp -t "yazi-cwd.XXXXX")"; yazi "$@" --cwd-file="$tmp"; if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then; cd -- "$cwd"; fi; rm -f -- "$tmp"; exec $SHELL'
+bindsym $mainMod+BackSpace exec lxtask
+
+# Custom scripts
+bindsym $mainMod+Shift+m exec ~/scripts/monitor-switch-rofi
+bindsym $mainMod+Shift+j exec ~/scripts/jdownloader
+bindsym $mainMod+v exec ~/scripts/videotool
+bindsym $mainMod+x exec kitty -e zsh -c "~/scripts/executer"
+bindsym $mainMod+o exec ~/scripts/screenshot-ocr
+
+# Additional functionality
+bindsym $mainMod+Shift+e exec ~/scripts/sunset-4k
+bindsym $mainMod+Shift+h exec brightnessctl -d intel_backlight set 1
+bindsym $mainMod+Shift+i exec brightnessctl -d intel_backlight set 70%
+
+# Set workspaces on specific monitors
+workspace 1 output HDMI-A-1
+workspace 2 output HDMI-A-1
+workspace 3 output HDMI-A-1
+workspace 4 output HDMI-A-1
+workspace 5 output HDMI-A-1
+workspace 6 output eDP-1
+workspace 7 output eDP-1
+workspace 8 output eDP-1
+workspace 9 output eDP-1
+
+# Move focus with Mod + arrow keys
+bindsym $mainMod+h focus left
+bindsym $mainMod+j focus down
+bindsym $mainMod+k focus up
+bindsym $mainMod+l focus right
+
+# Switch workspaces with Mod + [1-9]
+bindsym $mainMod+1 workspace 1
+bindsym $mainMod+2 workspace 2
+bindsym $mainMod+3 workspace 3
+bindsym $mainMod+4 workspace 4
+bindsym $mainMod+5 workspace 5
+bindsym $mainMod+6 workspace 6
+bindsym $mainMod+7 workspace 7
+bindsym $mainMod+8 workspace 8
+bindsym $mainMod+9 workspace 9
+
+# Move active window to workspace with Mod + Shift + [1-9]
+bindsym $mainMod+Shift+1 move container to workspace 1
+bindsym $mainMod+Shift+2 move container to workspace 2
+bindsym $mainMod+Shift+3 move container to workspace 3
+bindsym $mainMod+Shift+4 move container to workspace 4
+bindsym $mainMod+Shift+5 move container to workspace 5
+bindsym $mainMod+Shift+6 move container to workspace 6
+bindsym $mainMod+Shift+7 move container to workspace 7
+bindsym $mainMod+Shift+8 move container to workspace 8
+bindsym $mainMod+Shift+9 move container to workspace 9
+
+# Special workspace (scratchpad)
+bindsym $mainMod+s scratchpad show
+bindsym $mainMod+Shift+s move container to scratchpad
+
+# Scroll through existing workspaces with Mod + scroll
+bindsym $mainMod+button4 workspace prev
+bindsym $mainMod+button5 workspace next
+
+# Move/resize windows with Mod + LMB/RMB and dragging
+# For Sway, you would need to define the mode or use mouse bindings
+
+# Volume and brightness control
+bindsym XF86AudioRaiseVolume exec wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+
+bindsym XF86AudioLowerVolume exec wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%-
+bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+bindsym XF86MonBrightnessUp exec brightnessctl s +10%
+bindsym XF86MonBrightnessDown exec brightnessctl s 10%-
+
+# Screenshot functionality
+bindsym Print exec swayshot -m window -o ~/Pictures/screenshots/
+bindsym $mainMod+Print exec swayshot -m region -o ~/Pictures/screenshots/
+bindsym $mainMod+Shift+Print exec swayshot -m output -o ~/Pictures/screenshots/
+
+

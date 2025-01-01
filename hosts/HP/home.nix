@@ -2,10 +2,9 @@
 
 let
   homeEssentials = import ./home-essentials.nix;
-  homeSway = import ./sway-home.nix;
   homeDefault = import ./../../home-manager/default.nix;
 in {
-  imports = [ homeEssentials homeDefault homeSway];
+  imports = [ homeEssentials homeDefault ];
 
   home.packages = with pkgs; [
     inputs.zen-browser.packages."${system}".default
