@@ -104,7 +104,6 @@ in
   home.packages = with pkgs; [
     kitty           # Terminal emulator
     brave           # Browser
-    thunar          # File manager
     rofi            # Application launcher
     swaylock        # Screen locker
     brightnessctl   # Brightness control

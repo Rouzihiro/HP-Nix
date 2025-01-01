@@ -2,13 +2,13 @@
 
 let
   homeEssentials = import ./home-essentials.nix;
+  homeSway = import ./sway-home.nix;
   homeDefault = import ./../../home-manager/default.nix;
 in {
-  imports = [ homeEssentials homeDefault ];
+  imports = [ homeEssentials homeDefault homeSway];
 
   home.packages = with pkgs; [
     inputs.zen-browser.packages."${system}".default
-    #inputs.hyprland-qtutils.packages."${pkgs.system}".default
     inputs.hyprland-qtutils.packages."${system}".default
     inputs.yt-x.packages."${system}".default
   ];
