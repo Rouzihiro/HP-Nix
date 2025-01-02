@@ -4,6 +4,7 @@
   environment.systemPackages = with pkgs; [
     # Theme / Style Related
     # hyprpanel
+    libinput
     wayland
     chromium # need for Hamburg-Events Script
     brave
