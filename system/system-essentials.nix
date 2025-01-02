@@ -6,8 +6,7 @@
     # hyprpanel
 
     #for Qtile
-    wlr-randr
-    mypy
+    #wlr-randr
     foot
 
     libinput
