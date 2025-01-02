@@ -4,6 +4,11 @@
   environment.systemPackages = with pkgs; [
     # Theme / Style Related
     # hyprpanel
+
+    #for Qtile
+    wlr-randr
+
+
     libinput
     wayland
     chromium # need for Hamburg-Events Script

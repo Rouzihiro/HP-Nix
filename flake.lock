@@ -615,6 +615,42 @@
         "type": "github"
       }
     },
+    "qtile-extras-flake": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1735737497,
+        "narHash": "sha256-SUUT1wIzonZS+Q9wxZ1GmUtHg2YX587bk1MyJCYN98Q=",
+        "owner": "elparaguayo",
+        "repo": "qtile-extras",
+        "rev": "3d3b8718e5869d3bf7c702b70c652198c9a8af96",
+        "type": "github"
+      },
+      "original": {
+        "owner": "elparaguayo",
+        "repo": "qtile-extras",
+        "type": "github"
+      }
+    },
+    "qtile-flake": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1735571478,
+        "narHash": "sha256-g/PxvvjE5T2eCJzNEKv69asfa1q37xk7dfI0YEZgGOU=",
+        "owner": "qtile",
+        "repo": "qtile",
+        "rev": "09a65d469af5e88740b495e266bb42df6f33a215",
+        "type": "github"
+      },
+      "original": {
+        "owner": "qtile",
+        "repo": "qtile",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "fine-cmdline": "fine-cmdline",
@@ -622,6 +658,8 @@
         "hyprland-qtutils": "hyprland-qtutils",
         "nixpkgs": "nixpkgs_2",
         "nixvim": "nixvim",
+        "qtile-extras-flake": "qtile-extras-flake",
+        "qtile-flake": "qtile-flake",
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",
         "yt-x": "yt-x",
