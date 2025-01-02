@@ -3,6 +3,7 @@
 {
   imports = [
     ./brave.nix
+    ./conky
     #./cursor.nix
     #./firefox.nix
     #./gimp.nix

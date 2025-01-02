@@ -29,7 +29,18 @@
     yt-x.url = "github:Benexl/yt-x";
 
     zen-browser.url = "github:Gurjaka/zen-browser-nix";
-    
+
+    qtile-flake = {
+      url = "github:qtile/qtile";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    qtile-extras-flake = {
+      url = "github:elparaguayo/qtile-extras";
+      flake = false;
+    };
+
+
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -55,7 +66,7 @@
         locale = "de_DE.UTF-8"; 
         shell = "zsh"; # zsh/fish/bash
         editor = "nvim";
-        #theme = "everforest"; # select theme currently available nord/everforest
+        theme = "nord"; # select theme currently available nord/everforest
         GitUser = "Rouzihiro";
         GitMail = "ryossj@gmail.com";
       };
@@ -72,6 +83,7 @@
           specialArgs = propagated-args;
           modules = [
             ./hosts/${system-settings.host}/configuration.nix
+            ./overlays.nix
             inputs.stylix.nixosModules.stylix
             #{nixpkgs.overlays = [inputs.hyprpanel.overlay];}
             home-manager.nixosModules.home-manager
