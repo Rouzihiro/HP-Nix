@@ -30,15 +30,15 @@
 
     zen-browser.url = "github:Gurjaka/zen-browser-nix";
 
-    qtile-flake = {
-      url = "github:qtile/qtile";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+   # qtile-flake = {
+   #   url = "github:qtile/qtile";
+   #   inputs.nixpkgs.follows = "nixpkgs";
+   # };
 
-    qtile-extras-flake = {
-      url = "github:elparaguayo/qtile-extras";
-      flake = false;
-    };
+   # qtile-extras-flake = {
+   #   url = "github:elparaguayo/qtile-extras";
+   #   flake = false;
+   # };
 
 
     spicetify-nix = {
@@ -83,7 +83,7 @@
           specialArgs = propagated-args;
           modules = [
             ./hosts/${system-settings.host}/configuration.nix
-            ./overlays.nix
+            #./overlays.nix
             inputs.stylix.nixosModules.stylix
             #{nixpkgs.overlays = [inputs.hyprpanel.overlay];}
             home-manager.nixosModules.home-manager
