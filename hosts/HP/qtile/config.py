@@ -38,11 +38,14 @@ keys = [
     # A list of available commands that can be bound to keys can be found
     # at https://docs.qtile.org/en/latest/manual/config/lazy.html
     # Switch between windows
+
+    Key(["mod", "shift"], "m", lazy.spawn("~/scripts/monitor-switch-qtile"), desc="Switch monitor setup"),
+
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
-    Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
+    #Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
     Key([mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"),
@@ -63,18 +66,18 @@ keys = [
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     # Toggle between different layouts as defined below
     Key([mod], "z", lazy.next_layout(), desc="Toggle between layouts"),
-    Key([mod, "Shift"], "q", lazy.window.kill(), desc="Kill focused window"),
+    Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
     Key([mod], "f", lazy.window.toggle_fullscreen(), desc="Toggle fullscreen on the focused window"),
     Key([mod], "t", lazy.window.toggle_floating(), desc="Toggle floating on the focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "d", lazy.spawn(launcher), desc="Exec app launcher"),
+    Key([mod], "space", lazy.spawn(launcher), desc="Exec app launcher"),
     Key([mod], "e", lazy.spawn(fileManager), desc="Exec File manager"),
     Key([mod], "b", lazy.spawn(browser), desc="Exec browser"),
     Key([mod], "c", lazy.spawn(editor), desc="Exec editor"),
     Key([mod], "Tab", lazy.spawn(ntCenter), desc="Exec notification center"),
-    Key([mod, "Shift"], "s", lazy.spawn("flameshot gui -c")),
-    Key(["Shift"], "Tab", lazy.widget["keyboardlayout"].next_keyboard()),
+    #Key([mod, "Shift"], "s", lazy.spawn("flameshot gui -c")),
+    #Key(["Shift"], "Tab", lazy.widget["keyboardlayout"].next_keyboard()),
     Key([], "XF86AudioRaiseVolume", lazy.spawn("wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%+")),
     Key([], "XF86AudioLowerVolume", lazy.spawn("wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%-")),
     Key([], "XF86AudioMute", lazy.spawn("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle")),
