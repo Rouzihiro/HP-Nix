@@ -7,6 +7,7 @@
 
     #for Qtile
     wlr-randr
+    mypy
     foot
 
     libinput
