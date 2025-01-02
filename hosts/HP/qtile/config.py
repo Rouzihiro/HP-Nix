@@ -39,8 +39,17 @@ keys = [
     # at https://docs.qtile.org/en/latest/manual/config/lazy.html
     # Switch between windows
 
-    Key(["mod", "shift"], "m", lazy.spawn("~/scripts/monitor-switch-qtile"), desc="Switch monitor setup"),
+    Key([mod, "shift"], "m", lazy.spawn("~/scripts/monitor-switch-qtile"), desc="Switch monitor setup"),
+    
+    # Screenshot a window (using grim)
+    Key([], "Print", lazy.spawn("grim -g $(slurp) ~/Pictures/screenshots/window.png"), desc="Screenshot a window"),
 
+    # Screenshot the whole screen
+    Key([mod, "shift"], "Print", lazy.spawn("grim ~/Pictures/screenshots/screen.png"), desc="Screenshot the monitor"),
+
+    # Screenshot a region
+    Key([mod], "Print", lazy.spawn("grim -g $(slurp) ~/Pictures/screenshots/region.png"), desc="Screenshot a region"),
+    
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
