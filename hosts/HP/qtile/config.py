@@ -21,7 +21,7 @@ if qtile.core.name == "wayland":
 # Startup
 @hook.subscribe.startup_once
 def autostart():
-    home = os.path.expanduser('~/Dotfiles/nixos/modules/qtile/autostart.sh')
+    home = os.path.expanduser('~/dotfiles/hosts/HP/qtile/autostart.sh')
     subprocess.Popen([home])
 
 # Variables

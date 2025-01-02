@@ -7,7 +7,7 @@
     ./greetd.nix
     ./hyprland.nix
     ./sway.nix
-    ./1
+    ./qtile
      ];
 
   # Bootloader.
