@@ -2,7 +2,7 @@
 
 {
   imports = [
-  ./cursor.nix 
+  #./cursor.nix 
 
 ];
 

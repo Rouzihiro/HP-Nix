@@ -7,7 +7,7 @@
 
     #for Qtile
     #wlr-randr
-    foot
+    #foot
 
     libinput
     wayland

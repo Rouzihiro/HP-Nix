@@ -1,0 +1,21 @@
+button:hover {
+  background-color: #737aa2;
+/*  transition: 500ms ease-in-out; */
+}
+
+/* click with mouse */
+button:active {
+  background-color: #7dcfff;
+}
+
+button:not(.flat){
+background: #737aa2;
+}
+
+window {  
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.288);
+    background-color: rgba(26,27,38,0.9);
+    border-width: 18px;
+    border-color: white;
+}
