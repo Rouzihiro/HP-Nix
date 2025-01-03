@@ -46,7 +46,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    };
     hyprland = {
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -71,7 +70,7 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
-
+  };  
   outputs =
     {
       self,
