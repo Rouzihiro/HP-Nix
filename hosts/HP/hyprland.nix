@@ -6,6 +6,9 @@
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
   };
+  
+  services.libinput.enable = true; #just added
+  programs.dconf.enable = true; # just added
 
   environment.systemPackages = with pkgs; [
     polkit
