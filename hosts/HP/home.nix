@@ -3,8 +3,10 @@
 let
   homeEssentials = import ./home-essentials.nix;
   homeDefault = import ./../../modules/home/default.nix;
+  hypr = import ./hyprland2.nix;
+
 in {
-  imports = [ homeEssentials homeDefault ];
+  imports = [ homeEssentials homeDefault hypr ];
 
   home.packages = with pkgs; [
     inputs.zen-browser.packages."${system}".default

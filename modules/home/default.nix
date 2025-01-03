@@ -8,7 +8,7 @@
     ./misc
     ./tui
     ./virtualisation
-    ./hyprland.nix
+   # ./hyprland.nix
     #./wm
   ];
 }
