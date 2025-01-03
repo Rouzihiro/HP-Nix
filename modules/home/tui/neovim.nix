@@ -55,6 +55,7 @@
     plugins = {
       web-devicons.enable = true;
       lualine.enable = true;
+      menu.enable = true;
       which-key.enable = true;
       cmp-path.enable = true;
       conform-nvim.enable = true;
