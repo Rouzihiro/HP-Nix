@@ -2,7 +2,6 @@
 
 {
   imports = [
-  #./discord.nix
   # ./spotify-player.nix
   # ./spotify.nix
   ./brave.nix

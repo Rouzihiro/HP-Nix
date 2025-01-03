@@ -4,7 +4,7 @@
   environment.systemPackages = with pkgs; [
     # Theme / Style Related
     # hyprpanel
-
+    
     #for Qtile
     wlr-randr
     #foot

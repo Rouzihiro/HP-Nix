@@ -69,6 +69,7 @@
 
     # Communication
     vesktop # Discord client
+    discordo
     telegram-desktop # Messaging app
     thunderbird # Email client
     zoom-us # Video conferencing
