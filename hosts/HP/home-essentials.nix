@@ -8,6 +8,8 @@
     # nwg-look # Customize GTK and cursor themes
     # catppuccin-gtk           # Catppuccin theme for GTK
     
+    # dex 
+    
     # File Management
     yazi # Terminal file manager
     pdfarranger # PDF editor

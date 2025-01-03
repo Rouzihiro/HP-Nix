@@ -6,6 +6,7 @@
     ./hardware-configuration.nix
     ./greetd.nix
     ./hyprland.nix
+    ./hyprland2.nix
     ./sway.nix
     ./wayfire.nix
      ];

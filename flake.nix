@@ -45,7 +45,32 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-  };
+
+    };
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    ags.url = "github:aylur/ags"; 
+    ags-desktop= {
+      url = "github:coffeeispower/ags-desktop";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        ags.follows = "ags";
+      };
+    };
+  #  swww = {
+  #    url = "github:LGFae/swww";
+  #    inputs.nixpkgs.follows = "nixpkgs";
+  #  };
+   hyprland-contrib = {
+      url = "github:hyprwm/contrib";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
 
   outputs =
     {

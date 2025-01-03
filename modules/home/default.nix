@@ -8,5 +8,6 @@
     ./misc
     ./tui
     ./virtualisation
+    ./wm
   ];
 }
