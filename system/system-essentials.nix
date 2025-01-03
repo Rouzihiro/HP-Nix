@@ -6,9 +6,9 @@
     # hyprpanel
 
     #for Qtile
-    #wlr-randr
+    wlr-randr
     #foot
-
+    wayfire
     libinput
     wayland
     chromium # need for Hamburg-Events Script
@@ -19,7 +19,7 @@
     corefonts # Microsoft fonts for compatibility
     libnotify
     swaynotificationcenter # System-wide notifications
-    swww #feh                # Wallpaper manager
+    swww feh                # Wallpaper manager
     waybar
     # redshift                # (x11) Adjust screen color temperature
 

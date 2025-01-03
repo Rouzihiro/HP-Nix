@@ -1,0 +1,37 @@
+#!/bin/sh
+
+# Directory containing the wallpapers
+wallpaper_folder="${HOME}/Pictures/wallpapers"
+
+# Get a list of wallpapers (shortened to filenames)
+files=$(find -L "$wallpaper_folder" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.jpeg" -o -iname "*.gif" \))
+if [ -z "$files" ]; then
+    echo "No wallpapers found in $wallpaper_folder"
+    exit 1
+fi
+
+# Display a selection menu with Rofi (show only filenames)
+selected_filename=$(echo "$files" | xargs -I{} basename {} | rofi -dmenu -i -p "Select Wallpaper")
+
+# If the user cancels the selection, fallback to a random wallpaper
+if [ -z "$selected_filename" ]; then
+    echo "No wallpaper selected, choosing a random one."
+    selected_file=$(shuf -n 1 <<< "$files")
+else
+    # Map the selected filename back to its full path
+    selected_file=$(find -L "$wallpaper_folder" -type f -name "$selected_filename")
+fi
+
+# Set the wallpaper
+wall="$selected_file"
+wal -i "$wall"
+
+# Restart services
+pkill swaync
+pkill waybar
+swaync &
+waybar &
+
+# Apply wallpaper only on HDMI monitor (HDMI-A-1)
+swww img --transition-type random --transition-fps 60 --transition-duration 2 --monitor HDMI-A-1 "$wall"
+
