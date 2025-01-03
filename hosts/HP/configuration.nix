@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./../../system/default.nix
+    ./../../modules/nixos/default.nix
     ./hardware-configuration.nix
     ./greetd.nix
     ./hyprland.nix

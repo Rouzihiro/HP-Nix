@@ -6,22 +6,24 @@
 Currently transitioning to a new setup, the old dotfiles can be found in the [`old` Hyprland](https://github.com/Rouzihiro/HP-Nix/tree/Hyprland).
 
 NixOS dotfiles 
+ - greetd offers Tripple-Launch option (Hyprland / Sway / Wayfire)
 
 Further the dotfiles include:
 - ZSH setup
 
 ## Usage
 The dotfiles contain configuration for:
-- [harmonium](./hosts/harmonium) - Personal NixOS laptop
-- [organ](./hosts/organ) - ARM-based server
-- [nyckelharpa](./hosts/nyckelharpa) - Work Macbook
-- home-manager configurations for both systems
+- [HP](./hosts/HP) - Personal NixOS HP laptop (see system information)
+- [Gaming](./hosts/Gaming) - Personal laptop (optimized for gaming)
+- [Mac](./hosts/mac) - Work Macbook M1
+- home-manager configurations for all systems
 
 Refer to the respective host directories for more information.
 
 ## To-Do
 - [ ] Modularize the setup
 - [ ] Optimize Sway
+- [ ] Optimize Wayfire
 - [ ] Docker support
 - [ ] Dev environments
 - [x] Full Neovim setup
