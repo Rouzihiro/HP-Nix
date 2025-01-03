@@ -1,11 +1,8 @@
- { config, pkgs, inputs, ... }: {
+{ config, pkgs, ... }: {
 
   services.getty.autologinUser = "rey";
 
-  programs.hyprland = {
-    enable = true;
-    package = inputs.hyprland.packages.${system}.hyprland;
-  };
+  programs.hyprland.enable = true;
 
   environment.systemPackages = with pkgs; [
     polkit
